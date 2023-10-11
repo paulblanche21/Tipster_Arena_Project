@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 import logging
 from flask_wtf.csrf import CSRFError
-
+from flask import current_app as app, Flask
 
 # Define the Blueprint
 handler = Blueprint('handler', __name__)
@@ -31,16 +31,3 @@ def handle_exception(e):
 @handler.app_errorhandler(CSRFError)
 def handle_csrf_error(e):
     return render_template('csrf_error.html', reason=e.description), 400
-
-<<<<<<< HEAD
-
-@handler.app_errorhandler(ValueError)
-def handle_value_error(e):
-    error_message = "Invalid value: " + str(e)
-    return render_template("error.html", error=error_message), 400
-=======
-@app.errorhandler(ValueError)
-def handle_value_error(e):
-    error_message = "Invalid value: " + str(e)
-    return render_template("error.html", error=error_message), 400
->>>>>>> 84f6b4b (Give me back my life)

@@ -7,10 +7,10 @@ load_dotenv()
 
 
 class Config:
-    # Get the secret key from the environment variable and generate a new one if it doesn't exist
+    # Get the secret key from the environment variable and generate a new one
     SECRET_KEY = os.getenv('SECRET_KEY', secrets.token_hex(16))
 
-    # Get the database URL from the environment variable and use a fallback if it doesn't exist
+    # Get the database URL from the environment variable and use a fallback if
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'fallback_url')
 
     # You can add more configuration variables here as needed, for example:

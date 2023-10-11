@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-from flask_login import UserMixin
-from flask_login import login_manager  # You should also adjust this import
-from .import db, bcrypt  # Adjust this import as well
-=======
-from app import db, bcrypt  # Adjust the import according to your project structure
-from flask_login import UserMixin
-from flask_login import login_manager  # You should also adjust this import
-from app import app  # Adjust this import as well
->>>>>>> 84f6b4b (Give me back my life)
+from app import db, bcrypt
+from flask_login import UserMixin, login_manager
 
 
 class User(UserMixin, db.Model):

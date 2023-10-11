@@ -1,18 +1,17 @@
-import os
+
 import os
 import sys
 from pathlib import Path
 
-# Adding the path to the Tipster_Arena package to the Python path
+from TipsterArena.app import create_app, db, socketio
+
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
-from Tipster_Arena.app import create_app, db, socketio  # Adjusted imports
-
-app = create_app()  # Creating an app instance
+app = create_app()
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # This will create the database tables defined
+        db.create_all()
 
     if os.environ.get("FLASK_ENV") == "development":
         socketio.run(app, debug=True)

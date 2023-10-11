@@ -1,26 +1,18 @@
 import base64
-import logging
 import os
-import re
-import secrets
-
-from flask import Flask, g, Blueprint
+from flask import Flask, g
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
-from flask_login import LoginManager, login_required, UserMixin
-from flask_socketio import SocketIO, join_room, leave_room, send
+from flask_login import LoginManager
+from flask_socketio import SocketIO
 from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
-from jinja2 import escape
-from dotenv import load_dotenv
-
-from config import Config  
+from config import Config
 from errors.handlers import handler
 from auth import auth
 from model import User
 from routes import main
-from services.chat import handle_message, on_join, on_leave   
 
 # Application and Configuration
 app = Flask(__name__)
@@ -41,29 +33,58 @@ app.register_blueprint(main)
 app.register_blueprint(handler)
 app.register_blueprint(auth, url_prefix='/auth')
 
-# Configure logging
-logging.basicConfig(level=logging.ERROR)
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
 # CSP Configuration
+
+
 csp = {
-    # ... (same as your original code)
+    'default-src': "'self'",
+    'img-src': '*',
+    'style-src': [
+        "'self'", "'unsafe-inline'",
+        'use.fontawesome.com', 'maxcdn.bootstrapcdn.com'
+    ],
+    'script-src': [
+        "'self'", "'unsafe-inline'",
+        'ajax.googleapis.com',
+        'cdnjs.cloudflare.com',
+        'maxcdn.bootstrapcdn.com'
+    ],
+    'font-src': "'self' use.fontawesome.com fonts.gstatic.com",
 }
+# Update the 'script-src' directive using an f-string
+csp['script-src'] += [f"'nonce-{g.nonce}'"]
+
+
+Talisman(app, content_security_policy=csp)
+
 
 @app.before_request
 def before_request():
     g.nonce = base64.b64encode(os.urandom(16)).decode('utf-8')
-    csp['script-src'].append(f"'nonce-{g.nonce}'")
 
-Talisman(app, content_security_policy=csp)
 
 @app.after_request
 def after_request(response):
-    # ... (same as your original code)
+    csp = {
+        'default-src': "'self'",
+        'script-src': f"'self' 'nonce-{g.nonce}'",
+        'style-src': f"'self' 'nonce-{g.nonce}'",
+        # Add other directives as needed
+    }
+    csp_str = "; ".join([f"{k} {v}" for k, v in csp.items()])
+    response.headers['Content-Security-Policy'] = csp_str
     return response
+
+
+# Convert lists to strings
+for directive, sources in csp.items():
+    csp[directive] = ' '.join(sources)
+
 
 if __name__ == '__main__':
     with app.app_context():
