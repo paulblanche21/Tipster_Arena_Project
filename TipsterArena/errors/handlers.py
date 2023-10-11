@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 import logging
 from flask_wtf.csrf import CSRFError
-from flask import current_app as app, Flask
+
 
 # Define the Blueprint
 handler = Blueprint('handler', __name__)

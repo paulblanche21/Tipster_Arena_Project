@@ -1,5 +1,5 @@
 from app import db, bcrypt
-from flask_login import UserMixin, login_manager
+from flask_login import UserMixin
 
 
 class User(UserMixin, db.Model):
@@ -14,6 +14,4 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password, password)
 
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
+
