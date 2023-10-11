@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+    <div class="container mt-5">
+        <h2>Horse Racing Chat Room</h2>
+        <div class="d-flex">
+            <div class="chat-room">
+                <ul id="messages"></ul>
+                <input id="message" autocomplete="off" placeholder="Type a message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+            <div id="online-users">
+                <h3>Online Users</h3>
+                <ul id="user-list"></ul>
+            </div>
+        </div>   
+    </div>
+</main>
+
+<!-- Socket.IO JavaScript -->
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js" integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var socket = io.connect('http://127.0.0.1:5000/football');
+
+    socket.on('connect', function() {
+        socket.emit('join');
+    });
+
+    socket.on('message', function(data) {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(data));
+        document.getElementById('messages').appendChild(li);
+    });
+
+    function sendMessage() {
+        var message = document.getElementById('message').value;
+        socket.emit('message', message);
+        document.getElementById('message').value = '';
+    }
+</script>
+
+{% endblock %}
+

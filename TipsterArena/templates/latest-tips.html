@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    <!-- New Tips Grid -->
+    <div class="container sports-grid">
+        <div class="row">
+            <!-- Tip 1 -->
+            <div class="col-lg-6 mb-2 section" id="tip1" style="background-image: url({{ url_for('static', filename='images/football-tips.png') }});">
+               
+            </div>
+            <!-- Tip 2 -->
+            <div class="col-lg-6 mb-2 section" id="tip2" style="background-image: url({{ url_for('static', filename='images/racing-tips.png') }});">
+               
+            </div>
+        </div>
+        <div class="row">
+            <!-- Tip 3 -->
+            <div class="col-lg-6 mb-2 section" id="tip3" style="background-image: url({{ url_for('static', filename='images/golf-tips.png') }});">
+               
+            </div>
+            <!-- Tip 4 -->
+            <div class="col-lg-6 mb-2 section" id="tip4" style="background-image: url({{ url_for('static', filename='images/tennis-tips.png') }});">
+                
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

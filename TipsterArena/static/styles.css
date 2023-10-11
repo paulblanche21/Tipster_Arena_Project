@@ -1,0 +1,556 @@
+
+
+
+/* ==============================
+   VARIABLES
+   ============================== */
+
+:root {
+    --colors-white: #FFFFFF;
+    --colors-primary: #14345B;
+    --colors-secondary: hsl(0, 94%, 46%);
+    --colors-text: var(--colors-primary);
+    --colors-lightBg: var(--colors-gray7);
+    --colors-gray7: #e7e4e4;    
+    --colors-darkBg: var(--colors-primary);
+    --colors-appbar: var(--colors-primary);
+    --colors-appbarText: var(--colors-white);
+    --colors-footer: var(--colors-primary);
+    --fonts-heading: 'Montserrat', sans-serif;
+    --fonts-paragraph: 'Montserrat', sans-serif;
+}
+
+/* ==============================
+   RESETS
+   ============================== */
+
+
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ==============================
+   BASE STYLES
+   ============================== */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--colors-lightBg);
+    color: var(--colors-text);
+}
+
+
+
+
+
+
+.dynamic-weight {
+    font-family: 'Montserrat';
+    font-variation-settings: 'wght' 450; /* Adjust the weight as needed */
+}
+
+/* ==============================
+   HEADER STYLES
+   ============================== */
+
+header {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--colors-primary);
+    color: var(--colors-appbarText);
+    box-shadow: var(--shadows-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.main-nav {
+    flex: 1 1 auto; /* This will allow the main-nav to take up the available space between the logo and right-nav */
+    display: flex;
+    justify-content: center; /* This will center the navigation items */
+    align-items: center;
+}
+
+.right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+}
+
+nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: var(--colors-appbarText);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radii-md);
+    transition: text-shadow 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+nav a:hover {
+    font-weight: bold;
+    color: var(--colors-white); /* Keeps the text white on hover */
+    transform: scale(1.05); /* This will slightly increase the size */
+}
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.nav-icon {
+    margin-bottom: 5px; /* Adjust as needed */
+}
+
+
+
+
+.nav-link i {
+    margin-right: 5px; /* Adds some space between the icon and the text */
+    vertical-align: middle; /* Aligns the icon with the text */
+}
+
+
+
+
+
+.main-nav ul, .right-nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 1.55rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-icon {
+    display: block;
+    text-align: center;
+}
+
+.nav-text {
+    display: block;
+    font-size: 0.8rem; /* Adjust as needed */
+    text-align: center;
+}
+
+.nav-icon i {
+    font-size: 1.2rem; /* Adjust as needed */
+}
+
+
+/* ==============================
+   LOGO STYLES
+   ============================== */
+
+
+.logo {
+    flex: 0 0 auto; 
+    color: var(--colors-white);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+body .logo img {
+    width: 300px; /* Adjust the size as needed */
+    height: auto;
+}
+
+.logo-container {
+    margin-top: 20px;  
+    text-align: center; 
+}
+
+
+
+
+
+
+
+/* ==============================
+   SUBSCRIPTION STYLES
+   ============================== */
+
+/* Subscription Container */
+.subscription-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This will take up the full viewport height */
+}
+
+/* Subscription Promo Styling */
+.subscription-promo {
+    background-color: var(--colors-secondary); /* Red background */
+    padding: 2rem; /* Add some padding for spacing */
+    border-radius: var(--radii-md); /* Rounded corners */
+    text-align: center; /* Center the text elements */
+}
+
+.subscription-promo h3,
+.subscription-promo p,
+.subscription-promo button {
+    color: var(--colors-white); /* White text color */
+    margin-bottom: 1rem; /* Spacing between elements */
+}
+
+.subscription-promo button:hover {
+    background-color: var(--colors-primary); /* Change button color on hover */
+}
+
+
+
+/* ==============================
+   BUTTON STYLES
+   ============================== */
+
+button {
+    background-color: var(--colors-secondary);
+    color: var(--colors-white);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radii-md);
+    box-shadow: var(--shadows-xs);
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--colors-primary);
+}
+
+
+/* ==============================
+   DROPDOWN STYLES
+   ============================== */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by default) */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--colors-gray7); /* Corrected this line */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top:100%;
+    margin-top: 0;
+    z-index: 1000;
+    border-top: none;
+}
+
+
+/* Dropdown Links */
+.dropdown-content a {
+    color: red; /* Initial color */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change color on hover for dropdown links */
+.dropdown-content a:hover {
+    color: black;
+}
+
+
+
+
+/* ==============================
+   MAIN CONTAINER STYLES
+   ============================== */
+
+
+/* Main Container Site Logo */
+.site-logo {
+    display: block;
+    margin: 0 auto; /* This will center the image */
+    max-width: 100%; /* This ensures the image doesn't overflow its container */
+}
+
+
+
+/* Search Icon */
+.search-icon {
+    font-family: "Font Awesome 6 Brands" !important; /* Assuming you're using Font Awesome */
+    font-weight: normal !important;
+    font-style: normal !important;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Adjust size as needed */
+    color: var(--colors-appbarText); /* Color of the icon */
+}
+
+.search-icon:hover {
+    color: var(--colors-primary); /* Color on hover */
+}
+
+
+/* ==============================
+   SECTION GRID STYLES
+   ============================== */
+
+
+
+.section-grid {
+    margin-top: 2rem; /* spacing from the previous section */
+    margin-bottom: 2rem; /* spacing before the next section */
+}
+
+.section {
+    margin-top: 4rem;
+    height: 300px;
+    margin: 0.5rem 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    border: 2px solid #14345B;
+    flex: 1 0 calc(50% - 1rem); /* This makes each box take up half the width minus a small margin */
+    background-color: #14345B; /* Navy blue background */
+}
+
+.section h1 {
+
+    color: white; /* text color */
+    font-size: 2rem; /* font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* shadow for better readability */
+}
+
+/* You can add the background images for each section once you have them */
+#top-tips-today {
+    background-image: url("{{ url_for('static', filename='images/#Tips.png') }}");
+
+}
+
+#results {
+    background-image: url("{{ url_for('static', filename='images/Results.png') }}");
+}
+
+#coming-up {
+    background-image: url("{{ url_for('static', filename='images/Coming Up.png') }}");
+}
+
+#chatrooms {
+    background-image: url("{{ url_for('static', filename='images/Chat.png') }}");
+}
+
+
+
+/* ==============================
+   FOOTER STYLES
+   ============================== */
+
+
+footer {
+    background-color: var(--colors-secondary); /* set to secondary color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem; /* add some padding for spacing */
+    
+       
+    
+}
+
+.social-icons {
+    display: flex;
+    justify-content: flex-end; /* align to the right */
+    align-items: center;
+    gap: 1rem; /* space between icons */
+}
+
+.social-icons a {
+    color: var(--colors-white); /* icon color */
+    font-size: 1.5rem; /* icon size */
+    transition: color 0.3s; /* smooth color transition */
+}
+
+.social-icons a:hover {
+    color: var(--colors-primary); /* change color on hover */
+}
+
+
+.footer-nav {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.footer-nav li {
+    margin: 0;
+}
+
+.footer-nav a {
+    color: var(--colors-white); /* Set color to white */
+    font-family: 'Montserrat', sans-serif; /* Set font to Montserrat */
+    text-decoration: none; /* Optional: remove underline */
+    transition: color 0.3s; /* Optional: smooth color transition on hover */
+}
+
+
+
+.footer-nav a:hover {
+    color: var(--colors-primary); /* Optional: change color on hover */
+}
+
+
+/* ==============================
+   LOGIN BUTTON STYLES
+   ============================== */
+
+
+.login-btn {
+    background-color: var(--colors-secondary); /* Using the secondary color variable which is set to red */
+    padding: 5px 10px; /* Add some padding for better appearance */
+    border-radius: 4px; /* Optional: Add some border-radius for rounded corners */
+}
+
+/* Adjust the hover effect for the login button */
+.login-btn:hover {
+    color: var(--colors-white); /* Keeps the text white on hover */
+    background-color: var(--colors-secondary); /* Change to primary color on hover for contrast */
+}
+
+nav .right-nav a.login-btn:hover {
+    background-color: var(--colors-secondary);
+    color: var(--colors-white);
+}
+
+
+/* ==============================
+   SPORTS GRID STYLES
+   ============================== */
+
+.sports-grid {
+    margin-top: 2rem; /* spacing from the jumbotron */
+    margin-bottom: 4rem; /* spacing before the next section */
+
+}
+
+.sport {
+    height: 300px;
+    margin: 0.5rem 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    border: 2px solid #14345B;
+    flex: 1 0 calc(50% - 1rem); /* This makes each box take up half the width minus a small margin */
+    
+}
+
+.sport:hover, .section:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.9);
+    z-index: 1;
+    transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+}
+    
+    
+
+
+
+.sport h1 {
+    color: white; /* text color */
+    font-size: 2rem; /* font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* shadow for better readability */
+}
+
+
+#football {
+    background-image: url('/static/images/football.png.png');
+}
+
+#horse-racing {
+    background-image: url('/static/images/horseracing.png.png');
+}
+
+#tennis {
+    background-image: url('/static/images/tennis.png.png');
+}
+
+#golf {
+    background-image: url('/static/images/golf.png.png');
+}
+
+
+/* ==============================
+   MEDIA QUERIES
+   ============================== */
+   @media (max-width: 768px) {
+    nav a {
+        font-size: 1rem; /* Adjusted font size */
+    }
+}
+
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    .logo img {
+        width: 150px; /* Adjust as needed */
+    }
+    .nav-container {
+        flex-direction: column;
+    }
+
+    .main-nav ul, .right-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-icon, .nav-text {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .nav-text {
+        font-size: 1rem; /* Adjust as needed */
+    }
+}
+
+
+
+.match {
+    background-color: var(--colors-darkBg);
+    color: var(--colors-lightText);
+    padding: var(--space-4);
+    border-radius: var(--radii-md);
+    box-shadow: var(--shadows-sm);
+}

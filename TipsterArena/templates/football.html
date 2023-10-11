@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container section-grid">
+        <div class="row">
+            <!-- Chat -->
+            <div class="col-lg-6 mb-2 section" id="chat" 
+                 style="background-image: url('{{ url_for('static', filename='images/chat1.png') }}'); background-size: cover;">
+                <h1>Football Chat</h1>
+            </div>
+            <!-- Fixtures & Results -->
+            <div class="col-lg-6 mb-2 section" id="fixtures-results" 
+                 style="background-image: url('{{ url_for('static', filename='images/Results1.png') }}'); background-size: cover;">
+                <h1>Football Fixtures & Results</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Tips -->
+            <div class="col-lg-6 mb-2 section" id="tips" 
+                 style="background-image: url('{{ url_for('static', filename='images/Tip1.png') }}'); background-size: cover;">
+                <h1>Football Tips</h1>
+            </div>
+            <!-- In Play -->
+            <div class="col-lg-6 mb-2 section" id="in-play" 
+                 style="background-image: url('{{ url_for('static', filename='images/footballinplay.png') }}'); background-size: cover;">
+                <h1>In Play</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}

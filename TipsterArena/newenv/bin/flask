@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+#!/Users/paul/Tipster_Arena_Project/Tipster_Arena/newenv/bin/python3.11
+=======
+#!/Users/paul/Tipster-Arena/newenv/bin/python3.11
+>>>>>>> 84f6b4b (Give me back my life)
+# -*- coding: utf-8 -*-
+import re
+import sys
+from flask.cli import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

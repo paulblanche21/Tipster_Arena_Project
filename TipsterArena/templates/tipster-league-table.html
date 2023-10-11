@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4">Top Tipsters</h2>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="overall-tab" data-toggle="tab" href="#overall" role="tab" aria-controls="overall" aria-selected="true">Overall</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="football-tab" data-toggle="tab" href="#football" role="tab" aria-controls="football" aria-selected="false">Football</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="horseracing-tab" data-toggle="tab" href="#horseracing" role="tab" aria-controls="horseracing" aria-selected="false">Horse Racing</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="tennis-tab" data-toggle="tab" href="#tennis" role="tab" aria-controls="tennis" aria-selected="false">Tennis</a>  <!-- Added this line -->
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="golf-tab" data-toggle="tab" href="#golf" role="tab" aria-controls="golf" aria-selected="false">Golf</a>  <!-- Added this line -->
+        </li>
+    </ul>
+    
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="overall" role="tabpanel" aria-labelledby="overall-tab">
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        
+                        <th scope="col">Tips</th>
+                        <th scope="col">Wins</th>
+                        <th scope="col">Win Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tbody>
+                        {% for tipster in tipsters %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ tipster.username }}</td>
+                                <td>{{ tipster.tips }}</td>
+                                <td>{{ tipster.wins }}</td>
+                                <td>{{ (tipster.wins / tipster.tips * 100)|round(2) }}%</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="tennis" role="tabpanel" aria-labelledby="tennis-tab">
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Tips</th>
+                        <th scope="col">Wins</th>
+                        <th scope="col">Win Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tipster in tipsters if tipster.sport == 'tennis' %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ tipster.username }}</td>
+                            <td>{{ tipster.tips }}</td>
+                            <td>{{ tipster.wins }}</td>
+                            <td>{{ (tipster.wins / tipster.tips * 100)|round(2) }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="golf" role="tabpanel" aria-labelledby="golf-tab">
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Tips</th>
+                        <th scope="col">Wins</th>
+                        <th scope="col">Win Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tipster in tipsters if tipster.sport == 'golf' %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ tipster.username }}</td>
+                            <td>{{ tipster.tips }}</td>
+                            <td>{{ tipster.wins }}</td>
+                            <td>{{ (tipster.wins / tipster.tips * 100)|round(2) }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="horseracing" role="tabpanel" aria-labelledby="horseracing-tab">
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Tips</th>
+                        <th scope="col">Wins</th>
+                        <th scope="col">Win Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tipster in tipsters if tipster.sport == 'horseracing' %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ tipster.username }}</td>
+                            <td>{{ tipster.tips }}</td>
+                            <td>{{ tipster.wins }}</td>
+                            <td>{{ (tipster.wins / tipster.tips * 100)|round(2) }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+         <!-- Football Tab -->
+         <div class="tab-pane fade" id="football" role="tabpanel" aria-labelledby="football-tab">
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Tips</th>
+                        <th scope="col">Wins</th>
+                        <th scope="col">Win Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tipster in tipsters if tipster.sport == 'football' %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ tipster.username }}</td>
+                            <td>{{ tipster.tips }}</td>
+                            <td>{{ tipster.wins }}</td>
+                            <td>{{ (tipster.wins / tipster.tips * 100)|round(2) }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="tab-pane fade" id="football" role="tabpanel" aria-labelledby="football-tab">
+            <!-- The structure of the table is the same, but the data will be different -->
+        </div>
+
+        <div class="tab-pane fade" id="horseracing" role="tabpanel" aria-labelledby="horseracing-tab">
+            <!-- The structure of the table is the same, but the data will be different -->
+        </div>
+
+        <div class="tab-pane fade" id="tennis" role="tabpanel" aria-labelledby="tennis-tab">
+            <!-- The structure of the table is the same, but the data will be different -->
+        </div>
+
+        <div class="tab-pane fade" id="golf" role="tabpanel" aria-labelledby="golf-tab">
+            <!-- The structure of the table is the same, but the data will be different -->
+        </div>
+
+</div>
+{% endblock %}

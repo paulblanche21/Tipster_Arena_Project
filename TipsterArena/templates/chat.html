@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to the Chat Room</h1>
+    <!-- Your chat room content goes here -->
+</div>
+
+
+<main>
+
+
+        <!-- New Sports Grid -->
+    <div class="container sports-grid">
+        <div class="row">
+            <!-- Football -->
+            <div class="col-lg-6 mb-2 section" id="football" style="background-image: url({{ url_for('static', filename='images/football1.png') }});">
+                <h1>Football Chat</h1>
+            </div>
+            <!-- Horse Racing -->
+            <div class="col-lg-6 mb-2 section" id="horse-racing" style="background-image: url({{ url_for('static', filename='images/horseracing.png') }});">
+                <h1>Horse Racing Chat</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Tennis -->
+            <div class="col-lg-6 mb-2 section" id="tennis" style="background-image: url({{ url_for('static', filename='images/tennis.png') }});">
+                <h1>Tennis Chat</h1>
+            </div>
+            <!-- Golf -->
+            <div class="col-lg-6 mb-2 section" id="golf" style="background-image: url({{ url_for('static', filename='images/golf.png') }});">
+                <h1>Golf Chat </h1>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+
+
+{% endblock %}

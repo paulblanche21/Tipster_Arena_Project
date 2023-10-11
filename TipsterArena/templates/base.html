@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tipster Arena{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        @font-face {
+            font-family: 'Montserrat';
+            src: url({{ url_for('static', filename='fonts/Montserrat/Montserrat-VariableFont_wght.ttf') }}) format('truetype');
+        }
+    
+        @font-face {
+            font-family: 'Montserrat Italic';
+            src: url({{ url_for('static', filename='fonts/Montserrat/Montserrat-VariableFont_wght.ttf') }}) format('truetype');
+            font-style: italic;
+        }
+    </style>
+    
+
+
+</head>
+<body>
+  <!-- Header -->
+<header>
+    <div class="logo">Tipster Arena</div>
+    <div class="nav-container">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="{{ url_for('index') }}" class="nav-link">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    <span class="nav-text">Home</span>
+                </a></li>
+                
+                <li class="dropdown">
+                    <a href="{{ url_for('football')}}" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-futbol"></i></span>
+                        <span class="nav-text">Sports</span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="/football">Football</a>
+                        <a href="/horse_racing">Horse Racing</a>
+                        <a href="/tennis">Tennis</a>
+                        <a href="/golf">Golf</a>
+                    </div>
+                </li>
+                
+                <li><a href="#" class="nav-link">
+                    <span class="nav-icon"><i class="fas fa-chalkboard"></i></span>
+                    <span class="nav-text">In Play</span>
+                </a></li>
+                
+                <li><a href="#" class="nav-link">
+                    <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
+                    <span class="nav-text">Top Tipsters</span>
+                </a></li>
+                
+                <li><a href="#" class="nav-link">
+                    <span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>
+                    <span class="nav-text">Tips</span>
+                </a></li>
+                
+                <li><a href="{{ url_for('chat') }}" class="nav-link">
+                    <span class="nav-icon"><i class="fa fa-comments"></i></span>
+                    <span class="nav-text">Chat Room</span>
+                </a></li>
+                
+                <li><a href="#" class="nav-link">
+                    <span class="nav-icon"><i class="fas fa-flag-checkered"></i></span>
+                    <span class="nav-text">Fixtures & Results</span>
+                </a></li>
+            </ul>
+        </nav>
+        <nav class="right-nav">
+            <ul>
+                <li><a href="#"><span class="nav-icon"><i class="fas fa-search"></i></span></a></li>
+                <li><a href="#"><span class="nav-text">Join</span></a></li>
+                <li><a href="#" class="login-btn"><span class="nav-text">Login</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+    
+    <div class="logo-container">
+        {% if sport == 'football' %}
+            <img src="{{ url_for('static', filename='images/footballarena.png') }}" alt="Football Logo" class="logo-image">
+        {% elif sport == 'horseracing' %}
+            <img src="{{ url_for('static', filename='images/horseracingarena.png') }}" alt="Horse Racing Logo" class="logo-image">
+        {% elif sport == 'tennis' %}
+            <img src="{{ url_for('static', filename='images/tennisarena.png') }}" alt="Tennis Logo" class="logo-image">
+        {% elif sport == 'golf' %}
+            <img src="{{ url_for('static', filename='images/golfarena.png') }}" alt="Golf Logo" class="logo-image">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Default Logo" class="logo-image">
+        {% endif %}
+
+        
+    </div>
+    {% block content %}{% endblock %}
+
+
+      
+
+   
+
+                <!-- Subscription Promo -->
+        <div class="subscription-container">
+            <section class="subscription-promo">
+                <h3>Subscribe Now!</h3>
+                <p>Get premium tips and insights for just €5/month.</p>
+                <button>Subscribe</button>
+            </section>
+        </div>
+   
+
+    <!-- Footer -->
+<!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+        <ul class="footer-nav">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+         </ul>
+    </footer>
+
+</body>
+</html>
+

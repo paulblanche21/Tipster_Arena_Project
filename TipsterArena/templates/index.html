@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<main>
+
+
+        <!-- New Sports Grid -->
+    <div class="container sports-grid">
+        <div class="row">
+            <!-- Football -->
+            <div class="col-lg-6 mb-2 section" id="football" 
+            style="background-image: url({{ url_for('static', filename='images/football1.png') }});">
+                <h1>Football</h1>
+            </div>
+            <!-- Horse Racing -->
+            <div class="col-lg-6 mb-2 section" id="horse-racing" style="background-image: url({{ url_for('static', filename='images/horseracing.png') }});">
+                <h1>Horse Racing</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Tennis -->
+            <div class="col-lg-6 mb-2 section" id="tennis" style="background-image: url({{ url_for('static', filename='images/tennis.png') }});">
+                <h1>Tennis</h1>
+            </div>
+            <!-- Golf -->
+            <div class="col-lg-6 mb-2 section" id="golf" style="background-image: url({{ url_for('static', filename='images/golf.png') }});">
+                <h1>Golf</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Section Grid -->
+    <div class="container section-grid">
+        <div class="row">
+            <!-- Top Tips Today -->
+            <div class="col-lg-6 mb-2 section" id="top-tips-today" style="background-image: url({{ url_for('static', filename='images/Tip1.png') }});">
+                
+            </div>
+            <!-- Results -->
+            <div class="col-lg-6 mb-2 section" id="results" style="background-image: url({{ url_for('static', filename='images/Results1.png') }});">
+               
+            </div>
+        </div>
+        <div class="row">
+            <!-- Coming Up -->
+            <div class="col-lg-6 mb-2 section" id="coming-up" style="background-image: url({{ url_for('static', filename='images/Upcoming1.png') }});">
+                
+            </div>
+            <!-- ChatRooms -->
+            <div class="col-lg-6 mb-2 section" id="chatrooms" style="background-image: url({{ url_for('static', filename='images/chat1.png') }});">
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+   
+
+</main>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+         
