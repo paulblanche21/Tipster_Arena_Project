@@ -1,27 +1,24 @@
 from flask import (
-    Blueprint, render_template, redirect, url_for,
-    flash, jsonify
+    Blueprint, render_template, redirect, url_for, flash, session
 )
-from flask_login import login_user, logout_user, login_required
-from auth.forms import RegistrationForm, LoginForm
-from model import User, db
-
 
 auth = Blueprint('auth', __name__)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()  # Create an instance of LoginForm
+    from model import User, db
+    from .forms import RegistrationForm, LoginForm
+    form = LoginForm()
     errors = {}
 
-    if form.validate_on_submit():  # Check if the form is submitted and valid
+    if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
         user = User.query.filter_by(email=email).first()
 
         if user and user.check_password(password):
-            login_user(user)
+            session['user_id'] = user.id
             flash('Login successful!', 'success')
             return redirect(url_for('index'))
         else:
@@ -32,13 +29,13 @@ def login():
 
 
 @auth.route('/logout')
-@login_required
 def logout():
-    logout_user()
+    session.pop('user_id', None)
     flash('You have been logged out.', 'success')
     return redirect(url_for('index'))
 
-@auth.route('/register', methods=['POST'])
+
+@auth.route('/register', methods=['GET', 'POST'])  # Added 'GET' to allow loading the registration page
 def register():
     form = RegistrationForm()
 
@@ -50,24 +47,14 @@ def register():
         user = User(username=username, email=email)
         user.set_password(password)
         db.session.add(user)
+
         try:
             db.session.commit()
-            return jsonify(success=True, message="Registration successful!")
+            flash('Registration successful!', 'success')
+            return redirect(url_for('auth.login'))
         except Exception as e:
             db.session.rollback()
-            print(e)  # Print the error or log it as needed
-            return jsonify(
-                success=False,
-                message=("An error occurred during registration."
-                         " Please try again later.")
-                error=str(e)
-            )
+            flash('An error occurred during registration. Please try again.', 'danger')
+            print(e)
 
-        # Else part
-    else:
-        return jsonify(
-                success=False,
-                message=("Registration failed. Please check your input"
-                         " and try again."),
-                errors=form.errors
-        )
+    return render_template('register.html', form=form)

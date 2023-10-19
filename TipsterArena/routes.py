@@ -51,7 +51,7 @@ def tennis():
     return render_template('tennis.html', sport='tennis')
 
 
-@main.route('/tipster-league-table')  # Updated this line
+@main.route('/tipster-league-table')
 def tipster_league_table():
     # This is a placeholder.
     tipsters = [

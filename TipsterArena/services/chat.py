@@ -54,6 +54,7 @@ class Message(db.Model):
     username = db.Column(db.String(80), nullable=False)
     message = db.Column(db.String(500), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user = db.relationship('User', back_populates='messages')
 
     # Additional fields
     email = db.Column(db.String(120))  # Email of the sender
