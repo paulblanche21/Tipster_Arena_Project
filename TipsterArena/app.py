@@ -14,45 +14,19 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
 from flask_wtf import FlaskForm
 from flask_wtf.csrf import CSRFProtect
-from jinja2 import escape
+from markupsafe import escape
 from sqlalchemy.orm import validates
 from wtforms import BooleanField, PasswordField, StringField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 from wtforms import ValidationError
 from config import Config
+from errors.handlers import handler
 
 
 #######################################################################
 #                  INITISATION EXTENSIONS
 #######################################################################
-def create_app(config_class=Config):
-    app = Flask(__name__)
-    app.config.from_object(config_class)
-
-    # Initialization of Extensions
-    db.init_app(app)
-    bcrypt.init_app(app)
-    cors.init_app(app)
-    csrf.init_app(app)
-    socketio.init_app(app)
-    migrate.init_app(app, db)
-
-    Talisman(app, content_security_policy=app.config['CSP'])
-
-    @app.before_request
-    def before_request():
-        g.nonce = base64.b64encode(os.urandom(16)).decode('utf-8')
-
-    @app.after_request
-    def after_request(response):
-        # Check if nonce is set on g
-        if hasattr(g, 'nonce'):
-            # Adjusting CSP to include the nonce
-            csp = response.headers.get('Content-Security-Policy')
-            csp += "; script-src 'nonce-{}'".format(g.nonce)
-            response.headers['Content-Security-Policy'] = csp
-        return response
-
+app = None
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -61,12 +35,58 @@ csrf = CSRFProtect()
 socketio = SocketIO()
 migrate = Migrate()
 
-app = create_app()
+def create_app(config_class=Config):
+    print("Creating Flask app...")
+    app = Flask(__name__)
+    if app is None:
+        print("Failed to create Flask app!")
+        return None
+    print("Loading configurations...")
+    app.config.from_object(config_class)
+    app.register_blueprint(handler)
+    # Initialization of Extensions
 
+    print("Initializing extensions...")
+    db.init_app(app)
+    bcrypt.init_app(app)
+    cors.init_app(app)
+    csrf.init_app(app)
+    socketio.init_app(app)
+    migrate.init_app(app, db)
+
+    print("Flask app created successfully!")
+    Talisman(app, content_security_policy=app.config['CSP'])
+
+    @app.before_request
+    def before_request():
+        g.nonce = base64.b64encode(os.urandom(16)).decode('utf-8')
+        print(g.nonce)
+        
+    @app.after_request
+    def after_request(response):
+        # Check if nonce is set on g
+        if hasattr(g, 'nonce'):
+            # Adjusting CSP to include the nonce
+            csp = response.headers.get('Content-Security-Policy')
+            if csp is None:
+                csp = ""
+            csp += "; style-src 'self' use.fontawesome.com maxcdn.bootstrapcdn.com 'nonce-{}'".format(g.nonce)
+            response.headers['Content-Security-Policy'] = csp
+        return response
+    return app
+
+
+app = create_app(Config)
+
+if app is None:
+    print("The Flask app was not created!")
+else:
+    print("The Flask app was created successfully!")
 
 #######################################################################
 #                 LOGIN AND REGISSTRATION FORMS
 #######################################################################
+
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -95,7 +115,6 @@ class RegistrationForm(FlaskForm):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    errors = {}
 
     if form.validate_on_submit():
         email = form.email.data
@@ -107,10 +126,9 @@ def login():
             flash('Login successful!', 'success')
             return redirect(url_for('index'))
         else:
-            errors['email'] = 'Incorrect email or password'
-            errors['password'] = 'Incorrect email or password'
+            flash('Incorrect email or password', 'danger')
 
-    return render_template('base.html', form=form, errors=errors)
+    return render_template('login.html', form=form)
 
 
 @app.route('/logout')
@@ -331,6 +349,11 @@ def latest_tips():  # Consider updating the function name for consistency
     return render_template('latest-tips.html')
 
 
+@app.route('/chat')
+def chat():
+    return render_template('chat.html', hide_logo=True)
+
+
 @app.route('/football-chat')
 def football_chat():
     return render_template('football_chat.html', hide_logo=True)
@@ -350,14 +373,20 @@ def tennis_chat():
 def golf_chat():
     return render_template('golf_chat.html', hide_logo=True)
 
+
+# Print all registered routes
+for rule in app.url_map.iter_rules():
+    print(f'{rule.endpoint}: {rule}')
+
 #######################################################################
 #                      RUN PROGRAM
 #######################################################################
 
 
-if __name__ == '__main__':
-    if app.config.get('FLASK_ENV') == "development":
-        socketio.run(app, debug=True)
-    else:
-        print("Running in production mode")
-        socketio.run(app)
+#if __name__ == '__main__':
+    #if app.config.get('FLASK_ENV') == "development":
+       # socketio.run(app, debug=True)
+    #else:
+        #print("Running in production mode")
+        #socketio.run(app)
+app.run(debug=True)

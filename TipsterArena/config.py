@@ -1,20 +1,31 @@
 import os
 import secrets
 from dotenv import load_dotenv
+import sys
 
+# Print Python version for debugging
+print(sys.version)
 
+# Load environment variables from .env file
 load_dotenv()
 
 
-db_name = os.getenv('DB_NAME')
-db_user = os.getenv('DB_USER')
-db_password = os.getenv('DB_PASSWORD')
-db_host = os.getenv('DB_HOST')
-
-
 class Config:
+    # Get environment variables
+    db_name = os.getenv('DB_NAME')
+    db_user = os.getenv('DB_USER')
+    db_password = os.getenv('DB_PASSWORD')
+    db_host = os.getenv('DB_HOST')
+
+    # Check for missing environment variables and raise error if any are missing
+    missing_vars = [var for var in ['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'DB_HOST'] if os.getenv(var) is None]
+    if missing_vars:
+        missing_vars_str = ', '.join(missing_vars)
+        error_message = f"The following required environment variables are missing: {missing_vars_str}"
+        raise EnvironmentError(error_message)
+
+    # Other configurations
     SECRET_KEY = os.getenv('SECRET_KEY', secrets.token_hex(16))
-    # Here we use the db variables to create the database URI
     SQLALCHEMY_DATABASE_URI = f"postgresql://{db_user}:{db_password}@{db_host}/{db_name}"
     FLASK_ENV = os.getenv('FLASK_ENV', 'production')
 
@@ -35,3 +46,9 @@ class Config:
         'font-src': "'self' use.fontawesome.com fonts.gstatic.com"
         # You can't add the nonce here, it should be added during runtime, in the view or middleware
     }
+
+
+# Print out environment variables and database URI for debugging
+print("DB Name:", Config.db_name)
+print("DB User:", Config.db_user)
+print("DB URI:", Config.SQLALCHEMY_DATABASE_URI)

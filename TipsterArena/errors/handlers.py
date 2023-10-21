@@ -1,13 +1,11 @@
 from flask import Blueprint, render_template
 import logging
-from flask_wtf.csrf import CSRFError
 
 
-# Define the Blueprint
+# Create a Blueprint instance
 handler = Blueprint('handler', __name__)
 
-
-# Specific Error Handlers
+# Now you can use the handler Blueprint to define error handlers
 
 
 @handler.app_errorhandler(404)
@@ -26,8 +24,3 @@ def internal_server_error(e):
 def handle_exception(e):
     logging.exception("An error occurred: %s", e)
     return render_template("error.html", error=str(e)), 500
-
-
-@handler.app_errorhandler(CSRFError)
-def handle_csrf_error(e):
-    return render_template('csrf_error.html', reason=e.description), 400
