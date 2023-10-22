@@ -1,6 +1,7 @@
 import base64
 import os
 import re
+import secrets
 from datetime import datetime
 from flask import flash, url_for, redirect
 import bleach
@@ -56,6 +57,9 @@ def create_app(config_class=Config):
 
     print("Flask app created successfully!")
     Talisman(app, content_security_policy=app.config['CSP'])
+    
+   
+ 
 
     @app.before_request
     def before_request():
@@ -111,6 +115,15 @@ class RegistrationForm(FlaskForm):
         validators=[DataRequired()]
     )
 
+
+@app.route('/some_route')
+def some_route():
+    # Generate nonces
+    font_awesome_nonce = secrets.token_hex(16)
+    bootstrap_nonce = secrets.token_hex(16)
+    
+    # Render the template and pass the nonces as context variables
+    return render_template('your_template.html', g_font_awesome_nonce=font_awesome_nonce, g_bootstrap_nonce=bootstrap_nonce)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

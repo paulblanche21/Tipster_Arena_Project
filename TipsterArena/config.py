@@ -29,22 +29,22 @@ class Config:
     SQLALCHEMY_DATABASE_URI = f"postgresql://{db_user}:{db_password}@{db_host}/{db_name}"
     FLASK_ENV = os.getenv('FLASK_ENV', 'production')
 
-    # CSP Configuration should be part of the Config class
+
     CSP = {
         'default-src': "'self'",
         'img-src': '*',
         'style-src': [
             "'self'",
-            'use.fontawesome.com', 'maxcdn.bootstrapcdn.com'
+            'use.fontawesome.com',
+            'maxcdn.bootstrapcdn.com',
         ],
         'script-src': [
             "'self'",
             'ajax.googleapis.com',
             'cdnjs.cloudflare.com',
-            'maxcdn.bootstrapcdn.com'
+            'maxcdn.bootstrapcdn.com',
         ],
         'font-src': "'self' use.fontawesome.com fonts.gstatic.com"
-        # You can't add the nonce here, it should be added during runtime, in the view or middleware
     }
 
 
