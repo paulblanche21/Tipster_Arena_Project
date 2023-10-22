@@ -22,7 +22,10 @@ from wtforms.validators import DataRequired, Email, EqualTo, Length
 from wtforms import ValidationError
 from config import Config
 from errors.handlers import handler
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
+from models.user import User
 
 #######################################################################
 #                  INITISATION EXTENSIONS
@@ -35,7 +38,10 @@ cors = CORS()
 csrf = CSRFProtect()
 socketio = SocketIO()
 migrate = Migrate()
-
+engine = create_engine('sqlite:///tipsterarena.db') 
+Session = sessionmaker(bind=engine)
+session = Session()
+Base.metadata.create_all(engine)
 
 def create_app(config_class=Config):
     print("Creating Flask app...")
@@ -186,84 +192,6 @@ def register():
     return render_template('register.html', form=form)
 
 
-#######################################################################
-#                 DATABASES MODELS
-#######################################################################
-class Message(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), nullable=False)
-    message = db.Column(db.String(500), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    user = db.relationship('User', back_populates='messages')
-
-    # Additional fields
-    email = db.Column(db.String(120))  # Email of the sender
-    ip_address = db.Column(db.String(120))  # IP Address of the sender
-    is_read = db.Column(db.Boolean, default=False)
-
-    def __init__(self, username, message, email=None, ip_address=None):
-        self.username = username
-        self.message = message
-        self.email = email
-        self.ip_address = ip_address
-
-    def mark_as_read(self):
-        self.is_read = True
-        db.session.commit()
-
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(255), nullable=False)  # Increased length
-    first_name = db.Column(db.String(80), nullable=True)  # Optional
-    last_name = db.Column(db.String(80), nullable=True)   # Optional
-    date_joined = db.Column(db.DateTime, nullable=False,
-                            default=datetime.utcnow)  # Optional
-    subscription = db.relationship('Subscription',
-                                   back_populates='user', uselist=False)
-    messages = db.relationship('ChatMessage',
-                               back_populates='user', lazy='dynamic')
-    tips = db.relationship('Tip', back_populates='user')
-    rankings = db.relationship('Ranking', back_populates='user')
-
-    @validates('email')
-    def validate_email(self, key, email):
-        if '@' not in email:
-            raise ValidationError('Invalid email address.')
-
-    def set_password(self, password):
-        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
-
-    def check_password(self, password):
-        return bcrypt.check_password_hash(self.password, password)
-
-
-class Subscription(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    start_date = db.Column(db.DateTime, nullable=False,
-                           default=datetime.utcnow)
-    end_date = db.Column(db.DateTime, nullable=True)
-    is_active = db.Column(db.Boolean, default=True)
-    user = db.relationship('User', back_populates='subscription')
-
-
-class Tip(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    content = db.Column(db.Text, nullable=False)
-    timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    user = db.relationship('User', back_populates='tips')
-
-
-class Ranking(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    sport = db.Column(db.String(80), nullable=False)
-    points = db.Column(db.Integer, nullable=False)
-    user = db.relationship('User', back_populates='rankings')
 
 
 #######################################################################
