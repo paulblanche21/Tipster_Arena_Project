@@ -360,20 +360,16 @@ def tennis():
     return render_template('tennis.html', sport='tennis')
 
 
+@app.route('/latest-tips')
+def latest_tips():
+    return render_template('latest-tips.html')
+
+
 @app.route('/tipster-league-table')
 def tipster_league_table():
     tipsters = Tip.query.all()
     return render_template('tipster-league-table.html', tipsters=tipsters)
 
-
-@app.route('/latest-tips')
-def latest_tips():  # Consider updating the function name for consistency
-    return render_template('latest-tips.html')
-
-
-@app.route('/chat')
-def chat():
-    return render_template('chat.html', hide_logo=True, is_chatroom=True)
 
 
 @app.route('/football-chat')
