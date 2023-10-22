@@ -159,6 +159,12 @@ nav a:hover {
 .nav-icon i {
     font-size: 1.2rem; /* Adjust as needed */
 }
+.nav-item {
+    display: inline-block;
+    padding: 10px; /* Adjust this value as needed */
+    /* Add any other styles that were applied to the <a> tags */
+}
+
 
 
 /* ==============================
@@ -262,7 +268,7 @@ button:hover {
     display: none;
     position: absolute;
     background-color: var(--colors-primary); /* Corrected this line */
-    min-width: 160px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     top:100%;
     margin-top: 0;
@@ -662,7 +668,7 @@ nav .right-nav a.login-btn:hover {
 
 /* Golf.html */
 #golf-chat {
-    background-image: url('/static/images/golf-chat.png');
+    background-image: url('/static/images/golf_chat.png');
     background-size: cover;
 }
 
@@ -680,7 +686,7 @@ nav .right-nav a.login-btn:hover {
 
 /* Golf In Play */
 #golf-in-play {
-    background-image: url('/static/images/golfinplay.png');
+    background-image: url('/static/images/golf-in-play.png');
     background-size: cover;
 }
 /* Tennis.html */
@@ -707,7 +713,46 @@ nav .right-nav a.login-btn:hover {
     background-size: cover;
 }
 
+/* ==============================
+  Card Styling
+   ============================== */
+ 
+   .custom-card {
+       border: none;
+       border-radius: 10px;
+       background-color: var(--colors-lightBg);
+       color: var(--colors-text);
+       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+   }
 
+   .custom-card-header {
+       background-color: var(--colors-primary);
+       color: var(--colors-white);
+       font-family: var(--fonts-heading);
+       border-bottom: none;
+   }
+
+   .custom-card-body {
+       font-family: var(--fonts-paragraph);
+   }
+
+   .custom-btn {
+       background-color: hsl(0, 94%, 46%);;
+       border: none;
+       color: var(--colors-white);
+   }
+
+   .custom-btn:hover {
+       background-color: darken(var(--colors-secondary), 10%);
+   }
+
+
+/* ==============================
+  error messages
+   ============================== */
+   #error-message {
+    color: red;
+}
 
 /* ==============================
    MEDIA QUERIES

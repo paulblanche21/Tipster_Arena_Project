@@ -15,7 +15,7 @@
        
 </head>
 <body>
-  <!-- Header -->
+  
   <header>
     <div class="logo">
         <a href="{{ url_for('index') }}">
@@ -32,24 +32,25 @@
                 </a></li>
                 
                 <li class="dropdown">
-                    <a href="{{ url_for('football')}}" class="nav-link">
+                    <span class= "nav-item">
                         <span class="nav-icon"><i class="fas fa-futbol"></i></span>
-                        <span class="nav-text">Sports</span>
+                        <span class="nav-text">Sports Arena</span>
+                    </span>
                         <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </a>
                     <div class="dropdown-content">
-                        <a href="/football">
+                        <a href="{{ url_for('football') }}">
                             <span class="nav-icon"><i class="fas fa-futbol"></i></span> Football
                         </a>
-                        <a href="/horse_racing">
+                        <a href="{{ url_for('horse_racing') }}">
                             <span class="nav-icon"><i class="fas fa-horse"></i></span> Horse Racing
                         </a>
-                        <a href="/tennis">
+                        <a href="{{ url_for('tennis') }}">
                             <span class="nav-icon"><i class="fa-solid fa-baseball"></i></span> Tennis
                         </a>
-                        <a href="/golf">
+                        <a href="{{ url_for('golf') }}">
                             <span class="nav-icon"><i class="fas fa-golf-ball"></i></span> Golf
                         </a>
                     </div>
@@ -64,36 +65,37 @@
                         </svg>
                     </a>
                     <div class="dropdown-content">
-                        <a href="#">
+                        <a href="{{ url_for('tipster_league_table') }}">
                             <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
                             Top Tipsters
                         </a>
-                        <a href="#">
+                        <a href="{{ url_for('latest_tips') }}">
                             <span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>
-                            Tips
+                            Latest Tips
                         </a>
                     </div>
                 </li>
                 
                 <li class="dropdown">
-                    <a href="{{ url_for('chat') }}" class="nav-link">
+                    <span class = "nav-item">
                         <span class="nav-icon"><i class="fa fa-comments"></i></span>
-                        <span class="nav-text">Chat Room</span>
+                        <span class="nav-text">Chat Arena</span>
+                    </span>
                         <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </a>
                     <div class="dropdown-content">
-                        <a href="/chat/football">
+                        <a href="{{ url_for('football_chat') }}">
                             <span class="nav-icon"><i class="fas fa-football-ball"></i></span> Football Chat
                         </a>
-                        <a href="/chat/horse_racing">
+                        <a href="{{ url_for('horse_racing_chat') }}">
                             <span class="nav-icon"><i class="fas fa-horse"></i></span> Horse Racing Chat
                         </a>
-                        <a href="/chat/tennis">
+                        <a href="{{ url_for('tennis_chat') }}">
                             <span class="nav-icon"><i class="fa-solid fa-baseball"></i></span> Tennis Chat
                         </a>
-                        <a href="/chat/golf">
+                        <a href="{{ url_for('golf_chat') }}">
                             <span class="nav-icon"><i class="fas fa-golf-ball"></i></span> Golf Chat
                         </a>
                     </div>
@@ -110,7 +112,7 @@
                         </svg>
                     </a>
                     <div class="dropdown-content">
-                        <!-- Add other specific fixtures and results links here as needed -->
+                        
                         <a href="#">
                             <span class="nav-icon"><i class="fas fa-chalkboard"></i></span>
                             In Play
@@ -130,23 +132,22 @@
 </header>
 
 
-    
-    <div class="logo-container">
-        {% if sport == 'football' %}
-            <img src="{{ url_for('static', filename='images/footballarena.png') }}" alt="Football Logo" class="logo-image" nonce="{{ g.nonce }}">
-        {% elif sport == 'horseracing' %}
-            <img src="{{ url_for('static', filename='images/horseracingarena.png') }}" alt="Horse Racing Logo" class="logo-image" nonce="{{ g.nonce }}">
-        {% elif sport == 'tennis' %}
-            <img src="{{ url_for('static', filename='images/tennisarena.png') }}" alt="Tennis Logo" class="logo-image" nonce="{{ g.nonce }}">
-        {% elif sport == 'golf' %}
-            <img src="{{ url_for('static', filename='images/golfarena.png') }}" alt="Golf Logo" class="logo-image" nonce="{{ g.nonce }}">
-        {% else %}
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Default Logo" class="logo-image" nonce="{{ g.nonce }}">
-        {% endif %}
-
-        
-    </div>
-    {% block content %}{% endblock %}
+<div class="logo-container">
+    {% if is_chatroom %}
+        <img src="{{ url_for('static', filename='images/chat-arena.png') }}" alt="Chatroom Logo" class="logo-image" nonce="{{ g.nonce }}">
+    {% elif sport == 'football' %}
+        <img src="{{ url_for('static', filename='images/footballarena.png') }}" alt="Football Logo" class="logo-image" nonce="{{ g.nonce }}">
+    {% elif sport == 'horseracing' %}
+        <img src="{{ url_for('static', filename='images/horseracingarena.png') }}" alt="Horse Racing Logo" class="logo-image" nonce="{{ g.nonce }}">
+    {% elif sport == 'tennis' %}
+        <img src="{{ url_for('static', filename='images/tennisarena.png') }}" alt="Tennis Logo" class="logo-image" nonce="{{ g.nonce }}">
+    {% elif sport == 'golf' %}
+        <img src="{{ url_for('static', filename='images/golfarena.png') }}" alt="Golf Logo" class="logo-image" nonce="{{ g.nonce }}">
+    {% else %}
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Default Logo" class="logo-image" nonce="{{ g.nonce }}">
+    {% endif %}
+</div>
+{% block content %}{% endblock %}
 
 
       
@@ -163,7 +164,7 @@
         </div>
    
 
-    <!-- Footer -->
+  
 <!-- Footer -->
     <footer>
         <div class="social-icons">
@@ -173,7 +174,7 @@
             <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
         <ul class="footer-nav">
-            <li><a href="#">About</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Terms of Service</a></li>
             <li><a href="#">Privacy Policy</a></li>

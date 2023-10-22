@@ -162,7 +162,6 @@ def register():
     if form.validate_on_submit():
         # Print form data for debugging
         print(form.data)
-        
         username = form.username.data
         password = form.password.data
         email = form.email.data
@@ -374,27 +373,27 @@ def latest_tips():  # Consider updating the function name for consistency
 
 @app.route('/chat')
 def chat():
-    return render_template('chat.html', hide_logo=True)
+    return render_template('chat.html', hide_logo=True, is_chatroom=True)
 
 
 @app.route('/football-chat')
 def football_chat():
-    return render_template('football_chat.html', hide_logo=True)
+    return render_template('football_chat.html', hide_logo=True, is_chatroom=True)
 
 
 @app.route('/horse-racing-chat')
 def horse_racing_chat():
-    return render_template('horse_racing_chat.html', hide_logo=True)
+    return render_template('horse_racing_chat.html', hide_logo=True, is_chatroom=True)
 
 
 @app.route('/tennis-chat')
 def tennis_chat():
-    return render_template('tennis_chat.html', hide_logo=True)
+    return render_template('tennis_chat.html', hide_logo=True, is_chatroom=True)
 
 
 @app.route('/golf-chat')
 def golf_chat():
-    return render_template('golf_chat.html', hide_logo=True)
+    return render_template('golf_chat.html', hide_logo=True, is_chatroom=True)
 
 
 # Print all registered routes
