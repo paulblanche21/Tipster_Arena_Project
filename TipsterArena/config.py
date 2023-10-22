@@ -29,7 +29,6 @@ class Config:
     SQLALCHEMY_DATABASE_URI = f"postgresql://{db_user}:{db_password}@{db_host}/{db_name}"
     FLASK_ENV = os.getenv('FLASK_ENV', 'production')
 
-
     CSP = {
         'default-src': "'self'",
         'img-src': '*',

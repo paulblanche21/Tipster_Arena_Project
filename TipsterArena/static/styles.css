@@ -40,7 +40,17 @@ body {
     color: var(--colors-text);
 }
 
+/* styles.css */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/static/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
 
+@font-face {
+    font-family: 'Montserrat Italic';
+    src: url('/static/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-style: italic;
+}
 
 
 
@@ -161,6 +171,8 @@ nav a:hover {
     color: var(--colors-white);
     font-size: 1.5rem;
     margin-right: 1rem;
+    max-width: 200px;  /* Add this line */
+    overflow: hidden;  /* Add this line if needed to hide overflow content */
 }
 
 body .logo img {
@@ -171,6 +183,11 @@ body .logo img {
 .logo-container {
     margin-top: 20px;  
     text-align: center; 
+}
+.logo-img {
+    max-height: 50px; /* Adjust this value according to your needs */
+    width: auto; /* This will maintain the aspect ratio of the logo */
+    max-width: 100%;
 }
 
 
@@ -244,7 +261,7 @@ button:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--colors-gray7); /* Corrected this line */
+    background-color: var(--colors-primary); /* Corrected this line */
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     top:100%;
@@ -256,7 +273,7 @@ button:hover {
 
 /* Dropdown Links */
 .dropdown-content a {
-    color: red; /* Initial color */
+    color: white; /* Initial color */
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -269,9 +286,20 @@ button:hover {
 
 /* Change color on hover for dropdown links */
 .dropdown-content a:hover {
-    color: black;
+    color: red;
 }
 
+.dropdown-arrow {
+    margin-left: 5px; /* Adjust space between text and arrow */
+    fill: none;  /* Remove fill color */
+    stroke: #000; /* Set the stroke color */
+    transition: transform 0.3s ease-in-out; /* Optional: Add transition for smoother arrow flipping */
+}
+
+/* Rotate the arrow 180 degrees when the dropdown is active/open */
+.dropdown.show .dropdown-arrow {
+    transform: rotate(180deg);
+}
 
 
 
@@ -444,6 +472,13 @@ nav .right-nav a.login-btn:hover {
     color: var(--colors-white);
 }
 
+.login-container {
+    background-color: var(--colors-white);
+    color: var(--colors-primary);
+}
+
+/* You can add more styles as needed */
+
 
 /* ==============================
    SPORTS GRID STYLES
@@ -488,22 +523,190 @@ nav .right-nav a.login-btn:hover {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* shadow for better readability */
 }
 
+/*CSS for Chat.html */
 
+#football-home {
+    background-image: url('/static/images/football-arena-new.svg');
+}
+
+#horse-racing-home {
+    background-image: url('/static/images/horse-racing-arena-new.svg');
+}
+
+#tennis-home {
+    background-image: url('/static/images/tennis-arena-new.svg');
+}
+
+#golf-home {
+    background-image: url('/static/images/golf-arena-new.svg');
+}
+
+
+/* CSS for index.html */
 #football {
-    background-image: url('/static/images/football.png.png');
+    background-image: url('/static/images/football-arena-new.svg');
 }
 
 #horse-racing {
-    background-image: url('/static/images/horseracing.png.png');
+    background-image: url('/static/images/horseracing.png');
 }
 
 #tennis {
-    background-image: url('/static/images/tennis.png.png');
+    background-image: url('/static/images/tennis.png');
 }
 
 #golf {
-    background-image: url('/static/images/golf.png.png');
+    background-image: url('/static/images/golf.png');
 }
+
+#top-tips-today {
+    background-image: url('/static/images/Tip1.png');
+}
+
+#results {
+    background-image: url('/static/images/Results1.png');
+}
+
+#coming-up {
+    background-image: url('/static/images/Upcoming1.png');
+}
+
+#chatrooms {
+    background-image: url('/static/images/chat1.png');
+}
+
+
+#football-chat {
+    background-image: url('/static/images/football_chat.png');
+}
+
+#horse-racing {
+    background-image: url('/static/images/horseracing.png');
+}
+
+#tennis {
+    background-image: url('/static/images/tennis.png');
+}
+
+#golf {
+    background-image: url('/static/images/golf.png');
+}
+
+
+/* Chat */
+#chat {
+    background-image: url('/static/images/chat1.png'); /* Adjust the path as needed */
+    background-size: cover;
+}
+
+/* Fixtures & Results */
+#fixtures-results {
+    background-image: url('/static/images/Results1.png'); /* Adjust the path as needed */
+    background-size: cover;
+}
+
+/* Tips */
+#tips {
+    background-image: url('/static/images/Tip1.png'); /* Adjust the path as needed */
+    background-size: cover;
+}
+
+/* In Play */
+#in-play {
+    background-image: url('/static/images/racinginplay.png'); /* Adjust the path as needed */
+    background-size: cover;
+}
+
+/*Football */
+#football-chat {
+    background-image: url('/static/images/football_chat.png');
+}
+
+#football-fixtures-results {
+    background-image: url('/static/images/football-fixtures-results-chat.png');
+}
+
+#football-tips {
+    background-image: url('/static/images/football-tips.png');
+}
+
+#football-in-play {
+    background-image: url('/static/images/football-in-play.png');
+}
+
+
+
+/* Horse Racing Chat */
+#horse-racing-chat {
+    background-image: url('/static/images/horse_racing_chat.png'); /* Adjust the path as needed */
+    background-size: cover;
+}
+
+/* Meetings & Results */
+#horse-racing-meetings-results {
+    background-image: url('/static/images/meetings.png'); /* Adjust the path as needed */
+    background-size: cover;
+}
+
+/* Racing Tips */
+#horse-racing-tips {
+    background-image: url('/static/images/racing-tips.png'); /* Adjust the path as needed */
+    background-size: cover;
+}
+
+/* Horse Racing In Play */
+#next-to-the-post {
+    background-image: url('/static/images/racinginplay.png'); /* Adjust the path as needed */
+    background-size: cover;
+}
+
+/* Golf.html */
+#golf-chat {
+    background-image: url('/static/images/golf-chat.png');
+    background-size: cover;
+}
+
+/* Golf Fixtures & Results */
+#golf-fixtures-results {
+    background-image: url('/static/images/tour-events.png');
+    background-size: cover;
+}
+
+/* Golf Tips */
+#golf-tips {
+    background-image: url('/static/images/golf-tips.png');
+    background-size: cover;
+}
+
+/* Golf In Play */
+#golf-in-play {
+    background-image: url('/static/images/golfinplay.png');
+    background-size: cover;
+}
+/* Tennis.html */
+#tennis-chat {
+    background-image: url('/static/images/tennis_chat.png');
+    background-size: cover;
+}
+
+/* Tennis Fixtures & Results */
+#tennis-fixtures-results {
+    background-image: url('/static/images/tennis-fixtures.png');
+    background-size: cover;
+}
+
+/* Tennis Tips */
+#tennis-tips {
+    background-image: url('/static/images/tennis-tips.png');
+    background-size: cover;
+}
+
+/* Tennis In Play */
+#tennis-in-play {
+    background-image: url('/static/images/tennis-in-play.png');
+    background-size: cover;
+}
+
 
 
 /* ==============================

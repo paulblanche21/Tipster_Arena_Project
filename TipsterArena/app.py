@@ -36,6 +36,7 @@ csrf = CSRFProtect()
 socketio = SocketIO()
 migrate = Migrate()
 
+
 def create_app(config_class=Config):
     print("Creating Flask app...")
     app = Flask(__name__)
@@ -57,15 +58,12 @@ def create_app(config_class=Config):
 
     print("Flask app created successfully!")
     Talisman(app, content_security_policy=app.config['CSP'])
-    
-   
- 
 
     @app.before_request
     def before_request():
         g.nonce = base64.b64encode(os.urandom(16)).decode('utf-8')
         print(g.nonce)
-        
+
     @app.after_request
     def after_request(response):
         # Check if nonce is set on g
@@ -121,27 +119,33 @@ def some_route():
     # Generate nonces
     font_awesome_nonce = secrets.token_hex(16)
     bootstrap_nonce = secrets.token_hex(16)
-    
+
     # Render the template and pass the nonces as context variables
-    return render_template('your_template.html', g_font_awesome_nonce=font_awesome_nonce, g_bootstrap_nonce=bootstrap_nonce)
+    return render_template('base.html', g_font_awesome_nonce=font_awesome_nonce, g_bootstrap_nonce=bootstrap_nonce)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    try:
+        form = LoginForm()
 
-    if form.validate_on_submit():
-        email = form.email.data
-        password = form.password.data
-        user = User.query.filter_by(email=email).first()
+        if form.validate_on_submit():
+            email = form.email.data
+            password = form.password.data
+            user = User.query.filter_by(email=email).first()
 
-        if user and user.check_password(password):
-            session['user_id'] = user.id
-            flash('Login successful!', 'success')
-            return redirect(url_for('index'))
-        else:
-            flash('Incorrect email or password', 'danger')
+            if user and user.check_password(password):
+                session['user_id'] = user.id
+                flash('Login successful!', 'success')
+                return redirect(url_for('index'))
+            else:
+                flash('Incorrect email or password', 'danger')
 
-    return render_template('login.html', form=form)
+        return render_template('login.html', form=form)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        # you can also log the error if you have logging setup
+        return "An error occurred", 500  # or render an error template
 
 
 @app.route('/logout')
@@ -156,6 +160,9 @@ def register():
     form = RegistrationForm()
 
     if form.validate_on_submit():
+        # Print form data for debugging
+        print(form.data)
+        
         username = form.username.data
         password = form.password.data
         email = form.email.data
@@ -172,7 +179,10 @@ def register():
             db.session.rollback()
             flash('An error occurred during registration. Please try again.',
                   'danger')
-            print(e)
+            print(e)  # Print exception for debugging
+
+    # Print form errors for debugging
+    print(form.errors)
 
     return render_template('register.html', form=form)
 

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block content %}
 <div class="container">
     <h1>Welcome to the Chat Room</h1>
@@ -9,35 +8,28 @@
 
 
 <main>
-
-
-        <!-- New Sports Grid -->
+    <!-- New Sports Grid -->
     <div class="container sports-grid">
         <div class="row">
             <!-- Football -->
-            <div class="col-lg-6 mb-2 section" id="football" style="background-image: url({{ url_for('static', filename='images/football1.png') }});">
-                <h1>Football Chat</h1>
+            <div class="col-lg-6 mb-2 section" id="football-chat">
+                
             </div>
             <!-- Horse Racing -->
-            <div class="col-lg-6 mb-2 section" id="horse-racing" style="background-image: url({{ url_for('static', filename='images/horseracing.png') }});">
+            <div class="col-lg-6 mb-2 section" id="horse-racing">
                 <h1>Horse Racing Chat</h1>
             </div>
         </div>
         <div class="row">
             <!-- Tennis -->
-            <div class="col-lg-6 mb-2 section" id="tennis" style="background-image: url({{ url_for('static', filename='images/tennis.png') }});">
+            <div class="col-lg-6 mb-2 section" id="tennis">
                 <h1>Tennis Chat</h1>
             </div>
             <!-- Golf -->
-            <div class="col-lg-6 mb-2 section" id="golf" style="background-image: url({{ url_for('static', filename='images/golf.png') }});">
+            <div class="col-lg-6 mb-2 section" id="golf">
                 <h1>Golf Chat </h1>
             </div>
         </div>
     </div>
-
 </main>
-
-
-
-
 {% endblock %}

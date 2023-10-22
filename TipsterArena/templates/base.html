@@ -7,32 +7,24 @@
     <title>{% block title %}Tipster Arena{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta3/css/all.css" nonce="{{ g.font_awesome_nonce }}">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" nonce="{{ g.bootstrap_nonce }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" nonce="{{ g.bootstrap_nonce }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style type="text/css" nonce="{{ g.nonce }}">
-        @font-face {
-            font-family: 'Montserrat';
-            src: url({{ url_for('static', filename='fonts/Montserrat/Montserrat-VariableFont_wght.ttf') }}) format('truetype');
-        }
     
-        @font-face {
-            font-family: 'Montserrat Italic';
-            src: url({{ url_for('static', filename='fonts/Montserrat/Montserrat-VariableFont_wght.ttf') }}) format('truetype');
-            font-style: italic;
-        }
-    </style>
-    
-
-
+       
 </head>
 <body>
   <!-- Header -->
-<header>
-    <div class="logo">Tipster Arena</div>
+  <header>
+    <div class="logo">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/tipster-arena-nav-logo.svg') }}" alt="Tipster Arena" class="logo-img">
+        </a>
+    </div>
     <div class="nav-container">
         <nav class="main-nav">
+
             <ul>
                 <li><a href="{{ url_for('index') }}" class="nav-link">
                     <span class="nav-icon"><i class="fas fa-home"></i></span>
@@ -43,46 +35,95 @@
                     <a href="{{ url_for('football')}}" class="nav-link">
                         <span class="nav-icon"><i class="fas fa-futbol"></i></span>
                         <span class="nav-text">Sports</span>
+                        <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
                     <div class="dropdown-content">
-                        <a href="/football">Football</a>
-                        <a href="/horse_racing">Horse Racing</a>
-                        <a href="/tennis">Tennis</a>
-                        <a href="/golf">Golf</a>
+                        <a href="/football">
+                            <span class="nav-icon"><i class="fas fa-futbol"></i></span> Football
+                        </a>
+                        <a href="/horse_racing">
+                            <span class="nav-icon"><i class="fas fa-horse"></i></span> Horse Racing
+                        </a>
+                        <a href="/tennis">
+                            <span class="nav-icon"><i class="fa-solid fa-baseball"></i></span> Tennis
+                        </a>
+                        <a href="/golf">
+                            <span class="nav-icon"><i class="fas fa-golf-ball"></i></span> Golf
+                        </a>
                     </div>
                 </li>
                 
-                <li><a href="#" class="nav-link">
-                    <span class="nav-icon"><i class="fas fa-chalkboard"></i></span>
-                    <span class="nav-text">In Play</span>
-                </a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-star"></i></span>
+                        <span class="nav-text">Tips Arena</span>
+                        <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#">
+                            <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
+                            Top Tipsters
+                        </a>
+                        <a href="#">
+                            <span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>
+                            Tips
+                        </a>
+                    </div>
+                </li>
                 
-                <li><a href="#" class="nav-link">
-                    <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
-                    <span class="nav-text">Top Tipsters</span>
-                </a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('chat') }}" class="nav-link">
+                        <span class="nav-icon"><i class="fa fa-comments"></i></span>
+                        <span class="nav-text">Chat Room</span>
+                        <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="/chat/football">
+                            <span class="nav-icon"><i class="fas fa-football-ball"></i></span> Football Chat
+                        </a>
+                        <a href="/chat/horse_racing">
+                            <span class="nav-icon"><i class="fas fa-horse"></i></span> Horse Racing Chat
+                        </a>
+                        <a href="/chat/tennis">
+                            <span class="nav-icon"><i class="fa-solid fa-baseball"></i></span> Tennis Chat
+                        </a>
+                        <a href="/chat/golf">
+                            <span class="nav-icon"><i class="fas fa-golf-ball"></i></span> Golf Chat
+                        </a>
+                    </div>
+                </li>
                 
-                <li><a href="#" class="nav-link">
-                    <span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>
-                    <span class="nav-text">Tips</span>
-                </a></li>
                 
-                <li><a href="{{ url_for('chat') }}" class="nav-link">
-                    <span class="nav-icon"><i class="fa fa-comments"></i></span>
-                    <span class="nav-text">Chat Room</span>
-                </a></li>
                 
-                <li><a href="#" class="nav-link">
-                    <span class="nav-icon"><i class="fas fa-flag-checkered"></i></span>
-                    <span class="nav-text">Fixtures & Results</span>
-                </a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-flag-checkered"></i></span>
+                        <span class="nav-text">Fixtures & Results</span>
+                        <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <div class="dropdown-content">
+                        <!-- Add other specific fixtures and results links here as needed -->
+                        <a href="#">
+                            <span class="nav-icon"><i class="fas fa-chalkboard"></i></span>
+                            In Play
+                        </a>
+                    </div>
+                </li>
             </ul>
         </nav>
         <nav class="right-nav">
             <ul>
                 <li><a href="#"><span class="nav-icon"><i class="fas fa-search"></i></span></a></li>
-                <li><a href="#"><span class="nav-text">Join</span></a></li>
-                <li><a href="#" class="login-btn"><span class="nav-text">Login</span></a></li>
+                <li><a href="{{ url_for('register') }}"><span class="nav-text">Join</span></a></li>
+                <li><a href="{{ url_for('login') }}" class="login-btn"><span class="nav-text">Login</span></a></li>
             </ul>
         </nav>
     </div>
@@ -92,15 +133,15 @@
     
     <div class="logo-container">
         {% if sport == 'football' %}
-            <img src="{{ url_for('static', filename='images/footballarena.png') }}" alt="Football Logo" class="logo-image">
+            <img src="{{ url_for('static', filename='images/footballarena.png') }}" alt="Football Logo" class="logo-image" nonce="{{ g.nonce }}">
         {% elif sport == 'horseracing' %}
-            <img src="{{ url_for('static', filename='images/horseracingarena.png') }}" alt="Horse Racing Logo" class="logo-image">
+            <img src="{{ url_for('static', filename='images/horseracingarena.png') }}" alt="Horse Racing Logo" class="logo-image" nonce="{{ g.nonce }}">
         {% elif sport == 'tennis' %}
-            <img src="{{ url_for('static', filename='images/tennisarena.png') }}" alt="Tennis Logo" class="logo-image">
+            <img src="{{ url_for('static', filename='images/tennisarena.png') }}" alt="Tennis Logo" class="logo-image" nonce="{{ g.nonce }}">
         {% elif sport == 'golf' %}
-            <img src="{{ url_for('static', filename='images/golfarena.png') }}" alt="Golf Logo" class="logo-image">
+            <img src="{{ url_for('static', filename='images/golfarena.png') }}" alt="Golf Logo" class="logo-image" nonce="{{ g.nonce }}">
         {% else %}
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Default Logo" class="logo-image">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Default Logo" class="logo-image" nonce="{{ g.nonce }}">
         {% endif %}
 
         
@@ -139,6 +180,7 @@
          </ul>
     </footer>
 
+        
 </body>
 </html>
 

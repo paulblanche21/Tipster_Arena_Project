@@ -1,29 +1,72 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+    <!-- Football Content -->
     <div class="container section-grid">
         <div class="row">
             <!-- Chat -->
-            <div class="col-lg-6 mb-2 section" id="chat" 
-                 style="background-image: url('{{ url_for('static', filename='images/chat1.png') }}'); background-size: cover;">
-                <h1>Football Chat</h1>
+            <div class="col-lg-6 mb-2 section" id="football-chat">
+                
             </div>
             <!-- Fixtures & Results -->
-            <div class="col-lg-6 mb-2 section" id="fixtures-results" 
-                 style="background-image: url('{{ url_for('static', filename='images/Results1.png') }}'); background-size: cover;">
-                <h1>Football Fixtures & Results</h1>
+            <div class="col-lg-6 mb-2 section" id="football-fixtures-results">
+                
             </div>
         </div>
         <div class="row">
             <!-- Tips -->
-            <div class="col-lg-6 mb-2 section" id="tips" 
-                 style="background-image: url('{{ url_for('static', filename='images/Tip1.png') }}'); background-size: cover;">
-                <h1>Football Tips</h1>
+            <div class="col-lg-6 mb-2 section" id="football-tips">
+                
             </div>
             <!-- In Play -->
-            <div class="col-lg-6 mb-2 section" id="in-play" 
-                 style="background-image: url('{{ url_for('static', filename='images/footballinplay.png') }}'); background-size: cover;">
-                <h1>In Play</h1>
+            <div class="col-lg-6 mb-2 section" id="football-in-play">
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Football Content -->
+    <div class="container">
+        <h1 class="section-heading">Football</h1>
+        
+        <div class="row">
+            <!-- Premier League -->
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Premier League</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Latest News</h5>
+                        <p class="card-text">Get the latest news on Premier League football.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Champions League -->
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Champions League</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Fixtures & Results</h5>
+                        <p class="card-text">Check out the latest fixtures and results from the Champions League.</p>
+                        <a href="#" class="btn btn-primary">View Fixtures</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- World Cup -->
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-header">World Cup</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Top Scorers</h5>
+                        <p class="card-text">See who's leading the goal-scoring charts in the World Cup.</p>
+                        <a href="#" class="btn btn-primary">View Top Scorers</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
