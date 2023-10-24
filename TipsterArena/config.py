@@ -3,6 +3,8 @@ import secrets
 from dotenv import load_dotenv
 import sys
 
+
+
 # Print Python version for debugging
 print(sys.version)
 
@@ -18,7 +20,7 @@ class Config:
     # Database configuration
     SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI', 'sqlite:///site.db')  # Default to SQLite DB
     SQLALCHEMY_TRACK_MODIFICATIONS = False  # Disable track modifications warning
-
+    
     CSP = {
         'default-src': "'self'",
         'img-src': '*',

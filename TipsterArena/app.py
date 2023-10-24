@@ -43,13 +43,11 @@ def create_app(config_class=Config):
     # Initialization of Extensions
 
     print("Initializing extensions...")
-
-    db = SQLAlchemy(app)
+    db.init_app(app)  #
     bcrypt.init_app(app)
     cors.init_app(app)
     csrf.init_app(app)
-    migrate = Migrate(app, db)
-
+    migrate.init_app(app, db)
     print("Flask app created successfully!")
     Talisman(app, content_security_policy=app.config['CSP'])
 
@@ -84,9 +82,36 @@ else:
 #######################################################################
 
 
-class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    from models.user import User
+    form = RegistrationForm()
+
+    if form.validate_on_submit():
+        # Print form data for debugging
+        print(form.data)
+        username = form.username.data
+        password = form.password.data
+        email = form.email.data
+
+        user = User(username=username, email=email)
+        user.set_password(password)
+        db.session.add(user)
+
+        try:
+            db.session.commit()
+            flash('Registration successful!', 'success')
+            return redirect(url_for('login'))
+        except Exception as e:
+            db.session.rollback()
+            flash('An error occurred during registration. Please try again.',
+                  'danger')
+            print(e)  # Print exception for debugging
+
+    # Print form errors for debugging
+    print(form.errors)
+
+    return render_template('register.html', form=form)
 
 
 class RegistrationForm(FlaskForm):
@@ -120,6 +145,11 @@ def some_route():
                            g_bootstrap_nonce=bootstrap_nonce)
 
 
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     from models.user import User
@@ -150,38 +180,6 @@ def logout():
     session.pop('user_id', None)
     flash('You have been logged out.', 'success')
     return redirect(url_for('index'))
-
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    from models.user import User
-    form = RegistrationForm()
-
-    if form.validate_on_submit():
-        # Print form data for debugging
-        print(form.data)
-        username = form.username.data
-        password = form.password.data
-        email = form.email.data
-
-        user = User(username=username, email=email)
-        user.set_password(password)
-        db.session.add(user)
-
-        try:
-            db.session.commit()
-            flash('Registration successful!', 'success')
-            return redirect(url_for('login'))
-        except Exception as e:
-            db.session.rollback()
-            flash('An error occurred during registration. Please try again.',
-                  'danger')
-            print(e)  # Print exception for debugging
-
-    # Print form errors for debugging
-    print(form.errors)
-
-    return render_template('register.html', form=form)
 
 
 #######################################################################
@@ -244,17 +242,20 @@ def tipster_league_table():
 
 @app.route('/football-chat')
 def football_chat():
-    return render_template('football_chat.html', hide_logo=True, is_chatroom=True)
+    return render_template('football_chat.html',
+                           hide_logo=True, is_chatroom=True)
 
 
 @app.route('/horse-racing-chat')
 def horse_racing_chat():
-    return render_template('horse_racing_chat.html', hide_logo=True, is_chatroom=True)
+    return render_template('horse_racing_chat.html',
+                           hide_logo=True, is_chatroom=True)
 
 
 @app.route('/tennis-chat')
 def tennis_chat():
-    return render_template('tennis_chat.html', hide_logo=True, is_chatroom=True)
+    return render_template('tennis_chat.html',
+                           hide_logo=True, is_chatroom=True)
 
 
 @app.route('/golf-chat')
