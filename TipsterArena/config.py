@@ -14,6 +14,10 @@ class Config:
     # Other configurations
     SECRET_KEY = os.getenv('SECRET_KEY', secrets.token_hex(16))
     FLASK_ENV = os.getenv('FLASK_ENV', 'production')
+    
+    # Database configuration
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI', 'sqlite:///site.db')  # Default to SQLite DB
+    SQLALCHEMY_TRACK_MODIFICATIONS = False  # Disable track modifications warning
 
     CSP = {
         'default-src': "'self'",

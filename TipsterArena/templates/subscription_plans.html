@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Subscription Plans{% endblock %}
+
+{% block content %}
+    <h1>Subscription Plans</h1>
+
+    <!-- Form to create a new subscription plan -->
+    <h2>Create a New Plan</h2>
+    <form method="POST" action="{{ url_for('create_subscription_plan') }}">
+        <label for="name">Plan Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price" required>
+        <br>
+
+        <label for="duration">Duration (days):</label>
+        <input type="number" id="duration" name="duration" required>
+        <br>
+
+        <input type="submit" value="Create Plan">
+    </form>
+    <br>
+
+    <!-- List of existing subscription plans -->
+    <h2>Existing Plans</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Duration</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plan in plans %}
+                <tr>
+                    <td>{{ plan.name }}</td>
+                    <td>{{ plan.price }}</td>
+                    <td>{{ plan.duration }} days</td>
+                    <td>{{ plan.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>{{ plan.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

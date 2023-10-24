@@ -1,31 +1,22 @@
 import base64
 import os
-import re
 import secrets
 from datetime import datetime
+from datetime import timedelta
 from flask import flash, url_for, redirect
-import bleach
-from flask import Flask, g, render_template, session
+from flask import Flask, g, render_template, session, request
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_login import current_user, login_required
 from flask_migrate import Migrate
-from flask_socketio import SocketIO, join_room, leave_room, send
 from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
 from flask_wtf import FlaskForm
 from flask_wtf.csrf import CSRFProtect
-from markupsafe import escape
-from sqlalchemy.orm import validates
 from wtforms import BooleanField, PasswordField, StringField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
-from wtforms import ValidationError
 from config import Config
 from errors.handlers import handler
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-from models.user import User
 
 #######################################################################
 #                  INITISATION EXTENSIONS
@@ -36,12 +27,8 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 cors = CORS()
 csrf = CSRFProtect()
-socketio = SocketIO()
 migrate = Migrate()
-engine = create_engine('sqlite:///tipsterarena.db') 
-Session = sessionmaker(bind=engine)
-session = Session()
-Base.metadata.create_all(engine)
+
 
 def create_app(config_class=Config):
     print("Creating Flask app...")
@@ -51,16 +38,17 @@ def create_app(config_class=Config):
         return None
     print("Loading configurations...")
     app.config.from_object(config_class)
+
     app.register_blueprint(handler)
     # Initialization of Extensions
 
     print("Initializing extensions...")
-    db.init_app(app)
+
+    db = SQLAlchemy(app)
     bcrypt.init_app(app)
     cors.init_app(app)
     csrf.init_app(app)
-    socketio.init_app(app)
-    migrate.init_app(app, db)
+    migrate = Migrate(app, db)
 
     print("Flask app created successfully!")
     Talisman(app, content_security_policy=app.config['CSP'])
@@ -127,11 +115,14 @@ def some_route():
     bootstrap_nonce = secrets.token_hex(16)
 
     # Render the template and pass the nonces as context variables
-    return render_template('base.html', g_font_awesome_nonce=font_awesome_nonce, g_bootstrap_nonce=bootstrap_nonce)
+    return render_template('base.html',
+                           g_font_awesome_nonce=font_awesome_nonce,
+                           g_bootstrap_nonce=bootstrap_nonce)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    from models.user import User
     try:
         form = LoginForm()
 
@@ -163,6 +154,7 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    from models.user import User
     form = RegistrationForm()
 
     if form.validate_on_submit():
@@ -191,54 +183,6 @@ def register():
 
     return render_template('register.html', form=form)
 
-
-
-
-#######################################################################
-#                               CHATROOMS
-#######################################################################
-
-
-MAX_MESSAGE_LENGTH = 515
-
-
-@socketio.on('message')
-def handle_message(msg):
-    if len(msg) > MAX_MESSAGE_LENGTH:
-        send('Message is too long!', broadcast=True)
-        return
-
-    msg = escape(msg)  # Escape HTML entities
-    msg = bleach.clean(msg, strip=True)  # Clean the message content
-
-    username = session.get('username', 'Anonymous')
-    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    mentions = re.findall(r'@\w+', msg)
-
-    print('Message:', msg, 'Timestamp:', timestamp, 'Mentions:', mentions)
-
-    message = Message(username=username, message=msg, timestamp=datetime.now())
-    db.session.add(message)
-    db.session.commit()
-
-    send({'msg': msg, 'timestamp': timestamp,
-          'mentions': mentions}, broadcast=True)
-
-
-@socketio.on('join')
-def on_join(data):
-    username = data['username']
-    room = data['room']
-    join_room(room)
-    send({"msg": username + " has joined the " + room + " room."}, room=room)
-
-
-@socketio.on('leave')
-def on_leave(data):
-    username = data['username']
-    room = data['room']
-    leave_room(room)
-    send({"msg": username + " has left the " + room + " room."}, room=room)
 
 #######################################################################
 #                               ROUTES
@@ -295,9 +239,7 @@ def latest_tips():
 
 @app.route('/tipster-league-table')
 def tipster_league_table():
-    tipsters = Tip.query.all()
-    return render_template('tipster-league-table.html', tipsters=tipsters)
-
+    return render_template('tipster-league-table.html')
 
 
 @app.route('/football-chat')
@@ -320,6 +262,53 @@ def golf_chat():
     return render_template('golf_chat.html', hide_logo=True, is_chatroom=True)
 
 
+@app.route('/subscription-plans', methods=['GET'])
+def view_subscription_plans():
+    from models.user import SubscriptionPlan
+    plans = SubscriptionPlan.query.all()
+    return render_template('subscription_plans.html', plans=plans)
+
+
+@app.route('/create-subscription-plan', methods=['GET', 'POST'])
+def create_subscription_plan():
+    from models.user import SubscriptionPlan
+    if request.method == 'POST':
+        name = request.form['name']
+        price = request.form['price']
+        duration = request.form['duration']
+
+        new_plan = SubscriptionPlan(name=name, price=price, duration=duration)
+        db.session.add(new_plan)
+        db.session.commit()
+
+        flash('Subscription plan created successfully!', 'success')
+        return redirect(url_for('view_subscription_plans'))
+
+    return render_template('create_subscription_plan.html')
+
+
+@app.route('/subscribe/<int:plan_id>', methods=['GET', 'POST'])
+@login_required  # Ensure the user is logged in
+def subscribe(plan_id):
+    from models.user import SubscriptionPlan, UserSubscription
+    plan = SubscriptionPlan.query.get_or_404(plan_id)
+
+    if request.method == 'POST':
+        end_date = datetime.utcnow() + timedelta(days=plan.duration)
+
+        subscription = UserSubscription(
+            user_id=current_user.user_id,
+            plan_id=plan.plan_id,
+            end_date=end_date
+        )
+        db.session.add(subscription)
+        db.session.commit()
+
+        flash('Subscribed successfully!', 'success')
+        return redirect(url_for('dashboard'))
+    return render_template('subscribe.html', plan=plan)
+
+
 # Print all registered routes
 for rule in app.url_map.iter_rules():
     print(f'{rule.endpoint}: {rule}')
@@ -329,10 +318,10 @@ for rule in app.url_map.iter_rules():
 #######################################################################
 
 
-#if __name__ == '__main__':
-    #if app.config.get('FLASK_ENV') == "development":
-       # socketio.run(app, debug=True)
-    #else:
+# if __name__ == '__main__':
+    # if app.config.get('FLASK_ENV') == "development":
+         #socketio.run(app, debug=True)
+    # else:
         #print("Running in production mode")
         #socketio.run(app)
 app.run(debug=True)

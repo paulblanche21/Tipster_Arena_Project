@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Subscribe to {{ plan.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Subscribe to {{ plan.name }}</h1>
+
+        <!-- Display plan details -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ plan.name }}</h5>
+                <p class="card-text">Price: ${{ plan.price }}</p>
+                <p class="card-text">Duration: {{ plan.duration }} days</p>
+            </div>
+        </div>
+
+        <!-- Display flash messages, if any -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Confirmation form to subscribe to the plan -->
+        <form method="POST" action="{{ url_for('subscribe', plan_id=plan.plan_id) }}" class="mt-4">
+            <p>Are you sure you want to subscribe to this plan?</p>
+            <input type="submit" value="Subscribe" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}

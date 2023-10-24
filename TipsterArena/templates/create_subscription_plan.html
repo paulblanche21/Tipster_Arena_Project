@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Create Subscription Plan{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Create a New Subscription Plan</h1>
+
+        <!-- Display flash messages, if any -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Form to create a new subscription plan -->
+        <form method="POST" action="{{ url_for('create_subscription_plan') }}">
+            <div class="form-group">
+                <label for="name">Plan Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" step="0.01" id="price" name="price" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration (days):</label>
+                <input type="number" id="duration" name="duration" class="form-control" required>
+            </div>
+
+            <input type="submit" value="Create Plan" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}

@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block content %}
@@ -10,7 +9,10 @@
             <div class="chat-room">
                 <ul id="messages"></ul>
                 <input id="message" autocomplete="off" placeholder="Type a message...">
-                <button onclick="sendMessage()">Send</button>
+                <emoji-picker></emoji-picker><!-- Added emoji picker element -->
+                <button onclick="tennisChat.sendMessage()">Send</button> <!-- Note the updated method call -->
+                <!-- Error message placeholder -->
+                <div id="error-message"></div>
             </div>
             <div id="online-users">
                 <h3>Online Users</h3>
@@ -22,25 +24,18 @@
 
 <!-- Socket.IO JavaScript -->
 <script src="https://cdn.socket.io/4.0.0/socket.io.min.js" crossorigin="anonymous" nonce="{{ g.nonce }}"></script>
-<script type="text/javascript" nonce="{{ g.nonce }}">
-    var socket = io.connect('http://127.0.0.1:5000/football');
+<!-- Emoji Picker JavaScript -->
+<script type="module" nonce="{{ g.nonce }}">
+    import 'https://unpkg.com/emoji-picker-element';
+    
+    const picker = document.querySelector('emoji-picker');
+    const input = document.getElementById('message');
 
-    socket.on('connect', function() {
-        socket.emit('join');
+    picker.addEventListener('emoji-click', event => {
+        input.value += event.detail.unicode;
     });
-
-    socket.on('message', function(data) {
-        var li = document.createElement('li');
-        li.appendChild(document.createTextNode(data));
-        document.getElementById('messages').appendChild(li);
-    });
-
-    function sendMessage() {
-        var message = document.getElementById('message').value;
-        socket.emit('message', message);
-        document.getElementById('message').value = '';
-    }
 </script>
 
-{% endblock %}
+<script src="{{ url_for('static', filename='js/chat.js') }}" nonce="{{ g.nonce }}"></script>
 
+{% endblock %}

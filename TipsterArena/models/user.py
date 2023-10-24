@@ -1,43 +1,52 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Float
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
-
-Base = declarative_base()
-
-class User(Base):
+from app import db  # Ensure this import corresponds to the actual location of your db instance
+  
+class User(db.Model):
     __tablename__ = 'users'
 
-    user_id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String, nullable=False)
-    email = Column(String, nullable=False, unique=True)
-    password = Column(String, nullable=False)  # Ensure this is a hashed password
-    subscription_status = Column(Boolean, default=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False, unique=True)
+    password = db.Column(db.String, nullable=False)  # Ensure this is a hashed password
+    subscription_status = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    subscriptions = relationship("UserSubscription", back_populates="user")
+    subscriptions = db.relationship("UserSubscription", back_populates="user")
 
-class SubscriptionPlan(Base):
+
+class SubscriptionPlan(db.Model):
     __tablename__ = 'subscription_plans'
 
-    plan_id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
-    price = Column(Float, nullable=False)
-    duration = Column(Integer, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    plan_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    duration = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    user_subscriptions = relationship("UserSubscription", back_populates="plan")
+    user_subscriptions = db.relationship("UserSubscription", back_populates="plan")
 
-class UserSubscription(Base):
+
+class UserSubscription(db.Model):
     __tablename__ = 'user_subscriptions'
 
-    subscription_id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(Integer, ForeignKey('users.user_id'), nullable=False)
-    plan_id = Column(Integer, ForeignKey('subscription_plans.plan_id'), nullable=False)
-    start_date = Column(DateTime, nullable=False, default=datetime.utcnow)
-    end_date = Column(DateTime, nullable=False)
+    subscription_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    plan_id = db.Column(db.Integer, db.ForeignKey('subscription_plans.plan_id'), nullable=False)
+    start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    end_date = db.Column(db.DateTime, nullable=False)
 
-    user = relationship("User", back_populates="subscriptions")
-    plan = relationship("SubscriptionPlan", back_populates="user_subscriptions")
+    user = db.relationship("User", back_populates="subscriptions")
+    plan = db.relationship("SubscriptionPlan", back_populates="user_subscriptions")
+    
+
+class Message(db.Model):
+    __tablename__ = 'messages'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String, nullable=False)
+    content = db.Column(db.String, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    room = db.Column(db.String, nullable=False)
+
