@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    <!-- New Sports Grid -->
+    <div class="container sports-grid">
+        <div class="row">
+            <!-- Football -->
+            <a href="{{ url_for('football') }}" class="col-lg-6 mb-2 section" id="football-home">
+                <!-- Add Football section content here -->
+            </a>
+            
+            <!-- Horse Racing -->
+            <a href="{{ url_for('horse_racing') }}" class="col-lg-6 mb-2 section" id="horse-racing-home">
+                <!-- Add Horse Racing section content here -->
+            </a>
+        </div>
+        <div class="row">
+            <!-- Tennis -->
+            <a href="{{ url_for('tennis') }}" class="col-lg-6 mb-2 section" id="tennis-home">
+                <!-- Add Tennis section content here -->
+            </a>
+            
+            <!-- Golf -->
+            <a href="{{ url_for('golf') }}" class="col-lg-6 mb-2 section" id="golf-home">
+                <!-- Add Golf section content here -->
+            </a>
+        </div>
+    </div>
+
+    <!-- New Section Grid -->
+    <!-- ... (rest of the content remains unchanged) ... -->
+</main>
+{% endblock %}
