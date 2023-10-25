@@ -1,29 +1,48 @@
 
 #!/usr/bin/env python3
-
 import base64
 import os
 import secrets
 from datetime import datetime
 from datetime import timedelta
-
+from sqlalchemy.exc import IntegrityError
 from flask import Flask, flash, g, render_template, session, request, redirect, url_for
 from flask_login import current_user, login_required
 from flask_talisman import Talisman
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, PasswordField, StringField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
+import logging
+from logging.handlers import RotatingFileHandler
+from TipsterArena.config import Config, DevelopmentConfig, ProductionConfig
+from errors.handlers import handler
+from extensions import db, bcrypt, cors, csrf, migrate, socketio
+from models.user import SubscriptionPlan, User
 
-from TipsterArena.config import Config
-from TipsterArena.errors.handlers import handler
-from TipsterArena.extensions import db, bcrypt, cors, csrf, migrate, socketio
-from TipsterArena.models.user import SubscriptionPlan, User
 #######################################################################
 #                  INITISATION EXTENSIONS
 #######################################################################
 app = Flask(__name__)
 app.config.from_object(Config)
 app.register_blueprint(handler)
+
+# Assuming you have a way to determine which configuration to use
+# For example, based on an environment variable
+if os.environ.get('FLASK_ENV') == 'development':
+    app.config.from_object(DevelopmentConfig)
+else:
+    app.config.from_object(ProductionConfig)
+
+# Setup logging based on configuration
+log_formatter = logging.Formatter('%(asctime)s [%(levelname)s]: %(message)s [in %(pathname)s:%(lineno)d]')
+log_file = 'app.log'
+file_handler = RotatingFileHandler(log_file, maxBytes=100000, backupCount=10)
+file_handler.setFormatter(log_formatter)
+file_handler.setLevel(app.config['LOG_LEVEL'])  # Set level from configuration
+
+app.logger.addHandler(file_handler)
+app.logger.setLevel(app.config['LOG_LEVEL'])  # Set level from configuration
+
 
 # Initialize extensions
 db.init_app(app)
@@ -32,8 +51,6 @@ cors.init_app(app)
 csrf.init_app(app)
 migrate.init_app(app, db)
 socketio.init_app(app, logger=True, engineio_logger=True)
-
-
 Talisman(app, content_security_policy=app.config['CSP'])
 
 
@@ -109,11 +126,16 @@ def register():
         db.session.commit()
         flash('Registration successful!', 'success')
         return redirect(url_for('login'))
-    except Exception as e:
+
+    except IntegrityError:
         db.session.rollback()
-        flash('An error occurred during registration. Please try again.',
-              'danger')
-        print(e)  # Print exception for debugging
+        flash('This email or username already exists. Please choose another one.', 'danger')
+        app.logger.error("IntegrityError during registration. Possible duplicate email or username.")
+
+    except Exception as e:  # This will catch other general exceptions
+        db.session.rollback()
+        flash('An error occurred during registration. Please try again.', 'danger')
+        app.logger.error(f"Error during registration: {e}")
 
         # Print form errors for debugging
     print(form.errors)

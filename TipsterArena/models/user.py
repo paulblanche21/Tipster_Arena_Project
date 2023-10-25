@@ -66,7 +66,7 @@ class Message(db.Model):
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, nullable=False)
-    content = db.Column(db.String, nullable=False)
+    message = db.Column(db.String, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     room_name = db.Column(db.String, nullable=False)
     room_id = db.Column(db.Integer, db.ForeignKey('rooms.room_id'),

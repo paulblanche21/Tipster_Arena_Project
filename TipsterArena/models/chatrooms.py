@@ -7,6 +7,8 @@ from markupsafe import escape
 from TipsterArena.extensions import db, socketio
 from TipsterArena.models.user import Message
 
+
+
 MAX_MESSAGE_LENGTH = 515
 
 CHATROOMS = [
@@ -18,10 +20,11 @@ CHATROOMS = [
 
 
 def save_message(username, msg, room):
-    message = Message(username=username, message=msg, timestamp=datetime.now(),
-                      room=room)
+    message_instance = Message(username=username, message=msg, 
+                               timestamp=datetime.now(), room=room)
+
     try:
-        db.session.add(message)
+        db.session.add(message_instance)
         db.session.commit()
     except Exception as e:
         print(f"An error occurred while saving the message: {e}")
