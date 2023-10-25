@@ -18,7 +18,8 @@ CHATROOMS = [
 
 
 def save_message(username, msg, room):
-    message = Message(username=username, message=msg, timestamp=datetime.now(), room=room)
+    message = Message(username=username, message=msg, timestamp=datetime.now(),
+                      room=room)
     try:
         db.session.add(message)
         db.session.commit()
@@ -28,9 +29,10 @@ def save_message(username, msg, room):
         return False
     return True
 
+
 @socketio.on('message')
 def handle_message(data):
-    room_namespace = request.namespace  # You'll get the namespace of the emitting socket
+    room_namespace = request.namespace
 
     msg = data['msg']
     room = data['room']
@@ -50,7 +52,8 @@ def handle_message(data):
     mentions = re.findall(r'@\w+', msg)
 
     if not save_message(username, msg, room):
-        send("An error occurred while sending your message. Please try again.", room=room)
+        send("An error occurred while sending your message. Please try again.",
+             room=room)
         return
 
     send({'msg': msg, 'timestamp': timestamp, 'mentions': mentions}, room=room)

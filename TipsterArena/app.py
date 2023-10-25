@@ -1,8 +1,12 @@
+
+#!/usr/bin/env python3
+
 import base64
 import os
 import secrets
 from datetime import datetime
 from datetime import timedelta
+
 from flask import Flask, flash, g, render_template, session, request, redirect, url_for
 from flask_login import current_user, login_required
 from flask_talisman import Talisman
@@ -58,19 +62,28 @@ def after_request(response):
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    
-    
-class RegistrationForm(FlaskForm):
-    username = StringField('Username',
-                           validators=[DataRequired(), Length(min=2, max=20)])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password',
-                             validators=[DataRequired(), Length(min=8)])
-    confirm_password = PasswordField('Confirm Password',
-                                     validators=[DataRequired(),
-                                                 EqualTo('password',
-                                                 message='Passwords must match.')])
 
+
+class RegistrationForm(FlaskForm):
+    username = StringField(
+        'Username',
+        validators=[DataRequired(), Length(min=2, max=20)]
+    )
+    email = StringField(
+        'Email',
+        validators=[DataRequired(), Email()]
+    )
+    password = PasswordField(
+        'Password',
+        validators=[DataRequired(), Length(min=8)]
+    )
+    confirm_password = PasswordField(
+        'Confirm Password',
+        validators=[
+            DataRequired(),
+            EqualTo('password', message='Passwords must match.')
+        ]
+    )
     agree_to_terms = BooleanField(
         'I agree to the terms and conditions',
         validators=[DataRequired()]
@@ -98,7 +111,8 @@ def register():
         return redirect(url_for('login'))
     except Exception as e:
         db.session.rollback()
-        flash('An error occurred during registration. Please try again.', 'danger')
+        flash('An error occurred during registration. Please try again.',
+              'danger')
         print(e)  # Print exception for debugging
 
         # Print form errors for debugging
@@ -295,4 +309,3 @@ if __name__ == '__main__':
     else:
         print("Running in production mode")
         socketio.run(app)
-

@@ -69,7 +69,8 @@ class Message(db.Model):
     content = db.Column(db.String, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     room_name = db.Column(db.String, nullable=False)
-    room_id = db.Column(db.Integer, db.ForeignKey('rooms.room_id'), nullable=False)
+    room_id = db.Column(db.Integer, db.ForeignKey('rooms.room_id'),
+                        nullable=False)
     room = db.relationship("Room", back_populates="messages")
 
 
@@ -81,7 +82,7 @@ class Room(db.Model):
     description = db.Column(db.String, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime,
-                           default=datetime.utcnow, 
+                           default=datetime.utcnow,
                            onupdate=datetime.utcnow)
 
     messages = db.relationship("Message", back_populates="room")
