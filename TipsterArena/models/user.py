@@ -1,8 +1,5 @@
 from datetime import datetime
-from app import db
-from app import bcrypt
-
-
+from TipsterArena.extensions import db, bcrypt
 
 
 class User(db.Model):
@@ -67,9 +64,24 @@ class UserSubscription(db.Model):
 
 class Message(db.Model):
     __tablename__ = 'messages'
-
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, nullable=False)
     content = db.Column(db.String, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    room = db.Column(db.String, nullable=False)
+    room_name = db.Column(db.String, nullable=False)
+    room_id = db.Column(db.Integer, db.ForeignKey('rooms.room_id'), nullable=False)
+    room = db.relationship("Room", back_populates="messages")
+
+
+class Room(db.Model):
+    __tablename__ = 'rooms'
+
+    room_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String, nullable=False, unique=True)
+    description = db.Column(db.String, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime,
+                           default=datetime.utcnow, 
+                           onupdate=datetime.utcnow)
+
+    messages = db.relationship("Message", back_populates="room")

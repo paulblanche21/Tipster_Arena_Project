@@ -1,44 +1,23 @@
-#######################################################################
-#                               CHATROOMS
-#######################################################################
 from datetime import datetime
-from app import db
-import bleach 
+import bleach
 import re
-from flask import session
-from flask_socketio import SocketIO
+from flask import session, request
 from flask_socketio import send, join_room, leave_room
 from markupsafe import escape
-from app import socketio
-
-
-
-socketio = SocketIO(app)
+from TipsterArena.extensions import db, socketio
+from TipsterArena.models.user import Message
 
 MAX_MESSAGE_LENGTH = 515
 
+CHATROOMS = [
+    'football-chat',
+    'golf-chat',
+    'tennis-chat',
+    'horse-racing-chat'
+]
 
-@socketio.on('message')
-def handle_message(data):
-    msg = data['msg']
-    room = data['room']  # Ensure the frontend sends the room info along with the message
-    
-    if not msg or not room:
-        print("Message or room data is missing")
-        return
 
-    if len(msg) > MAX_MESSAGE_LENGTH:
-        send('Message is too long!', room=room)
-        return
-
-    msg = escape(msg)  # Escape HTML entities
-    msg = bleach.clean(msg, strip=True)  # Clean the message content
-    username = session.get('username', 'Anonymous')
-    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    mentions = re.findall(r'@\w+', msg)
-
-    print('Message:', msg, 'Timestamp:', timestamp, 'Mentions:', mentions)
-
+def save_message(username, msg, room):
     message = Message(username=username, message=msg, timestamp=datetime.now(), room=room)
     try:
         db.session.add(message)
@@ -46,18 +25,47 @@ def handle_message(data):
     except Exception as e:
         print(f"An error occurred while saving the message: {e}")
         db.session.rollback()
+        return False
+    return True
+
+@socketio.on('message')
+def handle_message(data):
+    room_namespace = request.namespace  # You'll get the namespace of the emitting socket
+
+    msg = data['msg']
+    room = data['room']
+
+    if not msg or not room or room_namespace not in CHATROOMS:
+        print("Message, room data, or namespace is invalid")
+        return
+
+    if len(msg) > MAX_MESSAGE_LENGTH:
+        send('Message is too long!', room=room)
+        return
+
+    msg = escape(msg)
+    msg = bleach.clean(msg, strip=True)
+    username = session.get('username', 'Anonymous')
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    mentions = re.findall(r'@\w+', msg)
+
+    if not save_message(username, msg, room):
         send("An error occurred while sending your message. Please try again.", room=room)
         return
 
-
-    send({'msg': msg, 'timestamp': timestamp,
-          'mentions': mentions}, room=room)
+    send({'msg': msg, 'timestamp': timestamp, 'mentions': mentions}, room=room)
 
 
 @socketio.on('join')
 def on_join(data):
     username = data['username']
     room = data['room']
+    room_namespace = request.namespace
+
+    if room_namespace not in CHATROOMS:
+        print("Invalid namespace")
+        return
+
     join_room(room)
     send({"msg": username + " has joined the " + room + " room."}, room=room)
 
@@ -66,5 +74,16 @@ def on_join(data):
 def on_leave(data):
     username = data['username']
     room = data['room']
+    room_namespace = request.namespace
+
+    if room_namespace not in CHATROOMS:
+        print("Invalid namespace")
+        return
+
     leave_room(room)
     send({"msg": username + " has left the " + room + " room."}, room=room)
+
+
+# Repeat for other namespaces
+for chatroom in CHATROOMS:
+    socketio.on_namespace(chatroom)
