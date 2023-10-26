@@ -2,14 +2,14 @@ from datetime import datetime
 import bleach
 import re
 from flask import session, request
-from flask_socketio import send, join_room, leave_room
+from flask_socketio import Namespace, send, join_room, leave_room
 from markupsafe import escape
 from TipsterArena.extensions import db, socketio
 from TipsterArena.models.user import Message
 
 
+# CHATROOMS definition
 
-MAX_MESSAGE_LENGTH = 515
 
 CHATROOMS = [
     'football-chat',
@@ -17,6 +17,26 @@ CHATROOMS = [
     'tennis-chat',
     'horse-racing-chat'
 ]
+
+
+# ChatNamespace class definition
+class ChatNamespace(Namespace):
+    def on_message(self, data):
+        handle_message(data)
+
+    def on_join(self, data):
+        on_join(data)
+
+    def on_leave(self, data):
+        on_leave(data)
+
+
+# Registering the namespaces
+for chatroom in CHATROOMS:
+    socketio.on_namespace(ChatNamespace('/' + chatroom))
+
+
+MAX_MESSAGE_LENGTH = 515
 
 
 def save_message(username, msg, room):
@@ -88,8 +108,3 @@ def on_leave(data):
 
     leave_room(room)
     send({"msg": username + " has left the " + room + " room."}, room=room)
-
-
-# Repeat for other namespaces
-for chatroom in CHATROOMS:
-    socketio.on_namespace(chatroom)
