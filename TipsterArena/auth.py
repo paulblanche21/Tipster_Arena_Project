@@ -1,10 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, session
 from TipsterArena.models.user import User
-from TipsterArena.extensions import db
-from flask_login import login_required, current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
+from TipsterArena.extensions import db, bcrypt
 
 
 auth_bp = Blueprint('auth', __name__)
@@ -44,6 +43,31 @@ class RegistrationForm(FlaskForm):
     )
 
 
+@auth_bp.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+
+    if form.validate_on_submit():
+        # Check if user already exists
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            flash('An account with this email already exists.', 'warning')
+            return redirect(url_for('auth.register'))
+
+        # Hash the password and create a new user
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        new_user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+
+        # Add the new user to the database
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash('Account created successfully! Please log in.', 'success')
+        return redirect(url_for('auth.login'))
+
+    return render_template('register.html', form=form)
+
+
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -66,8 +90,8 @@ def login():
         print(f"An error occurred: {e}")
         # you can also log the error if you have logging setup
         return "An error occurred", 500  # or render an error template
-    
-    
+
+
 @auth_bp.route('/logout')
 def logout():
     session.pop('user_id', None)

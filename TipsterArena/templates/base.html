@@ -18,7 +18,7 @@
   
   <header>
     <div class="logo">
-        <a href="{{ url_for('index') }}">
+        <a href="{{ url_for('main.index') }}">
             <img src="{{ url_for('static', filename='images/tipster-arena-nav-logo.svg') }}" alt="Tipster Arena" class="logo-img">
         </a>
     </div>
@@ -26,7 +26,7 @@
         <nav class="main-nav">
 
             <ul>
-                <li><a href="{{ url_for('index') }}" class="nav-link">
+                <li><a href="{{ url_for('main.index') }}" class="nav-link">
                     <span class="nav-icon"><i class="fas fa-home"></i></span>
                     <span class="nav-text">Home</span>
                 </a></li>
@@ -41,16 +41,16 @@
                         </svg>
                     </a>
                     <div class="dropdown-content">
-                        <a href="{{ url_for('football') }}">
+                        <a href="{{ url_for('sports.football') }}">
                             <span class="nav-icon"><i class="fas fa-futbol"></i></span> Football
                         </a>
-                        <a href="{{ url_for('horse_racing') }}">
+                        <a href="{{ url_for('sports.horse_racing') }}">
                             <span class="nav-icon"><i class="fas fa-horse"></i></span> Horse Racing
                         </a>
-                        <a href="{{ url_for('tennis') }}">
+                        <a href="{{ url_for('sports.tennis') }}">
                             <span class="nav-icon"><i class="fa-solid fa-baseball"></i></span> Tennis
                         </a>
-                        <a href="{{ url_for('golf') }}">
+                        <a href="{{ url_for('sports.golf') }}">
                             <span class="nav-icon"><i class="fas fa-golf-ball"></i></span> Golf
                         </a>
                     </div>
@@ -66,11 +66,11 @@
                         </svg>
                     </a>
                     <div class="dropdown-content">
-                        <a href="{{ url_for('tipster_league_table') }}">
+                        <a href="{{ url_for('sports.tipster_league_table') }}">
                             <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
                             Top Tipsters
                         </a>
-                        <a href="{{ url_for('latest_tips') }}">
+                        <a href="{{ url_for('sports.latest_tips') }}">
                             <span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>
                             Latest Tips
                         </a>
@@ -87,16 +87,16 @@
                         </svg>
                     </a>
                     <div class="dropdown-content">
-                        <a href="{{ url_for('football_chat') }}">
+                        <a href="{{ url_for('chat.football_chat') }}">
                             <span class="nav-icon"><i class="fas fa-football-ball"></i></span> Football Chat
                         </a>
-                        <a href="{{ url_for('horse_racing_chat') }}">
+                        <a href="{{ url_for('chat.horse_racing_chat') }}">
                             <span class="nav-icon"><i class="fas fa-horse"></i></span> Horse Racing Chat
                         </a>
-                        <a href="{{ url_for('tennis_chat') }}">
+                        <a href="{{ url_for('chat.tennis_chat') }}">
                             <span class="nav-icon"><i class="fa-solid fa-baseball"></i></span> Tennis Chat
                         </a>
-                        <a href="{{ url_for('golf_chat') }}">
+                        <a href="{{ url_for('chat.golf_chat') }}">
                             <span class="nav-icon"><i class="fas fa-golf-ball"></i></span> Golf Chat
                         </a>
                     </div>
@@ -125,8 +125,8 @@
         <nav class="right-nav">
             <ul>
                 <li><a href="#"><span class="nav-icon"><i class="fas fa-search"></i></span></a></li>
-                <li><a href="{{ url_for('register') }}"><span class="nav-text">Join</span></a></li>
-                <li><a href="{{ url_for('login') }}" class="login-btn"><span class="nav-text">Login</span></a></li>
+                <li><a href="{{ url_for('auth.register') }}"><span class="nav-text">Join</span></a></li>
+                <li><a href="{{ url_for('auth.login') }}" class="login-btn"><span class="nav-text">Login</span></a></li>
             </ul>
         </nav>
     </div>
@@ -161,7 +161,7 @@
             <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
         <ul class="footer-nav">
-            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('main.about') }}">About</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Terms of Service</a></li>
             <li><a href="#">Privacy Policy</a></li>

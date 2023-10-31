@@ -43,8 +43,8 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    LOG_LEVEL = logging.DEBUG  
-    
+    LOG_LEVEL = logging.DEBUG
+
 
 class ProductionConfig(Config):
     DEBUG = False

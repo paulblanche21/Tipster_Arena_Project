@@ -40,7 +40,7 @@ MAX_MESSAGE_LENGTH = 515
 
 
 def save_message(username, msg, room):
-    message_instance = Message(username=username, message=msg, 
+    message_instance = Message(username=username, message=msg,
                                timestamp=datetime.now(), room=room)
 
     try:

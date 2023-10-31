@@ -7,7 +7,7 @@
 
     <!-- Form to create a new subscription plan -->
     <h2>Create a New Plan</h2>
-    <form method="POST" action="{{ url_for('create_subscription_plan') }}">
+    <form method="POST" action="{{ url_for('subscriptions.create_subscription_plan') }}">
         <label for="name">Plan Name:</label>
         <input type="text" id="name" name="name" required>
         <br>

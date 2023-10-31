@@ -8,20 +8,24 @@
         <div class="col-md-6 offset-md-3">
             <div class="login-container p-4 border rounded shadow">
                 <h2 class="mb-4">Login</h2>
-                <form method="post" action="{{ url_for('login') }}">
+                <form method="post" action="{{ url_for('auth.login') }}">
                     {{ form.hidden_tag() }}
                     <div class="form-group">
                         <label for="email">Email</label>
                         {{ form.email(class="form-control", id="email", placeholder="Enter your email") }}
-                        {% if errors.email %}
-                            <span class="text-danger">{{ errors.email }}</span>
+                        {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                                <span class="text-danger">{{ error }}</span><br>
+                            {% endfor %}
                         {% endif %}
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         {{ form.password(class="form-control", id="password", placeholder="Enter your password") }}
-                        {% if errors.password %}
-                            <span class="text-danger">{{ errors.password }}</span>
+                        {% if form.password.errors %}
+                            {% for error in form.password.errors %}
+                                <span class="text-danger">{{ error }}</span><br>
+                            {% endfor %}
                         {% endif %}
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
