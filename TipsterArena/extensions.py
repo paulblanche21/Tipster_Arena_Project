@@ -5,6 +5,7 @@ from flask_wtf.csrf import CSRFProtect
 from flask_migrate import Migrate
 from flask_socketio import SocketIO
 
+
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 cors = CORS()

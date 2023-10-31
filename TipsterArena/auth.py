@@ -1,0 +1,75 @@
+from flask import Blueprint, render_template, redirect, url_for, flash, session
+from TipsterArena.models.user import User
+from TipsterArena.extensions import db
+from flask_login import login_required, current_user
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField
+from wtforms.validators import DataRequired, Email, EqualTo, Length
+
+
+auth_bp = Blueprint('auth', __name__)
+
+
+#######################################################################
+#                 LOGIN AND REGISSTRATION FORMS
+#######################################################################
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+
+
+class RegistrationForm(FlaskForm):
+    username = StringField(
+        'Username',
+        validators=[DataRequired(), Length(min=2, max=20)]
+    )
+    email = StringField(
+        'Email',
+        validators=[DataRequired(), Email()]
+    )
+    password = PasswordField(
+        'Password',
+        validators=[DataRequired(), Length(min=8)]
+    )
+    confirm_password = PasswordField(
+        'Confirm Password',
+        validators=[
+            DataRequired(),
+            EqualTo('password', message='Passwords must match.')
+        ]
+    )
+    agree_to_terms = BooleanField(
+        'I agree to the terms and conditions',
+        validators=[DataRequired()]
+    )
+
+
+@auth_bp.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+
+    try:
+        if form.validate_on_submit():
+            email = form.email.data
+            password = form.password.data
+            user = User.query.filter_by(email=email).first()
+
+            if user and user.check_password(password):
+                session['user_id'] = user.id
+                flash('Login successful!', 'success')
+                return redirect(url_for('index'))
+            else:
+                flash('Incorrect email or password', 'danger')
+
+        return render_template('login.html', form=form)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        # you can also log the error if you have logging setup
+        return "An error occurred", 500  # or render an error template
+    
+    
+@auth_bp.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    flash('You have been logged out.', 'success')
+    return redirect(url_for('index'))
