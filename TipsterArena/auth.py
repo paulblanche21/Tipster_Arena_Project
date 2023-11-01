@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, session
-from TipsterArena.models.user import User
+from models.user import User
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
-from TipsterArena.extensions import db, bcrypt
+from extensions import db, bcrypt
 
 
 auth_bp = Blueprint('auth', __name__)

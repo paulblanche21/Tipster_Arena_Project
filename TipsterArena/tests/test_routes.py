@@ -1,7 +1,7 @@
 # tests/test_routes.py
 
 import unittest
-from TipsterArena import create_app
+from .. import create_app
 
 
 class RoutesTestCase(unittest.TestCase):
@@ -22,40 +22,39 @@ class RoutesTestCase(unittest.TestCase):
     def test_login_route(self):
         response = self.client.get('/login')
         self.assertEqual(response.status_code, 200)
-        
+
     def test_register_route(self):
         response = self.client.get('/register')
         self.assertEqual(response.status_code, 200) 
-    
+
     def test_logout_route(self):
         response = self.client.get('/logout')
         self.assertEqual(response.status_code, 302) 
-    
+
     def test_subscriptions_route(self):
         response = self.client.get('/subscriptions')
         self.assertEqual(response.status_code, 302) 
-    
+
     def test_chat_route(self):
         response = self.client.get('/chat')
         self.assertEqual(response.status_code, 302)
-        
+
     def test_sports_route(self):
         response = self.client.get('/sports')
         self.assertEqual(response.status_code, 302)
-    
+
     def test_about_route(self):
         response = self.client.get('/about')
         self.assertEqual(response.status_code, 200)
-        
+
     def test_contact_route(self):
         response = self.client.get('/contact')
         self.assertEqual(response.status_code, 200)
-    
+
     def test_privacy_policy_route(self):
         response = self.client.get('/privacy-policy')
         self.assertEqual(response.status_code, 200) 
-        
+
     def test_terms_and_conditions_route(self):
         response = self.client.get('/terms-and-conditions')
         self.assertEqual(response.status_code, 200)
-        

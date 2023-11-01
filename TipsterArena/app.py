@@ -11,15 +11,16 @@ from flask import Flask, g
 from flask_talisman import Talisman
 import logging
 from logging.handlers import RotatingFileHandler
+from dotenv import load_dotenv
 
-from TipsterArena.config import DevelopmentConfig, ProductionConfig
-from TipsterArena.extensions import db, bcrypt, cors, csrf, migrate, socketio
-from TipsterArena.auth import auth_bp
-from TipsterArena.subscriptions import subscriptions_bp
-from TipsterArena.chat import chat_bp
-from TipsterArena.errors.handlers import handler
-from TipsterArena.sports import sports_bp
-from TipsterArena.main import main_bp
+from config import DevelopmentConfig, ProductionConfig
+from extensions import db, bcrypt, cors, csrf, migrate, socketio
+from auth import auth_bp
+from subscriptions import subscriptions_bp
+from chat import chat_bp
+from errors.handlers import handler
+from sports import sports_bp
+from main import main_bp
 
 #######################################################################
 #                  INITISATION EXTENSIONS
@@ -42,6 +43,7 @@ def create_app(config_name=None):
     app.config.from_object(config_name)
 
     # Initialize extensions
+    load_dotenv()
     db.init_app(app)
     bcrypt.init_app(app)
     cors.init_app(app)
@@ -89,6 +91,13 @@ def create_app(config_name=None):
     app.logger.addHandler(file_handler)
     app.logger.setLevel(app.config['LOG_LEVEL'])  # Set level from configuration
 
+    @app.route('/test-logging')
+    def test_logging():
+        app.logger.info('This is an info message.')
+        app.logger.warning('This is a warning message.')
+        app.logger.error('This is an error message.')
+        return 'Logging test'
+
     return app
 
 
@@ -96,12 +105,16 @@ app = create_app()
 
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+    app.run(host='0.0.0.0', port=5000, use_reloader=False, threaded=True, debug=True)
+
+    
+    
+    #with app.app_context():
+       # db.create_all()
 
     # Running the app based on environment
-    if app.config.get('FLASK_ENV') == "development":
-        socketio.run(app, host='127.0.0.1', port=5000, debug=True)
-    else:
-        print("Running in production mode")
-        socketio.run(app)
+    #if app.config.get('FLASK_ENV') == "development":
+        #socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+    #else:
+       # print("Running in production mode")
+        #socketio.run(app, host='0.0.0.0')

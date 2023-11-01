@@ -1,8 +1,8 @@
 # subscriptions.py
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_required
-from TipsterArena.models.user import SubscriptionPlan
-from TipsterArena.extensions import db
+from models.user import SubscriptionPlan
+from extensions import db
 from datetime import datetime, timedelta
 from flask import request
 from flask_login import current_user

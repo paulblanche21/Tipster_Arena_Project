@@ -105,7 +105,7 @@
                 
                 
                 <li class="dropdown">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url_for('sports.fixtures_results') }}" class="nav-link">
                         <span class="nav-icon"><i class="fas fa-flag-checkered"></i></span>
                         <span class="nav-text">Fixtures & Results</span>
                         <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,7 +114,7 @@
                     </a>
                     <div class="dropdown-content">
                         
-                        <a href="#">
+                        <a href="{{ url_for('sports.in-play') }}">
                             <span class="nav-icon"><i class="fas fa-chalkboard"></i></span>
                             In Play
                         </a>
@@ -162,9 +162,9 @@
         </div>
         <ul class="footer-nav">
             <li><a href="{{ url_for('main.about') }}">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('main.terms-of-service') }}">Terms of Service</a></li>
+            <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
          </ul>
     </footer>
 

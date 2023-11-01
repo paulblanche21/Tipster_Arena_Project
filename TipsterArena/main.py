@@ -34,3 +34,20 @@ def submit_form():
 def about():
     """Display the about page."""
     return render_template('about.html')
+
+@main_bp.route('/terms-of-service')
+def terms_of_service():
+    """Display the terms of service page."""
+    return render_template('termsofservice.html')
+
+
+@main_bp.route('/contact')
+def contact():
+    """Display the contact page."""
+    return render_template('contact.html')
+
+
+@main_bp.route('/privacy-policy')
+def privacy_policy():
+    """Display the privacy policy page."""
+    return render_template('privacypolicy.html')

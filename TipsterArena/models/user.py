@@ -1,5 +1,5 @@
 from datetime import datetime
-from TipsterArena.extensions import db, bcrypt
+from extensions import db, bcrypt
 
 
 class User(db.Model):
