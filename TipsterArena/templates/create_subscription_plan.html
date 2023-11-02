@@ -17,6 +17,7 @@
 
         <!-- Form to create a new subscription plan -->
         <form method="POST" action="{{ url_for('subscriptions.create_subscription_plan') }}">
+            {{ csrf_token() }} <!-- CSRF protection -->
             <div class="form-group">
                 <label for="name">Plan Name:</label>
                 <input type="text" id="name" name="name" class="form-control" required>

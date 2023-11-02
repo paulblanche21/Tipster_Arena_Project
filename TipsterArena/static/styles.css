@@ -196,11 +196,7 @@ body .logo img {
     height: auto;    /* This maintains the aspect ratio of the logo. */
 }
 
-.logo-img {
-    max-height: 40px; /* Smaller logo in Centre*/
-    width: auto; /* This will maintain the aspect ratio of the logo */
-    max-width: 100%;
-}
+
 
 
 
@@ -530,9 +526,6 @@ nav .right-nav a.login-btn:hover {
 }
     
     
-
-
-
 .sport h1 {
     color: white; /* text color */
     font-size: 2rem; /* font size */

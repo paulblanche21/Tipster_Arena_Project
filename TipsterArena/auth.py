@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, session
+from flask import Blueprint, render_template, redirect, url_for, flash, session, current_app
 from models.user import User
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
@@ -57,13 +57,21 @@ def register():
         # Hash the password and create a new user
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         new_user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        # Log the CSRF token for debugging
+        current_app.logger.debug('CSRF Token submitted: %s', form.csrf_token.data)
 
         # Add the new user to the database
-        db.session.add(new_user)
-        db.session.commit()
-
-        flash('Account created successfully! Please log in.', 'success')
-        return redirect(url_for('auth.login'))
+        try:
+            # Add the new user to the database
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Account created successfully! Please log in.', 'success')
+            return redirect(url_for('auth.login'))
+        except Exception as e:
+            db.session.rollback()
+            print(f"An error occurred: {e}")
+            flash('An error occurred during registration. Please try again.', 'error')
+            return redirect(url_for('auth.register'))
 
     return render_template('register.html', show_logo=False, form=form)
 

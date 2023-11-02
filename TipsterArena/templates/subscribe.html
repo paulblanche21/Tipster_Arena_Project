@@ -26,6 +26,7 @@
 
         <!-- Confirmation form to subscribe to the plan -->
         <form method="POST" action="{{ url_for('subscriptions.subscribe', plan_id=plan.plan_id) }}" class="mt-4">
+            {{ csrf_token() }} <!-- CSRF protection -->
             <p>Are you sure you want to subscribe to this plan?</p>
             <input type="submit" value="Subscribe" class="btn btn-primary">
         </form>

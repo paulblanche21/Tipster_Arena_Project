@@ -1,4 +1,5 @@
 from flask import Blueprint, current_app, render_template
+from flask_wtf.csrf import CSRFError
 
 
 # Create a Blueprint instance
@@ -23,3 +24,9 @@ def internal_server_error(e):
 def handle_exception(e):
     current_app.logger.exception("An error occurred: %s", e)
     return render_template("error.html", error=str(e)), 500
+
+
+@handler.app_errorhandler(CSRFError)
+def handle_csrf_error(e):
+    current_app.logger.error('CSRF error occurred: %s', e.description)
+    return render_template('csrf_error.html', reason=e.description), 400
