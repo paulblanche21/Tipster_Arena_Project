@@ -81,7 +81,7 @@ def login():
             if user and user.check_password(password):
                 session['user_id'] = user.id
                 flash('Login successful!', 'success')
-                return redirect(url_for('index'))
+                return redirect(url_for('main.index'))
             else:
                 flash('Incorrect email or password', 'danger')
 
@@ -96,4 +96,4 @@ def login():
 def logout():
     session.pop('user_id', None)
     flash('You have been logged out.', 'success')
-    return redirect(url_for('index'))
+    return redirect(url_for('main.index'))
