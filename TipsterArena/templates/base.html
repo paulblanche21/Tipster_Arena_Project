@@ -114,7 +114,7 @@
                     </a>
                     <div class="dropdown-content">
                         
-                        <a href="{{ url_for('sports.in-play') }}">
+                        <a href="{{ url_for('sports.in_play') }}">
                             <span class="nav-icon"><i class="fas fa-chalkboard"></i></span>
                             In Play
                         </a>
@@ -132,7 +132,7 @@
     </div>
 </header>
 
-
+{% if show_logo is not sameas False %}
 <div class="logo-container">
     {% if is_chatroom %}
         <img src="{{ url_for('static', filename='images/chat-arena.png') }}" alt="Chatroom Logo" class="logo-image" nonce="{{ g.nonce }}">
@@ -145,9 +145,10 @@
     {% elif sport == 'golf' %}
         <img src="{{ url_for('static', filename='images/golfarena.png') }}" alt="Golf Logo" class="logo-image" nonce="{{ g.nonce }}">
     {% else %}
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Default Logo" class="logo-image" nonce="{{ g.nonce }}">
+        <img src="{{ url_for('static', filename='images/ailogo.svg') }}" alt="Default Logo" class="logo-image" nonce="{{ g.nonce }}">
     {% endif %}
 </div>
+{% endif %}
 {% block content %}{% endblock %}
 
 
@@ -163,8 +164,8 @@
         <ul class="footer-nav">
             <li><a href="{{ url_for('main.about') }}">About</a></li>
             <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
-            <li><a href="{{ url_for('main.terms-of-service') }}">Terms of Service</a></li>
-            <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
+            <li><a href="{{ url_for('main.terms_of_service') }}">Terms of Service</a></li>
+            <li><a href="{{ url_for('main.privacy_policy') }}">Privacy Policy</a></li>
          </ul>
     </footer>
 

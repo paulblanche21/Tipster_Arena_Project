@@ -30,15 +30,25 @@ class Config:
             "'self'",
             'use.fontawesome.com',
             'maxcdn.bootstrapcdn.com',
+            "'unsafe-inline'",
+            # Add 'unsafe-inline' here if you're okay with the security risk
         ],
         'script-src': [
             "'self'",
             'ajax.googleapis.com',
             'cdnjs.cloudflare.com',
             'maxcdn.bootstrapcdn.com',
+            'cdn.socket.io',
+            'unpkg.com'
+            # Add 'nonce-YOUR_RANDOM_STRING_HERE'; if you're using nonces
         ],
-        'font-src': "'self' use.fontawesome.com fonts.gstatic.com"
-    }
+        'connect-src': [
+            "'self'",
+            'cdn.jsdelivr.net'  # Add the required domain here
+        ],
+        'font-src': "'self' use.fontawesome.com fonts.gstatic.com",
+         }
+    # Flask-Mail SMTP server settings
 
 
 class DevelopmentConfig(Config):

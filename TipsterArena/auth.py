@@ -65,7 +65,7 @@ def register():
         flash('Account created successfully! Please log in.', 'success')
         return redirect(url_for('auth.login'))
 
-    return render_template('register.html', form=form)
+    return render_template('register.html', show_logo=False, form=form)
 
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
@@ -85,7 +85,7 @@ def login():
             else:
                 flash('Incorrect email or password', 'danger')
 
-        return render_template('login.html', form=form)
+        return render_template('login.html', show_logo=False, form=form)
     except Exception as e:
         print(f"An error occurred: {e}")
         # you can also log the error if you have logging setup

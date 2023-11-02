@@ -26,7 +26,6 @@ def index():
 @main_bp.route('/submit', methods=['POST'])
 def submit_form():
     """Handle form submissions."""
-    # Removed manual CSRF validation, Flask-WTF handles this
     return "Form submitted successfully"
 
 
@@ -34,6 +33,7 @@ def submit_form():
 def about():
     """Display the about page."""
     return render_template('about.html')
+
 
 @main_bp.route('/terms-of-service')
 def terms_of_service():

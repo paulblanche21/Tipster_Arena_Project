@@ -8,9 +8,12 @@
         <div class="d-flex">
             <div class="chat-room">
                 <ul id="messages"></ul>
-                <input id="message" autocomplete="off" placeholder="Type a message...">
-                <emoji-picker></emoji-picker><!-- Added emoji picker element -->
-                <button onclick="tennisChat.sendMessage()">Send</button> <!-- Note the updated method call -->
+                <div class="message-input-container">
+                    <emoji-picker></emoji-picker><!-- Added emoji picker element -->
+                    <input id="message" autocomplete="off" placeholder="Type a message...">
+                    <button onclick="tennisChat.sendMessage()">Send</button>
+                </div>
+                 
                 <!-- Error message placeholder -->
                 <div id="error-message"></div>
             </div>
@@ -23,19 +26,10 @@
 </main>
 
 <!-- Socket.IO JavaScript -->
-<script src="https://cdn.socket.io/4.0.0/socket.io.min.js" crossorigin="anonymous" nonce="{{ g.nonce }}"></script>
-<!-- Emoji Picker JavaScript -->
-<script type="module" nonce="{{ g.nonce }}">
-    import 'https://unpkg.com/emoji-picker-element';
-    
-    const picker = document.querySelector('emoji-picker');
-    const input = document.getElementById('message');
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js" crossorigin="anonymous"></script>
 
-    picker.addEventListener('emoji-click', event => {
-        input.value += event.detail.unicode;
-    });
-</script>
-
-<script src="{{ url_for('static', filename='js/chat.js') }}" nonce="{{ g.nonce }}"></script>
+<!-- Your chat.js script -->
+<script type="module" src="{{ url_for('static', filename='js/chat.js') }}"></script>
 
 {% endblock %}
+

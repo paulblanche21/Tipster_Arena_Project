@@ -98,7 +98,7 @@ header {
     flex: 0 0 auto;
 }
 
-nav a {
+nav a, .nav-item{
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
     color: var(--colors-appbarText);
@@ -108,7 +108,7 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
+nav a:hover, .nav-item:hover  {
     font-weight: bold;
     color: var(--colors-white); /* Keeps the text white on hover */
     transform: scale(1.05); /* This will slightly increase the size */
@@ -177,8 +177,8 @@ nav a:hover {
     color: var(--colors-white);
     font-size: 1.5rem;
     margin-right: 1rem;
-    max-width: 200px;  /* Add this line */
-    overflow: hidden;  /* Add this line if needed to hide overflow content */
+    max-width: 200px;  
+    overflow: hidden;  
 }
 
 body .logo img {
@@ -187,11 +187,17 @@ body .logo img {
 }
 
 .logo-container {
-    margin-top: 20px;  
+    margin-top: 5px;  
     text-align: center; 
 }
+
+.logo-image {
+    max-width: 300px; /* Big logo in centre of page. */
+    height: auto;    /* This maintains the aspect ratio of the logo. */
+}
+
 .logo-img {
-    max-height: 50px; /* Adjust this value according to your needs */
+    max-height: 40px; /* Smaller logo in Centre*/
     width: auto; /* This will maintain the aspect ratio of the logo */
     max-width: 100%;
 }
@@ -303,7 +309,7 @@ button:hover {
 }
 
 /* Rotate the arrow 180 degrees when the dropdown is active/open */
-.dropdown.show .dropdown-arrow {
+.dropdown:hover .dropdown-arrow {
     transform: rotate(180deg);
 }
 
@@ -465,16 +471,20 @@ footer {
     background-color: var(--colors-secondary); /* Using the secondary color variable which is set to red */
     padding: 5px 10px; /* Add some padding for better appearance */
     border-radius: 4px; /* Optional: Add some border-radius for rounded corners */
+    transition: background-color 0.3s ease; /* Added transition for smooth color change */
+    cursor: pointer; /* Hand cursor on hover */
 }
+
 
 /* Adjust the hover effect for the login button */
 .login-btn:hover {
     color: var(--colors-white); /* Keeps the text white on hover */
-    background-color: var(--colors-secondary); /* Change to primary color on hover for contrast */
+    background-color: #d60000; /* Change to primary color on hover for contrast */
+    font-weight: bold;
 }
 
 nav .right-nav a.login-btn:hover {
-    background-color: var(--colors-secondary);
+    background-color: #d60000;
     color: var(--colors-white);
 }
 
@@ -483,7 +493,7 @@ nav .right-nav a.login-btn:hover {
     color: var(--colors-primary);
 }
 
-/* You can add more styles as needed */
+
 
 
 /* ==============================
@@ -528,6 +538,77 @@ nav .right-nav a.login-btn:hover {
     font-size: 2rem; /* font size */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* shadow for better readability */
 }
+
+/* ==============================
+  Chat Room Styling
+   ============================== */
+   .chat-room {
+    flex: 1; /* This allows the chat-room to take the most space */
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; /* To position the input at the bottom */
+}
+
+#messages {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#message {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--colors-secondary); /* Assuming red color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--colors-primary); /* Some other color for hover */
+}
+
+#online-users {
+    margin-left: 20px;
+    width: 200px; /* Adjust as needed */
+}
+
+#user-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.message-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+emoji-picker {
+    width: 100px;
+    height: 100px;
+    display: block;
+    z-index: 1000; /* This will ensure it's above most other elements */
+    position: relative; /* Or absolute, depending on your layout */
+}
+
+
+
+
+
+
+
 
 /*CSS for Chat.html */
 

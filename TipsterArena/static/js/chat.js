@@ -1,3 +1,6 @@
+// Import the emoji picker (this will only work if chat.js is a module)
+import 'https://unpkg.com/emoji-picker-element';
+
 function createChatSocket(namespace) {
     var socket = io.connect('http://127.0.0.1:5000/' + namespace);
 
@@ -38,3 +41,12 @@ var footballChat = createChatSocket('football-chat');
 var golfChat = createChatSocket('golf-chat');
 var tennisChat = createChatSocket('tennis-chat');
 var horseRacingChat = createChatSocket('horse-racing-chat');
+
+
+// Add the emoji picker code
+const picker = document.querySelector('emoji-picker');
+const input = document.getElementById('message');
+
+picker.addEventListener('emoji-click', event => {
+    input.value += event.detail.unicode;
+});
