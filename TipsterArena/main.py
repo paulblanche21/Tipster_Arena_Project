@@ -20,7 +20,7 @@ def dashboard():
 def index():
     """Display the main homepage."""
     today = datetime.now().date()
-    return render_template('index.html', today=today)
+    return render_template('index.html', today=today, show_logo=False)
 
 
 @main_bp.route('/submit', methods=['POST'])

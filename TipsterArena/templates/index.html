@@ -1,49 +1,82 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main>
-    <!-- New Sports Grid -->
-    <div class="container sports-grid">
-        <div class="row">
-            <!-- Football -->
-            <div class="col-lg-6 mb-2 section" id="football-home">
-                
-            </div>
-            <!-- Horse Racing -->
-            <div class="col-lg-6 mb-2 section" id="horse-racing-home">
-                
-            </div>
-        </div>
-        <div class="row">
-            <!-- Tennis -->
-            <div class="col-lg-6 mb-2 section" id="tennis-home">
-                
-            </div>
-            <!-- Golf -->
-            <div class="col-lg-6 mb-2 section" id="golf-home">
-                
-            </div>
-        </div>
+<main> 
+       <!-- This div will have the background image -->
+    <div class= "full-background-image">
+        <!-- Content that should appear on top of the background image -->
     </div>
 
-    <!-- New Section Grid -->
-    <div class="container section-grid">
-        <div class="row">
-            <!-- Top Tips Today -->
-            <div class="col-lg-6 mb-2 section" id="top-tips-today">
-            </div>
-            <!-- Results -->
-            <div class="col-lg-6 mb-2 section" id="results">
-            </div>
-        </div>
-        <div class="row">
-            <!-- Coming Up -->
-            <div class="col-lg-6 mb-2 section" id="coming-up">
-            </div>
-            <!-- ChatRooms -->
-            <div class="col-lg-6 mb-2 section" id="chatrooms">
+    <div class="landing-page">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-3">Welcome to Tipster Arena</h1>
+                    <p class="lead">The Uber of Betting Advice Sites</p>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Sign Up Now</a>
+                </div>
             </div>
         </div>
     </div>
+    <!-- This div will have the second background image, below the text and button -->
+    <div class= "second-background-image">
+        <!-- Additional content if needed -->
+    </div>
+    <div class="landing-page">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-3">Think You Are A Good Tipster?</h1>
+                    <p class="lead">The best tipsters we knew were the auld lads down the pub. They put in the most work.
+                        So what is stopping you from being the best?? He's a bad tipster , she knows her stuff.
+                         It's all subjective. But what if we measured it. Tipster League Tables tracks the best-performing tipsters in each sports.
+                         Top of the table could be Willie Mullen himself. Or then again it could be Nigel from the local pub.
+                        We believe at Tipster Arena the good tipsters will stay with us and the bad ones will be exposed.
+                        Oh and the best tipsters get a share of our subscription fees.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- This div will have the second background image, below the text and button -->
+    <div class= "third-background-image">
+        <!-- Additional content if needed -->
+    </div>
+    <div class="landing-page">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-3">Live Chat Rooms</h1>
+                    <p class="lead">At Tipster Arena We don't care if you give tips in chat. We encourage it. 
+                        We believe that the best way to learn is to share your knowledge with others.</p>
+                        
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- This div will have the second background image, below the text and button -->
+    <div class= "fourth-background-image">
+        <!-- Additional content if needed -->
+    </div>  
+    <div class="landing-page">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-3">Fixtures & Results</h1>
+                    <p class="lead">Ever have problems getting the results of the 3.30 at Kempton.
+                         Not to worry. Our platform has all the fixtures, in play and results 
+                        so you don't have to switch platform.</p>
+                        
+
+                </div>
+            </div>
+        </div>
+    </div>
+      <!-- This div will have the second background image, below the text and button -->
+      <div class= "fifth-background-image">
+        <!-- Additional content if needed -->
+    
 </main>
 {% endblock %}

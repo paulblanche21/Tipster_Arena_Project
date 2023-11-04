@@ -24,12 +24,63 @@
    RESETS
    ============================== */
 
-
 body, ul {
     margin: 0;
     padding: 0;
 }
 
+    /* Landing page styles */
+.landing-page {
+    background-color: #fff; /* or any other color */
+    padding-bottom: 20px; /* or the space you want between the button and the image */
+    padding-top:20px;
+  }
+  
+  /* The full background image styles */
+  .full-background-image {
+    background-image: url('/static/images/background1.webp');
+    min-height: 120vh; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px 0; /* Adjust the padding to control the visible height of the background */
+  }
+  
+  /* Other styles remain the same */
+  .second-background-image {
+    background-image: url('/static/images/background2.webp');
+    min-height: 120vh; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 100px 0; /* Adjust the padding to control the visible height of the background */
+}
+
+.third-background-image{
+    background-image: url('/static/images/background4.webp');
+    min-height: 120vh; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 100px 0; /* Adjust the padding to control the visible height of the background */  
+}
+.fourth-background-image{
+    background-image: url('/static/images/background3.webp');
+    min-height: 120vh; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 100px 0; /* Adjust the padding to control the visible height of the background */  
+}
+.fifth-background-image{
+    background-image: url('/static/images/background5.webp');
+    min-height: 120vh; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 100px 0; /* Adjust the padding to control the visible height of the background */  
+}
+  
 
 /* ==============================
    BASE STYLES
