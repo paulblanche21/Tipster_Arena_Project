@@ -48,7 +48,7 @@ body, ul {
   
   /* Other styles remain the same */
   .second-background-image {
-    background-image: url('/static/images/background2.webp');
+    background-image: url('/static/images/background22.webp');
     min-height: 120vh; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -57,7 +57,7 @@ body, ul {
 }
 
 .third-background-image{
-    background-image: url('/static/images/background4.webp');
+    background-image: url('/static/images/background15.webp');
     min-height: 120vh; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -73,7 +73,7 @@ body, ul {
     padding: 100px 0; /* Adjust the padding to control the visible height of the background */  
 }
 .fifth-background-image{
-    background-image: url('/static/images/background5.webp');
+    background-image: url('/static/images/background33.png');
     min-height: 120vh; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -926,4 +926,79 @@ emoji-picker {
     padding: var(--space-4);
     border-radius: var(--radii-md);
     box-shadow: var(--shadows-sm);
+}
+
+
+/* Style for the main content */
+.container {
+    width: 90%;
+    margin: auto;
+    padding-top: 20px;
+  }
+  
+  /* Style for forms */
+  form {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Added to include padding in width */
+  }
+  
+  input[type="submit"] {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #4cae4c;
+  }
+  
+  /* Style for tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .plans-container {
+    margin-bottom: 50px;
+}
+
+.plan {
+    margin-bottom: 20px;
 }

@@ -3,10 +3,14 @@ from models.user import User
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
-from extensions import db, bcrypt
+from extensions import db, bcrypt, login_manager
 
 
 auth_bp = Blueprint('auth', __name__)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 #######################################################################
@@ -89,7 +93,7 @@ def login():
             if user and user.check_password(password):
                 session['user_id'] = user.id
                 flash('Login successful!', 'success')
-                return redirect(url_for('main.index'))
+                return redirect(url_for('main.home'))
             else:
                 flash('Incorrect email or password', 'danger')
 

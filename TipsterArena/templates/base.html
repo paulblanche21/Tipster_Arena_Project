@@ -20,13 +20,15 @@
     
     <div class="nav-container">
         <nav class="main-nav">
-
             <ul>
-                <li><a href="{{ url_for('main.index') }}" class="nav-link">
+                <!-- Always show Home link -->
+                {% if current_user.is_authenticated %}
+
+                <li><a href="{{ url_for('main.home') }}" class="nav-link">
                     <span class="nav-icon"><i class="fas fa-home"></i></span>
                     <span class="nav-text">Home</span>
                 </a></li>
-                
+
                 <li class="dropdown">
                     <span class= "nav-item">
                         <span class="nav-icon"><i class="fas fa-futbol"></i></span>
@@ -98,8 +100,6 @@
                     </div>
                 </li>
                 
-                
-                
                 <li class="dropdown">
                     <a href="{{ url_for('sports.fixtures_results') }}" class="nav-link">
                         <span class="nav-icon"><i class="fas fa-flag-checkered"></i></span>
@@ -116,13 +116,24 @@
                         </a>
                     </div>
                 </li>
-            </ul>
+
         </nav>
         <nav class="right-nav">
             <ul>
+                <li><a href="{{ url_for('auth.logout') }}" class="login-btn"><span class = "nav-text">Logout</span></a></li>
+                {% else %}
+                <!-- Subscription Dropdown Menu -->
+                <li>
+                    <a href="{{ url_for('subscriptions.view_subscription_plans') }}" class="nav-link">
+                        <span class="nav-icon"><i class="fa-solid fa-image-portrait"></i></span>
+                        <span class="nav-text">Subscription Plans</span>
+                    </a>
+                </li>
+
                 <li><a href="#"><span class="nav-icon"><i class="fas fa-search"></i></span></a></li>
                 <li><a href="{{ url_for('auth.register') }}"><span class="nav-text">Join</span></a></li>
                 <li><a href="{{ url_for('auth.login') }}" class="login-btn"><span class="nav-text">Login</span></a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>
@@ -141,7 +152,9 @@
     {% elif sport == 'golf' %}
         <img src="{{ url_for('static', filename='images/golfarena.png') }}" alt="Golf Logo" class="logo-image" nonce="{{ g.nonce }}">
     {% else %}
-        <img src="{{ url_for('static', filename='images/ailogo.svg') }}" alt="Default Logo" class="logo-image" nonce="{{ g.nonce }}">
+        <a href="{{ url_for('main.index') }}">
+            <img src="{{ url_for('static', filename='images/ailogo.svg') }}" alt="Default Logo" class="logo-image" nonce="{{ g.nonce }}">
+        </a>
     {% endif %}
 </div>
 {% endif %}

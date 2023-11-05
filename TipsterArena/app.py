@@ -14,14 +14,14 @@ from logging.handlers import RotatingFileHandler
 from dotenv import load_dotenv
 
 from config import DevelopmentConfig, ProductionConfig
-from extensions import db, bcrypt, cors, csrf, migrate, socketio
+from extensions import db, bcrypt, cors, csrf, migrate, socketio, login_manager
 from auth import auth_bp
 from subscriptions import subscriptions_bp
 from chat import chat_bp
 from errors.handlers import handler
 from sports import sports_bp
 from main import main_bp
-
+from models.user import create_default_subscription_plans
 #######################################################################
 #                  INITISATION EXTENSIONS
 #######################################################################
@@ -50,7 +50,12 @@ def create_app(config_name=None):
     csrf.init_app(app)
     migrate.init_app(app, db)
     socketio.init_app(app, logger=True, engineio_logger=True)
+    login_manager.init_app(app)
     Talisman(app, content_security_policy=app.config['CSP'])
+
+    with app.app_context():
+        create_default_subscription_plans()
+        db.create_all()
 
     #   Register blueprints
     app.register_blueprint(main_bp)
@@ -81,6 +86,7 @@ def create_app(config_name=None):
             csp += "; style-src 'self' use.fontawesome.com maxcdn.bootstrapcdn.com 'nonce-{}'".format(g.nonce)
             response.headers['Content-Security-Policy'] = csp
         return response
+    
     # Setup logging based on configuration
     log_formatter = logging.Formatter('%(asctime)s [%(levelname)s]: %(message)s [in %(pathname)s:%(lineno)d]')
     log_file = 'app.log'
@@ -101,16 +107,10 @@ def create_app(config_name=None):
     return app
 
 
-app = create_app()
-
-
 if __name__ == '__main__':
+    app = create_app()
     app.run(host='0.0.0.0', port=5000, use_reloader=False, threaded=True, debug=True)
 
-    
-    
-    #with app.app_context():
-       # db.create_all()
 
     # Running the app based on environment
     #if app.config.get('FLASK_ENV') == "development":

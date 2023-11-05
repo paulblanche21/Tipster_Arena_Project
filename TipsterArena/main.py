@@ -9,9 +9,9 @@ from flask_login import current_user
 main_bp = Blueprint('main', __name__)
 
 
-@main_bp.route('/dashboard')
+@main_bp.route('/home')
 @login_required
-def dashboard():
+def home():
     """Display the user dashboard."""
     return 'Welcome, ' + current_user.username
 
@@ -20,7 +20,7 @@ def dashboard():
 def index():
     """Display the main homepage."""
     today = datetime.now().date()
-    return render_template('index.html', today=today, show_logo=False)
+    return render_template('index.html', today=today)
 
 
 @main_bp.route('/submit', methods=['POST'])

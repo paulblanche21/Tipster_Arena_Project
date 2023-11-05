@@ -16,8 +16,8 @@ def view_subscription_plans():
     return render_template('subscription_plans.html', plans=plans)
 
 
-@subscriptions_bp.route('/create-subscription-plan', methods=['GET', 'POST'])
-def create_subscription_plan():
+# @subscriptions_bp.route('/create-subscription-plan', methods=['GET', 'POST'])
+#def create_subscription_plan():
     if request.method == 'POST':
         name = request.form['name']
         price = request.form['price']
@@ -28,9 +28,10 @@ def create_subscription_plan():
         db.session.commit()
 
         flash('Subscription plan created successfully!', 'success')
-        return redirect(url_for('view_subscription_plans'))
+        return redirect(url_for('subscriptions.view_subscription_plans'))
 
     return render_template('create_subscription_plan.html')
+
 
 @subscriptions_bp.route('/subscribe/<int:plan_id>', methods=['GET', 'POST'])
 @login_required
@@ -50,5 +51,5 @@ def subscribe(plan_id):
         db.session.commit()
 
         flash('Subscribed successfully!', 'success')
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('main.home'))
     return render_template('subscribe.html', plan=plan)
