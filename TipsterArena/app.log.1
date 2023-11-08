@@ -1,0 +1,1173 @@
+2023-11-01 22:15:03,255 [ERROR]: An error occurred: Could not build url for endpoint 'sports.in-play'. Did you mean 'sports.in_play' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 117, in top-level template code
+    <a href="{{ url_for('sports.in-play') }}">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'sports.in-play'. Did you mean 'sports.in_play' instead?
+2023-11-01 22:16:39,299 [ERROR]: An error occurred: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 166, in top-level template code
+    <li><a href="{{ url_for('main.terms-of-service') }}">Terms of Service</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead?
+2023-11-01 22:16:49,565 [ERROR]: An error occurred: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 166, in top-level template code
+    <li><a href="{{ url_for('main.terms-of-service') }}">Terms of Service</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead?
+2023-11-01 22:17:10,683 [ERROR]: An error occurred: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 166, in top-level template code
+    <li><a href="{{ url_for('main.terms-of-service') }}">Terms of Service</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead?
+2023-11-01 22:34:00,680 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 167, in top-level template code
+    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
+2023-11-01 22:36:10,423 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:12]
+2023-11-01 22:43:18,435 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:12]
+2023-11-02 01:00:32,094 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:12]
+2023-11-02 01:25:46,083 [ERROR]: An error occurred: 400 Bad Request: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 261, in protect
+    validate_csrf(self._get_csrf_token())
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 103, in validate_csrf
+    raise ValidationError("The CSRF session token is missing.")
+wtforms.validators.ValidationError: The CSRF session token is missing.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 865, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1239, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 229, in csrf_protect
+    self.protect()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 264, in protect
+    self._error_response(e.args[0])
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 307, in _error_response
+    raise CSRFError(reason)
+flask_wtf.csrf.CSRFError: 400 Bad Request: The CSRF session token is missing.
+2023-11-02 20:13:20,962 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:12]
+2023-11-02 21:41:28,561 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/auth.py", line 68, in register
+    flash('Account created successfully! Please log in.', 'success')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/register.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
+    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
+2023-11-02 21:41:35,468 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/sports.py", line 18, in horse_racing
+    return render_template('horse_racing.html', sport='horseracing')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/horse_racing.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
+    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
+2023-11-02 21:43:20,327 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
+    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
+2023-11-02 21:43:21,052 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
+    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
+2023-11-02 21:43:25,641 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
+    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
+2023-11-02 22:22:35,304 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-03 23:06:49,724 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-03 23:07:05,394 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-04 01:51:11,031 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-04 02:01:21,239 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-04 02:03:59,653 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-04 02:04:45,636 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-04 16:57:00,797 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-04 17:01:16,443 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-04 21:02:00,801 [ERROR]: An error occurred: 'current_user' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, show_logo=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 30, in top-level template code
+    {% if current_user.is_authenticated %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'current_user' is undefined
+2023-11-04 21:15:39,423 [ERROR]: An error occurred: 'current_user' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, show_logo=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 30, in top-level template code
+    {% if current_user.is_authenticated %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'current_user' is undefined
+2023-11-05 00:19:20,260 [ERROR]: An error occurred: Could not build url for endpoint 'subscriptions.subscription_plans'. Did you mean 'subscriptions.view_subscription_plans' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 132, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscription_plans') }}">Subscription Plans</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'subscriptions.subscription_plans'. Did you mean 'subscriptions.view_subscription_plans' instead?
+2023-11-05 00:26:11,721 [ERROR]: An error occurred: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe') }}">Subscribe</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']?
+2023-11-05 00:34:38,642 [ERROR]: An error occurred: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe') }}">Subscribe</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']?
+2023-11-05 00:43:19,946 [ERROR]: An error occurred: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe') }}">Subscribe</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']?
+2023-11-05 01:27:07,643 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'plan' is undefined
+2023-11-05 01:40:37,893 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'plan' is undefined
+2023-11-05 21:04:15,440 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'plan' is undefined
+2023-11-05 21:04:18,106 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'plan' is undefined
+2023-11-05 21:23:17,027 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 138, in top-level template code
+    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'plan' is undefined
+2023-11-05 21:29:17,346 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 21:29:17,772 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-05 21:29:29,878 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 21:39:56,015 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 21:39:58,755 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 21:40:03,259 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 21:46:16,864 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 21:53:32,081 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 21:53:34,068 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2023-11-05 21:53:39,882 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-05 22:02:33,816 [ERROR]: An error occurred: 'form' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/subscriptions.py", line 16, in view_subscription_plans
+    return render_template('subscription_plans.html', plans=plans)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 161, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 11, in block 'content'
+    {{ form.csrf_token }}
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2023-11-05 22:02:40,646 [ERROR]: An error occurred: 'form' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/subscriptions.py", line 16, in view_subscription_plans
+    return render_template('subscription_plans.html', plans=plans)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 161, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 11, in block 'content'
+    {{ form.csrf_token }}
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2023-11-05 22:02:42,198 [ERROR]: An error occurred: 'form' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/subscriptions.py", line 16, in view_subscription_plans
+    return render_template('subscription_plans.html', plans=plans)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 161, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 11, in block 'content'
+    {{ form.csrf_token }}
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2023-11-05 22:06:40,369 [ERROR]: An error occurred: 'form' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/subscriptions.py", line 16, in view_subscription_plans
+    return render_template('subscription_plans.html', plans=plans)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 161, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 11, in block 'content'
+    {{ form.csrf_token() }}
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2023-11-05 22:20:36,310 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 22:22:07,052 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 22:26:23,277 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today, plan=plan)
+                                                           ^^^^
+NameError: name 'plan' is not defined
+2023-11-05 22:35:59,751 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+                                                      
+NameError: name 'plan' is not defined
+2023-11-05 22:36:20,340 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
+    return render_template('index.html', today=today)
+                                                      
+NameError: name 'plan' is not defined
+2023-11-07 20:01:46,082 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
+2023-11-07 22:28:06,880 [DEBUG]: CSRF Token submitted: IjljMGQxNWI2ZGVmMzQ2Y2I5NTg1ODE4NzYzMGM5NzBiNzBhNDIzZWYi.ZUq5uw.Rfz6ctIaMGNEaQhZTar_uDFD1fw [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:66]
+2023-11-07 22:28:23,439 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
+2023-11-07 22:40:22,281 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
+2023-11-07 22:40:34,072 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
+2023-11-07 22:46:13,898 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
+2023-11-07 22:46:25,741 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
+2023-11-07 22:46:46,732 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
+2023-11-07 22:47:33,546 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
+2023-11-07 23:00:23,195 [ERROR]: CSRF error occurred: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:31]
+2023-11-07 23:00:43,673 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2023-11-07 23:00:55,052 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2023-11-07 23:36:47,369 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2023-11-08 00:00:27,284 [ERROR]: CSRF error occurred: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:31]
+2023-11-08 00:02:00,264 [DEBUG]: CSRF Token submitted: ImU5NWI2ODM2YjA5YTE4OTFlNmM3NmMwNmQ3NjBkMDA2MDAwMTdiZDYi.ZUrP5A.gquN6ytpX_gDLOHTSDeTHW_ssQo [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:66]
+2023-11-08 00:02:00,273 [INFO]: New user committed to the database. [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:73]
+2023-11-08 00:05:25,965 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2023-11-08 00:12:11,195 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2023-11-08 00:13:19,424 [DEBUG]: CSRF Token submitted: ImU5NWI2ODM2YjA5YTE4OTFlNmM3NmMwNmQ3NjBkMDA2MDAwMTdiZDYi.ZUrSjw.U9FwmP85zcTYRJK1Vg34VOqwn04 [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:66]
+2023-11-08 00:13:19,439 [INFO]: New user committed to the database. [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:73]
+2023-11-08 00:13:31,009 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2023-11-08 00:28:48,523 [DEBUG]: CSRF Token submitted: ImViMWE3M2U3ZTYwODgzMDkyMzhlMGZjMGRjZDQxNmY0ZGY2YmU1ZDYi.ZUrWHw.5F_6qVJpNHp6PWeMMqyRPlqiICc [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:66]
+2023-11-08 00:28:48,525 [DEBUG]: Attempting to add user: jimmyfivebellys [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:70]
+2023-11-08 00:28:48,541 [INFO]: New user committed to the database. [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:77]
+2023-11-08 00:28:56,758 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.

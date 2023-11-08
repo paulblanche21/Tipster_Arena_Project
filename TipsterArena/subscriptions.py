@@ -18,19 +18,19 @@ def view_subscription_plans():
 
 # @subscriptions_bp.route('/create-subscription-plan', methods=['GET', 'POST'])
 #def create_subscription_plan():
-    if request.method == 'POST':
-        name = request.form['name']
-        price = request.form['price']
-        duration = request.form['duration']
+    #if request.method == 'POST':
+       # name = request.form['name']
+       # price = request.form['price']
+       # duration = request.form['duration']
 
-        new_plan = SubscriptionPlan(name=name, price=price, duration=duration)
-        db.session.add(new_plan)
-        db.session.commit()
+       # new_plan = SubscriptionPlan(name=name, price=price, duration=duration)
+       # db.session.add(new_plan)
+       # db.session.commit()
 
-        flash('Subscription plan created successfully!', 'success')
-        return redirect(url_for('subscriptions.view_subscription_plans'))
+        #flash('Subscription plan created successfully!', 'success')
+        #return redirect(url_for('subscriptions.view_subscription_plans'))
 
-    return render_template('create_subscription_plan.html')
+    #return render_template('create_subscription_plan.html')
 
 
 @subscriptions_bp.route('/subscribe/<int:plan_id>', methods=['GET', 'POST'])

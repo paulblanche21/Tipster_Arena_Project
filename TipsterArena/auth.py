@@ -4,9 +4,10 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 from extensions import db, bcrypt, login_manager
-
+from flask import current_app as app
 
 auth_bp = Blueprint('auth', __name__)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -14,7 +15,7 @@ def load_user(user_id):
 
 
 #######################################################################
-#                 LOGIN AND REGISSTRATION FORMS
+#                 LOGIN AND REGISTRATION FORMS
 #######################################################################
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -66,14 +67,19 @@ def register():
 
         # Add the new user to the database
         try:
-            # Add the new user to the database
+            app.logger.debug(f"Attempting to add user: {new_user.username}")
+           # Log before adding the user
+           
             db.session.add(new_user)
             db.session.commit()
+            
+            # Log after successful commit
+            app.logger.info('New user committed to the database.')
             flash('Account created successfully! Please log in.', 'success')
             return redirect(url_for('auth.login'))
         except Exception as e:
             db.session.rollback()
-            print(f"An error occurred: {e}")
+            app.logger.error('Failed to add new user to the database: %s', e)
             flash('An error occurred during registration. Please try again.', 'error')
             return redirect(url_for('auth.register'))
 
@@ -84,24 +90,29 @@ def register():
 def login():
     form = LoginForm()
 
-    try:
-        if form.validate_on_submit():
+    if form.validate_on_submit():
+        try:
             email = form.email.data
             password = form.password.data
             user = User.query.filter_by(email=email).first()
 
             if user and user.check_password(password):
-                session['user_id'] = user.id
+                session['user_id'] = user.user_id
                 flash('Login successful!', 'success')
                 return redirect(url_for('main.home'))
             else:
                 flash('Incorrect email or password', 'danger')
+        except Exception as e:
+            current_app.logger.error(f"An error occurred during login: {e}")
+            flash('An error occurred during login. Please try again.', 'error')
+            return render_template('login.html', show_logo=False, form=form), 500
+    else:
+        # If the form is submitted but not valid, log the errors
+        for fieldName, errorMessages in form.errors.items():
+            for err in errorMessages:
+                current_app.logger.error(f"Error in {fieldName}: {err}")
 
-        return render_template('login.html', show_logo=False, form=form)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        # you can also log the error if you have logging setup
-        return "An error occurred", 500  # or render an error template
+    return render_template('login.html', show_logo=False, form=form)
 
 
 @auth_bp.route('/logout')

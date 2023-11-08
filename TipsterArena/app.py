@@ -22,6 +22,8 @@ from errors.handlers import handler
 from sports import sports_bp
 from main import main_bp
 from models.user import create_default_subscription_plans
+
+
 #######################################################################
 #                  INITISATION EXTENSIONS
 #######################################################################

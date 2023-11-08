@@ -15,8 +15,8 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
-            "database": "${workspaceFolder:Tipster_Arena_Project}/TipsterArena/tipsterarena.db",
-            "name": "TipsterArena.db"
+            "name": "tipsterarena.db",
+            "database": "${workspaceFolder:Tipster_Arena_Project}/TipsterArena/tipsterarena.db"
         }
     ]
 }

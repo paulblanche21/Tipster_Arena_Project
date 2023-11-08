@@ -62,21 +62,20 @@ class UserSubscription(db.Model):
                            back_populates="user_subscriptions")
 
 
-
 def create_default_subscription_plans():
     # Check if plans already exist
     monthly_plan_exists = SubscriptionPlan.query.filter_by(name='Monthly').first() is not None
     annual_plan_exists = SubscriptionPlan.query.filter_by(name='Annual').first() is not None
-    
+
     # If not, create and add them to the database
     if not monthly_plan_exists:
         monthly_plan = SubscriptionPlan(name='Monthly', price=5.0, duration=30)
         db.session.add(monthly_plan)
-    
+
     if not annual_plan_exists:
         annual_plan = SubscriptionPlan(name='Annual', price=50.0, duration=365)
         db.session.add(annual_plan)
-    
+
     # Commit the changes if any new plans were added
     if not monthly_plan_exists or not annual_plan_exists:
         db.session.commit()

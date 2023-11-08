@@ -116,6 +116,9 @@
                         </a>
                     </div>
                 </li>
+                <li>
+                    <a href="#"><span class="nav-icon"><i class="fas fa-search"></i></span></a></li>
+                <li>
 
         </nav>
         <nav class="right-nav">
@@ -130,9 +133,18 @@
                     </a>
                 </li>
 
-                <li><a href="#"><span class="nav-icon"><i class="fas fa-search"></i></span></a></li>
-                <li><a href="{{ url_for('auth.register') }}"><span class="nav-text">Join</span></a></li>
-                <li><a href="{{ url_for('auth.login') }}" class="login-btn"><span class="nav-text">Login</span></a></li>
+                <li>
+                    <a href="{{ url_for('auth.register') }}" class="nav-link">
+                        <span class="nav-icon"><i class="fa-solid fa-user-plus"></i></span>
+                        <span class="nav-text">Join</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('auth.login') }}" class="nav-link">
+                        <span class="nav-icon"><i class="fa-solid fa-sign-in-alt"></i></span>
+                        <span class="nav-text">Login</span>
+                    </a>
+                </li>
                 {% endif %}
             </ul>
         </nav>

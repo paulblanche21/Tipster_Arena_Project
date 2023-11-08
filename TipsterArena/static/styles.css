@@ -18,6 +18,8 @@
     --colors-footer: var(--colors-primary);
     --fonts-heading: 'Montserrat', sans-serif;
     --fonts-paragraph: 'Montserrat', sans-serif;
+    --colors-highlight: hsl(0, 94%, 46%);
+    --radii-md: 4px;
 }
 
 /* ==============================
@@ -104,8 +106,6 @@ body {
 }
 
 
-
-
 .dynamic-weight {
     font-family: 'Montserrat';
     font-variation-settings: 'wght' 450; /* Adjust the weight as needed */
@@ -159,33 +159,19 @@ nav a, .nav-item{
     text-decoration: none;
 }
 
-nav a:hover, .nav-item:hover  {
+nav a:hover, .nav-item:hover, .login-btn:hover {
     font-weight: bold;
-    color: var(--colors-white); /* Keeps the text white on hover */
-    transform: scale(1.05); /* This will slightly increase the size */
-}
-.nav-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.nav-icon {
-    margin-bottom: 5px; /* Adjust as needed */
+    color: var(--colors-white); /* standardizing text color on hover */
+    transform: scale(1.05); /* standardizing transformation on hover */
+    background-color: var(--colors-highlight); /* standardizing background color on hover, replace with desired color variable */
 }
 
 
-
-
-.nav-link i {
-    margin-right: 5px; /* Adds some space between the icon and the text */
+.nav-icon i, .login-btn i, .nav-link i {
+    margin-right: 5px; /* Adjust as needed */
     vertical-align: middle; /* Aligns the icon with the text */
+    font-size: 1.2rem; 
 }
-
-
-
 
 
 .main-nav ul, .right-nav ul {
@@ -196,26 +182,36 @@ nav a:hover, .nav-item:hover  {
     padding: 0;
 }
 
-.nav-icon {
-    display: block;
-    text-align: center;
-}
 
-.nav-text {
+.nav-text, .nav-icon{
     display: block;
-    font-size: 0.8rem; /* Adjust as needed */
-    text-align: center;
-}
-
-.nav-icon i {
     font-size: 1.2rem; /* Adjust as needed */
+    text-align: center;
 }
+
 .nav-item {
     display: inline-block;
     padding: 10px; /* Adjust this value as needed */
     /* Add any other styles that were applied to the <a> tags */
 }
+.nav-link, .login-btn {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.2rem 0.5rem; 
+    font-size:1.2rem;
+    border-radius: var(--radii-md);
+    justify-content: center;
+    text-decoration: none;
+    transition: text-shadow 0.3s, transform 0.3s, background-color 0.3s ease;
+    cursor: pointer; /* Hand cursor on hover */
+}
 
+
+.login-container {
+    background-color: var(--colors-white);
+    color: var(--colors-primary);
+}
 
 
 /* ==============================
@@ -246,13 +242,6 @@ body .logo img {
     max-width: 300px; /* Big logo in centre of page. */
     height: auto;    /* This maintains the aspect ratio of the logo. */
 }
-
-
-
-
-
-
-
 
 
 /* ==============================
@@ -509,37 +498,6 @@ footer {
 }
 
 
-/* ==============================
-   LOGIN BUTTON STYLES
-   ============================== */
-
-
-.login-btn {
-    background-color: var(--colors-secondary); /* Using the secondary color variable which is set to red */
-    padding: 5px 10px; /* Add some padding for better appearance */
-    border-radius: 4px; /* Optional: Add some border-radius for rounded corners */
-    transition: background-color 0.3s ease; /* Added transition for smooth color change */
-    cursor: pointer; /* Hand cursor on hover */
-}
-
-
-/* Adjust the hover effect for the login button */
-.login-btn:hover {
-    color: var(--colors-white); /* Keeps the text white on hover */
-    background-color: #d60000; /* Change to primary color on hover for contrast */
-    font-weight: bold;
-}
-
-nav .right-nav a.login-btn:hover {
-    background-color: #d60000;
-    color: var(--colors-white);
-}
-
-.login-container {
-    background-color: var(--colors-white);
-    color: var(--colors-primary);
-}
-
 
 
 
@@ -586,7 +544,7 @@ nav .right-nav a.login-btn:hover {
 /* ==============================
   Chat Room Styling
    ============================== */
-   .chat-room {
+.chat-room {
     flex: 1; /* This allows the chat-room to take the most space */
     border: 1px solid #e0e0e0;
     padding: 20px;
