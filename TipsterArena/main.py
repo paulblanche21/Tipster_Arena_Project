@@ -1,6 +1,6 @@
 # main.py
 from datetime import datetime
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required
 from flask_login import current_user
 
@@ -8,18 +8,24 @@ from flask_login import current_user
 main_bp = Blueprint('main', __name__)
 
 
-@main_bp.route('/home')
-@login_required
-def home():
-    """Display the user dashboard."""
-    return 'Welcome, ' + current_user.username
-
-
 @main_bp.route('/')
 def index():
     """Display the main homepage."""
     today = datetime.now().date()
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
     return render_template('index.html', today=today)
+
+
+@main_bp.route('/home')
+@login_required
+def home():
+    """Display the user dashboard."""
+    return render_template('home.html', username=current_user.username)
+
+
+
 
 
 @main_bp.route('/submit', methods=['POST'])
