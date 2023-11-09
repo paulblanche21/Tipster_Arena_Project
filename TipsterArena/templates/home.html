@@ -2,56 +2,38 @@
 
 {% block content %}
 <main>
-    <h1>Welcome, {{ username }}</h1>
+    <h3>Welcome, {{ username }}</h3>
     <!-- New Sports Grid -->
     <div class="container sports-grid">
         <div class="row">
             <!-- Football -->
-            <div class="col-lg-6 mb-2 section" id="football-home">
-                
+            <div class="col-lg-6 mb-2">
+                <a href="{{ url_for('sports.football') }}" class="section" id="football-home">
+                    <!-- Content for football section goes here -->
+                </a>
             </div>
             <!-- Horse Racing -->
-            <div class="col-lg-6 mb-2 section" id="horse-racing-home">
-                
+            <div class="col-lg-6 mb-2">
+                <a href="{{ url_for('sports.horse_racing') }}" class="section" id="horse-racing-home">
+                    <!-- Content for horse racing section goes here -->
+                </a>
             </div>
         </div>
         <div class="row">
             <!-- Tennis -->
-            <div class="col-lg-6 mb-2 section" id="tennis-home">
-                
+            <div class="col-lg-6 mb-2">
+                <a href="{{ url_for('sports.tennis') }}" class="section" id="tennis-home">
+                    <!-- Content for tennis section goes here -->
+                </a>
             </div>
             <!-- Golf -->
-            <div class="col-lg-6 mb-2 section" id="golf-home">
-                
+            <div class="col-lg-6 mb-2">
+                <a href="{{ url_for('sports.golf') }}" class="section" id="golf-home">
+                    <!-- Content for golf section goes here -->
+                </a>
             </div>
         </div>
     </div>
-    <!-- New Sports Grid -->
-    <div class="container sports-grid">
-        <div class="row">
-            <!-- Football -->
-            <a href="{{ url_for('sports.football') }}" class="col-lg-6 mb-2 section" id="football-home">
-                <!-- Add Football section content here -->
-            </a>
-            
-            <!-- Horse Racing -->
-            <a href="{{ url_for('sports.horse_racing') }}" class="col-lg-6 mb-2 section" id="horse-racing-home">
-                <!-- Add Horse Racing section content here -->
-            </a>
-        </div>
-        <div class="row">
-            <!-- Tennis -->
-            <a href="{{ url_for('sports.tennis') }}" class="col-lg-6 mb-2 section" id="tennis-home">
-                <!-- Add Tennis section content here -->
-            </a>
-            
-            <!-- Golf -->
-            <a href="{{ url_for('sports.golf') }}" class="col-lg-6 mb-2 section" id="golf-home">
-                <!-- Add Golf section content here -->
-            </a>
-        </div>
-    </div>
-
     <!-- New Section Grid -->
     <!-- ... (rest of the content remains unchanged) ... -->
 </main>

@@ -330,11 +330,14 @@ button:hover {
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
+    
+
 }
 
 /* Change color on hover for dropdown links */
 .dropdown-content a:hover {
     color: red;
+    background-color: #f5f5f5;
 }
 
 .dropdown-arrow {
