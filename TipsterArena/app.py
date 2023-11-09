@@ -7,12 +7,11 @@ Main application setup and entry point.
 
 import base64
 import os
-from flask import Flask, g
-from flask_talisman import Talisman
 import logging
 from logging.handlers import RotatingFileHandler
+from flask import Flask, g
+from flask_talisman import Talisman
 from dotenv import load_dotenv
-
 from config import DevelopmentConfig, ProductionConfig
 from extensions import db, bcrypt, cors, csrf, migrate, socketio, login_manager
 from auth import auth_bp
@@ -55,10 +54,13 @@ def create_app(config_name=None):
     login_manager.init_app(app)
     Talisman(app, content_security_policy=app.config['CSP'])
 
+    
+    
+    
     with app.app_context():
-        create_default_subscription_plans()
         db.create_all()
-
+        create_default_subscription_plans()
+       
     #   Register blueprints
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
@@ -67,13 +69,14 @@ def create_app(config_name=None):
     app.register_blueprint(chat_bp)
     app.register_blueprint(sports_bp)
 
+    
     @app.before_request
     def before_request():
         """
         Generates a nonce for CSP before each request.
         """
         g.nonce = base64.b64encode(os.urandom(16)).decode('utf-8')
-        print(g.nonce)
+        app.logger.debug(f"Before request, nonce generated: {g.nonce}")
 
     @app.after_request
     def after_request(response):
@@ -82,11 +85,12 @@ def create_app(config_name=None):
         """
         if hasattr(g, 'nonce'):
             # Adjusting CSP to include the nonce
-            csp = response.headers.get('Content-Security-Policy')
-            if csp is None:
-                csp = ""
-            csp += "; style-src 'self' use.fontawesome.com maxcdn.bootstrapcdn.com 'nonce-{}'".format(g.nonce)
-            response.headers['Content-Security-Policy'] = csp
+            csp = response.headers.get('Content-Security-Policy', '')
+            csp_with_nonce = f"{csp} 'nonce-{g.nonce}'"
+            response.headers['Content-Security-Policy'] = csp_with_nonce
+            app.logger.debug(f"After request, CSP updated with nonce: {g.nonce}")
+        else:
+            app.logger.debug("After request, no nonce generated.")
         return response
     
     # Setup logging based on configuration

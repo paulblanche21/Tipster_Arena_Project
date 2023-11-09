@@ -1,8 +1,7 @@
 # main.py
-
+from datetime import datetime
 from flask import Blueprint, render_template
 from flask_login import login_required
-from datetime import datetime
 from flask_login import current_user
 
 # Define the blueprint

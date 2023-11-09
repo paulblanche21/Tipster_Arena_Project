@@ -1,8 +1,8 @@
 import os
 import secrets
-from dotenv import load_dotenv
 import sys
 import logging
+from dotenv import load_dotenv
 
 
 # Print Python version for debugging
@@ -52,10 +52,20 @@ class Config:
 
 
 class DevelopmentConfig(Config):
+    """
+    Configuration class for development environment.
+    """
     DEBUG = True
     LOG_LEVEL = logging.DEBUG
 
 
 class ProductionConfig(Config):
+    """
+    Configuration class for production environment.
+
+    Attributes:
+        DEBUG (bool): Set to False to disable debugging.
+        LOG_LEVEL (int): Set the logging level to WARNING to only show warnings and errors.
+    """
     DEBUG = False
     LOG_LEVEL = logging.WARNING  # Only warnings and errors in production

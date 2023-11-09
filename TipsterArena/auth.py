@@ -1,16 +1,28 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, session, current_app
-from models.user import User
+from flask import Blueprint, render_template, redirect, url_for, flash, session
+from flask import current_app as app
 from flask_wtf import FlaskForm
+from flask_login import login_user
+from sqlalchemy.exc import SQLAlchemyError
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 from extensions import db, bcrypt, login_manager
-from flask import current_app as app
+from models.user import User
+
 
 auth_bp = Blueprint('auth', __name__)
 
 
 @login_manager.user_loader
 def load_user(user_id):
+    """
+    Load a user from the database given a user ID.
+
+    Args:
+        user_id (int): The ID of the user to load.
+
+    Returns:
+        User: The User object corresponding to the given user ID, or None if no such user exists.
+    """
     return User.query.get(int(user_id))
 
 
@@ -23,6 +35,7 @@ class LoginForm(FlaskForm):
 
 
 class RegistrationForm(FlaskForm):
+   
     username = StringField(
         'Username',
         validators=[DataRequired(), Length(min=2, max=20)]
@@ -47,37 +60,26 @@ class RegistrationForm(FlaskForm):
         validators=[DataRequired()]
     )
 
-
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-
     if form.validate_on_submit():
-        # Check if user already exists
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             flash('An account with this email already exists.', 'warning')
             return redirect(url_for('auth.register'))
 
-        # Hash the password and create a new user
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        new_user = User(username=form.username.data, email=form.email.data, password=hashed_password)
-        # Log the CSRF token for debugging
-        current_app.logger.debug('CSRF Token submitted: %s', form.csrf_token.data)
+        new_user = User(username=form.username.data, email=form.email.data)
+        new_user.set_password(form.password.data) 
 
-        # Add the new user to the database
         try:
             app.logger.debug(f"Attempting to add user: {new_user.username}")
-           # Log before adding the user
-           
             db.session.add(new_user)
             db.session.commit()
-            
-            # Log after successful commit
             app.logger.info('New user committed to the database.')
             flash('Account created successfully! Please log in.', 'success')
             return redirect(url_for('auth.login'))
-        except Exception as e:
+        except SQLAlchemyError as e:
             db.session.rollback()
             app.logger.error('Failed to add new user to the database: %s', e)
             flash('An error occurred during registration. Please try again.', 'error')
@@ -89,29 +91,14 @@ def register():
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-
     if form.validate_on_submit():
-        try:
-            email = form.email.data
-            password = form.password.data
-            user = User.query.filter_by(email=email).first()
-
-            if user and user.check_password(password):
-                session['user_id'] = user.user_id
-                flash('Login successful!', 'success')
-                return redirect(url_for('main.home'))
-            else:
-                flash('Incorrect email or password', 'danger')
-        except Exception as e:
-            current_app.logger.error(f"An error occurred during login: {e}")
-            flash('An error occurred during login. Please try again.', 'error')
-            return render_template('login.html', show_logo=False, form=form), 500
-    else:
-        # If the form is submitted but not valid, log the errors
-        for fieldName, errorMessages in form.errors.items():
-            for err in errorMessages:
-                current_app.logger.error(f"Error in {fieldName}: {err}")
-
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user)  # This is the Flask-Login way to start a user session
+            flash('Login successful!', 'success')
+            return redirect(url_for('main.home'))
+        else:
+            flash('Incorrect email or password', 'danger')
     return render_template('login.html', show_logo=False, form=form)
 
 
