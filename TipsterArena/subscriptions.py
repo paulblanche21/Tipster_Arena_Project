@@ -1,17 +1,21 @@
-# subscriptions.py
-from flask import Blueprint, render_template, redirect, url_for, flash
-from flask_login import login_required
-from models.user import SubscriptionPlan
-from extensions import db
+# subscriptions.py is a blueprint that is registered in app.py.
 from datetime import datetime, timedelta
-from flask import request
-from flask_login import current_user
+from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask_login import current_user, login_required
+from extensions import db
+from models.user import SubscriptionPlan, UserSubscription
 
 subscriptions_bp = Blueprint('subscriptions', __name__)
 
 
 @subscriptions_bp.route('/subscription-plans', methods=['GET'])
 def view_subscription_plans():
+    """
+    View all available subscription plans.
+
+    Returns:
+        A rendered HTML template displaying all available subscription plans.
+    """
     plans = SubscriptionPlan.query.all()
     return render_template('subscription_plans.html', plans=plans)
 
@@ -36,7 +40,16 @@ def view_subscription_plans():
 @subscriptions_bp.route('/subscribe/<int:plan_id>', methods=['GET', 'POST'])
 @login_required
 def subscribe(plan_id):
-    from models.user import SubscriptionPlan, UserSubscription
+    """
+    Subscribes the current user to the specified subscription plan.
+
+    Args:
+        plan_id (int): The ID of the subscription plan to subscribe to.
+
+    Returns:
+        A redirect to the home page if the subscription is successful, otherwise
+        a rendered template for the subscription page with the specified plan.
+    """
     plan = SubscriptionPlan.query.get_or_404(plan_id)
 
     if request.method == 'POST':

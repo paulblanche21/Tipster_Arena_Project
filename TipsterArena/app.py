@@ -90,7 +90,7 @@ def create_app(config_name=None):
         else:
             app.logger.debug("After request, no nonce generated.")
         return response
-    
+
     # Setup logging based on configuration
     log_formatter = logging.Formatter('%(asctime)s [%(levelname)s]: %(message)s [in %(pathname)s:%(lineno)d]')
     log_file = 'app.log'
