@@ -54,13 +54,11 @@ def create_app(config_name=None):
     login_manager.init_app(app)
     Talisman(app, content_security_policy=app.config['CSP'])
 
-    
-    
-    
+    # Create database tables
     with app.app_context():
         db.create_all()
         create_default_subscription_plans()
-       
+
     #   Register blueprints
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
@@ -69,7 +67,7 @@ def create_app(config_name=None):
     app.register_blueprint(chat_bp)
     app.register_blueprint(sports_bp)
 
-    
+    #   Register before and after request functions
     @app.before_request
     def before_request():
         """
