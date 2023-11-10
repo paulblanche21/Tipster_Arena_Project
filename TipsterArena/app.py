@@ -15,12 +15,11 @@ from dotenv import load_dotenv
 from config import DevelopmentConfig, ProductionConfig
 from extensions import db, bcrypt, cors, csrf, migrate, socketio, login_manager
 from auth import auth_bp
-from subscriptions import subscriptions_bp
 from chat import chat_bp
 from errors.handlers import handler
 from sports import sports_bp
 from main import main_bp
-from models.user import create_default_subscription_plans
+
 
 
 #######################################################################
@@ -57,13 +56,11 @@ def create_app(config_name=None):
     # Create database tables
     with app.app_context():
         db.create_all()
-        create_default_subscription_plans()
 
     #   Register blueprints
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(handler)
-    app.register_blueprint(subscriptions_bp)
     app.register_blueprint(chat_bp)
     app.register_blueprint(sports_bp)
 
@@ -120,5 +117,5 @@ if __name__ == '__main__':
     #if app.config.get('FLASK_ENV') == "development":
         #socketio.run(app, host='0.0.0.0', port=5000, debug=True)
     #else:
-       # print("Running in production mode")
+        # print("Running in production mode")
         #socketio.run(app, host='0.0.0.0')

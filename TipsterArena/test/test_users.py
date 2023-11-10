@@ -1,7 +1,7 @@
 from flask import app
 import pytest
 from TipsterArena.extensions import db
-from TipsterArena.models.user import User, SubscriptionPlan, UserSubscription, Message, Room
+from TipsterArena.models.user import User, Message, Room
 
 @pytest.fixture
 def client():
@@ -28,33 +28,6 @@ def test_user_model(client):
     assert retrieved_user.username == "testuser"
     assert retrieved_user.check_password("password123")
     assert not retrieved_user.check_password("wrongpassword")
-
-def test_subscription_model(client):
-    plan = SubscriptionPlan(name="Basic", price=9.99, duration=30)
-    db.session.add(plan)
-    db.session.commit()
-
-    retrieved_plan = SubscriptionPlan.query.filter_by(name="Basic").first()
-    assert retrieved_plan is not None
-    assert retrieved_plan.price == 9.99
-
-def test_user_subscription_model(client):
-    user = User(username="testuser", email="testuser@example.com")
-    user.set_password("password123")
-    db.session.add(user)
-
-    plan = SubscriptionPlan(name="Basic", price=9.99, duration=30)
-    db.session.add(plan)
-    db.session.commit()
-
-    subscription = UserSubscription(user_id=user.user_id, plan_id=plan.plan_id, end_date=datetime.utcnow())
-    db.session.add(subscription)
-    db.session.commit()
-
-    retrieved_subscription = UserSubscription.query.first()
-    assert retrieved_subscription is not None
-    assert retrieved_subscription.user.username == "testuser"
-    assert retrieved_subscription.plan.name == "Basic"
 
 def test_message_and_room_model(client):
     room = Room(name="chatroom1", description="Test chat room")

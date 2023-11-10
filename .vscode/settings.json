@@ -18,5 +18,10 @@
             "name": "tipsterarena.db",
             "database": "${workspaceFolder:Tipster_Arena_Project}/TipsterArena/instance/tipsterarena.db"
         }
-    ]
+    ],
+    "python.autoComplete.extraPaths": [
+
+    ],
+    "python.analysis.extraPaths": []
 }
+

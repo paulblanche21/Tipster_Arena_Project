@@ -1,12 +1,14 @@
+
+from datetime import datetime, timedelta
 from flask import Blueprint, render_template, redirect, url_for, flash, session
 from flask import current_app as app
 from flask_wtf import FlaskForm
 from flask_login import login_user
 from sqlalchemy.exc import SQLAlchemyError
-from wtforms import StringField, PasswordField, BooleanField
-from wtforms.validators import DataRequired, Email, EqualTo, Length
-from extensions import db, bcrypt, login_manager
-from models.user import User
+from wtforms import StringField, PasswordField, BooleanField, RadioField
+from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Length
+from extensions import db, login_manager
+from models.user import User, SubscriptionType
 
 
 auth_bp = Blueprint('auth', __name__)
@@ -30,12 +32,25 @@ def load_user(user_id):
 #                 LOGIN AND REGISTRATION FORMS
 #######################################################################
 class LoginForm(FlaskForm):
+    """
+    A form that allows users to log in with their email and password.
+    """
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
 
 
 class RegistrationForm(FlaskForm):
-   
+    """
+    A form used for user registration.
+
+    Attributes:
+    - username (StringField): The username of the user.
+    - email (StringField): The email of the user.
+    - password (PasswordField): The password of the user.
+    - confirm_password (PasswordField): The confirmation password of the user.
+    - agree_to_terms (BooleanField): Whether the user agrees to the terms and conditions.
+    """
+
     username = StringField(
         'Username',
         validators=[DataRequired(), Length(min=2, max=20)]
@@ -60,6 +75,16 @@ class RegistrationForm(FlaskForm):
         validators=[DataRequired()]
     )
 
+     # Add the subscription plan options
+    subscription_plan = RadioField('Subscription Plan', choices=[
+        ('monthly', 'Monthly - €5'),
+        ('annual', 'Annual - €50')
+    ], default='monthly')  # Default to monthly plan
+
+
+
+
+
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -69,23 +94,33 @@ def register():
             flash('An account with this email already exists.', 'warning')
             return redirect(url_for('auth.register'))
 
-        new_user = User(username=form.username.data, email=form.email.data)
-        new_user.set_password(form.password.data) 
+        new_user = User(
+            username=form.username.data,
+            email=form.email.data
+        )
+        new_user.set_password(form.password.data)
+
+        # Set the subscription type based on the form data
+        chosen_plan = form.subscription_plan.data  # Assumes this field is in your form
+        new_user.subscription_type = SubscriptionType(chosen_plan)
+
+        # Calculate the subscription end date based on the chosen plan
+        if new_user.subscription_type == SubscriptionType.MONTHLY:
+            new_user.subscription_end_date = datetime.utcnow() + timedelta(days=30)
+        elif new_user.subscription_type == SubscriptionType.ANNUAL:
+            new_user.subscription_end_date = datetime.utcnow() + timedelta(days=365)
 
         try:
-            app.logger.debug(f"Attempting to add user: {new_user.username}")
             db.session.add(new_user)
             db.session.commit()
-            app.logger.info('New user committed to the database.')
             flash('Account created successfully! Please log in.', 'success')
             return redirect(url_for('auth.login'))
         except SQLAlchemyError as e:
             db.session.rollback()
-            app.logger.error('Failed to add new user to the database: %s', e)
             flash('An error occurred during registration. Please try again.', 'error')
-            return redirect(url_for('auth.register'))
 
-    return render_template('register.html', show_logo=False, form=form)
+    return render_template('register.html', form=form)
+
 
 
 @auth_bp.route('/login', methods=['GET', 'POST'])

@@ -125,18 +125,11 @@
             <ul>
                 <li><a href="{{ url_for('auth.logout') }}" class="login-btn"><span class = "nav-text">Logout</span></a></li>
                 {% else %}
-                <!-- Subscription Dropdown Menu -->
-                <li>
-                    <a href="{{ url_for('subscriptions.view_subscription_plans') }}" class="nav-link">
-                        <span class="nav-icon"><i class="fa-solid fa-image-portrait"></i></span>
-                        <span class="nav-text">Subscription Plans</span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="{{ url_for('auth.register') }}" class="nav-link">
                         <span class="nav-icon"><i class="fa-solid fa-user-plus"></i></span>
-                        <span class="nav-text">Join</span>
+                        <span class="nav-text">Subscribe</span>
                     </a>
                 </li>
                 <li>

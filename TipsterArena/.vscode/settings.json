@@ -1,9 +1,19 @@
 {
-    "python.pythonPath": "/Users/paul/Tipster-Arena/newenv/bin/python",
+    
+    "python.pythonPath": "/Users/paul/TipsterArena/newenv/bin/python",
     "files.trimTrailingWhitespace": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+       
+    },
+
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "path-to-black", // if Black is not in your PATH, specify the absolute path
 
 
-
-
-
+    "python.linting.pylintArgs": [
+        "--init-hook",
+        "import sys; sys.path.append('/Users/paul/Tipster_Arena_Project/TipsterArena')"
+    ]
 }
+

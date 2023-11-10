@@ -1,6 +1,7 @@
 import pytest
 from TipsterArena.app import app, db
-from TipsterArena.models.user import User, SubscriptionPlan
+from TipsterArena.models.user import User
+
 
 @pytest.fixture
 def client():
@@ -14,17 +15,20 @@ def client():
         with app.app_context():
             db.drop_all()
 
+
 def test_index(client):
     response = client.get('/')
     assert response.status_code == 200
     # replace 'Today is:' with some known text from your 'index.html'
     assert b"Today is:" in response.data
 
+
 def test_about(client):
     response = client.get('/about')
     assert response.status_code == 200
     # replace 'About TipsterArena' with some known text from your 'about.html'
     assert b"About TipsterArena" in response.data
+
 
 def test_register(client):
     response = client.get('/register')
@@ -45,6 +49,7 @@ def test_register(client):
     # Confirm user is added to database
     user = User.query.filter_by(email='test@example.com').first()
     assert user is not None
+
 
 def test_login(client):
     # Add a user first to test login

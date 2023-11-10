@@ -66,6 +66,16 @@
                     {% endif %}
                 </div>
 
+                <div class="form-group">
+                    {{ form.subscription_plan.label(class="form-label") }}
+                    {% for sub_plan in form.subscription_plan %}
+                        <div class="form-check">
+                            {{ sub_plan(class="form-check-input") }}
+                            {{ sub_plan.label(class="form-check-label") }}
+                        </div>
+                    {% endfor %}
+                </div>
+
                 <button type="submit" class="login-btn mb-4">Register</button>
             </form>
         </div>
