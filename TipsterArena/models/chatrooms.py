@@ -1,11 +1,11 @@
 from datetime import datetime
-import bleach
 import re
+import bleach
 from flask import session, request
 from flask_socketio import Namespace, send, join_room, leave_room
 from markupsafe import escape
-from TipsterArena.extensions import db, socketio
-from TipsterArena.models.user import Message
+from extensions import db, socketio
+from models.user import Message
 
 
 # CHATROOMS definition
@@ -21,6 +21,14 @@ CHATROOMS = [
 
 # ChatNamespace class definition
 class ChatNamespace(Namespace):
+    """
+    A namespace for handling chat-related events.
+
+    This namespace handles the following events:
+    - on_message: handles incoming chat messages
+    - on_join: handles a user joining the chat room
+    - on_leave: handles a user leaving the chat room
+    """
     def on_message(self, data):
         handle_message(data)
 

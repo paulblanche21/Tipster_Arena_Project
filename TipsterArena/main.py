@@ -15,7 +15,7 @@ def index():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
 
-    return render_template('index.html', today=today,logo=False)
+    return render_template('index.html', today=today, logo=False)
 
 
 @main_bp.route('/home')

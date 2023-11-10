@@ -4,7 +4,6 @@
 """
 Main application setup and entry point.
 """
-
 import base64
 import os
 import logging
@@ -12,15 +11,14 @@ from logging.handlers import RotatingFileHandler
 from flask import Flask, g
 from flask_talisman import Talisman
 from dotenv import load_dotenv
+
+from errors.handlers import handler
 from config import DevelopmentConfig, ProductionConfig
 from extensions import db, bcrypt, cors, csrf, migrate, socketio, login_manager
 from auth import auth_bp
 from chat import chat_bp
-from errors.handlers import handler
 from sports import sports_bp
 from main import main_bp
-
-
 
 #######################################################################
 #                  INITISATION EXTENSIONS

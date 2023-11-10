@@ -13,6 +13,9 @@ load_dotenv()
 
 
 class Config:
+    """
+    This class contains the configuration settings for the Flask application.
+    """
     # Other configurations
     SECRET_KEY = os.getenv('SECRET_KEY', secrets.token_hex(16))
     FLASK_ENV = os.getenv('FLASK_ENV', 'production')

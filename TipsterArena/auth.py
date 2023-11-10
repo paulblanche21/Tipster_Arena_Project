@@ -6,9 +6,9 @@ from flask_wtf import FlaskForm
 from flask_login import login_user
 from sqlalchemy.exc import SQLAlchemyError
 from wtforms import StringField, PasswordField, BooleanField, RadioField
-from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Length
-from extensions import db, login_manager
+from wtforms.validators import DataRequired, Email, EqualTo, Length
 from models.user import User, SubscriptionType
+from extensions import db, login_manager
 
 
 auth_bp = Blueprint('auth', __name__)
@@ -82,12 +82,14 @@ class RegistrationForm(FlaskForm):
     ], default='monthly')  # Default to monthly plan
 
 
-
-
-
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
+    """
+    Renders the registration form and handles form submission. If the form is submitted successfully, a new user is
+    created and added to the database. The user's subscription type and end date are set based on the chosen plan.
+    """
     form = RegistrationForm()
+
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
@@ -99,9 +101,8 @@ def register():
             email=form.email.data
         )
         new_user.set_password(form.password.data)
-
         # Set the subscription type based on the form data
-        chosen_plan = form.subscription_plan.data  # Assumes this field is in your form
+        chosen_plan = form.subscription_plan.data
         new_user.subscription_type = SubscriptionType(chosen_plan)
 
         # Calculate the subscription end date based on the chosen plan
@@ -117,24 +118,34 @@ def register():
             return redirect(url_for('auth.login'))
         except SQLAlchemyError as e:
             db.session.rollback()
+            app.logger.error(f'Failed to add new user to the database: {e}')
             flash('An error occurred during registration. Please try again.', 'error')
 
     return render_template('register.html', form=form)
 
 
-
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    Logs in a user if the submitted form is valid and the email and password match a user in the database.
+
+    Returns:
+        If login is successful, redirects to the home page with a success message.
+        If login fails, renders the login page with an error message.
+    """
     form = LoginForm()
+
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+
         if user and user.check_password(form.password.data):
-            login_user(user)  # This is the Flask-Login way to start a user session
+            login_user(user)
             flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:
             flash('Incorrect email or password', 'danger')
-    return render_template('login.html', show_logo=False, form=form)
+
+        return render_template('login.html', show_logo=False, form=form)
 
 
 @auth_bp.route('/logout')
