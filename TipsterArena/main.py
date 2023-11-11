@@ -25,9 +25,6 @@ def home():
     return render_template('home.html', username=current_user.username)
 
 
-
-
-
 @main_bp.route('/submit', methods=['POST'])
 def submit_form():
     """Handle form submissions."""

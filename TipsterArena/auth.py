@@ -103,7 +103,10 @@ def register():
         new_user.set_password(form.password.data)
         # Set the subscription type based on the form data
         chosen_plan = form.subscription_plan.data
-        new_user.subscription_type = SubscriptionType(chosen_plan)
+        if chosen_plan == 'monthly':
+            new_user.subscription_type = SubscriptionType.MONTHLY
+        elif chosen_plan == 'annual':
+            new_user.subscription_type = SubscriptionType.ANNUAL
 
         # Calculate the subscription end date based on the chosen plan
         if new_user.subscription_type == SubscriptionType.MONTHLY:
@@ -137,16 +140,14 @@ def login():
 
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-
         if user and user.check_password(form.password.data):
             login_user(user)
             flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:
             flash('Incorrect email or password', 'danger')
-
-        return render_template('login.html', show_logo=False, form=form)
-
+            return render_template('login.html', show_logo=False, form=form)
+    return render_template('login.html', show_logo=False, form=form)
 
 @auth_bp.route('/logout')
 def logout():
