@@ -1,4 +1,6 @@
 
+
+
 from datetime import datetime, timedelta
 from flask import Blueprint, render_template, redirect, url_for, flash, session
 from flask import current_app as app
@@ -23,7 +25,8 @@ def load_user(user_id):
         user_id (int): The ID of the user to load.
 
     Returns:
-        User: The User object corresponding to the given user ID, or None if no such user exists.
+        User: The User object corresponding to the given user ID,
+        or None if no such user exists.
     """
     return User.query.get(int(user_id))
 
@@ -48,7 +51,8 @@ class RegistrationForm(FlaskForm):
     - email (StringField): The email of the user.
     - password (PasswordField): The password of the user.
     - confirm_password (PasswordField): The confirmation password of the user.
-    - agree_to_terms (BooleanField): Whether the user agrees to the terms and conditions.
+    - agree_to_terms (BooleanField): Whether the user
+    - agrees to the terms and conditions.
     """
 
     username = StringField(
@@ -75,7 +79,7 @@ class RegistrationForm(FlaskForm):
         validators=[DataRequired()]
     )
 
-     # Add the subscription plan options
+    # Add the subscription plan options
     subscription_plan = RadioField('Subscription Plan', choices=[
         ('monthly', 'Monthly - €5'),
         ('annual', 'Annual - €50')
@@ -85,8 +89,11 @@ class RegistrationForm(FlaskForm):
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     """
-    Renders the registration form and handles form submission. If the form is submitted successfully, a new user is
-    created and added to the database. The user's subscription type and end date are set based on the chosen plan.
+    Renders the registration form and handles form submission. If the form is
+    submitted successfully, a new user is
+    created and added to the database.
+    The user's subscription type and
+    end date are set based on the chosen plan.
     """
     form = RegistrationForm()
 
@@ -122,7 +129,8 @@ def register():
         except SQLAlchemyError as e:
             db.session.rollback()
             app.logger.error(f'Failed to add new user to the database: {e}')
-            flash('An error occurred during registration. Please try again.', 'error')
+            flash('An error occurred during registration. Please try again.',
+                  'error')
 
     return render_template('register.html', form=form)
 
@@ -130,10 +138,12 @@ def register():
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     """
-    Logs in a user if the submitted form is valid and the email and password match a user in the database.
+    Logs in a user if the submitted form is valid and the email and password
+    match a user in the database.
 
     Returns:
-        If login is successful, redirects to the home page with a success message.
+        If login is successful, redirects to the home page with a success
+        message.
         If login fails, renders the login page with an error message.
     """
     form = LoginForm()
@@ -149,8 +159,13 @@ def login():
             return render_template('login.html', show_logo=False, form=form)
     return render_template('login.html', show_logo=False, form=form)
 
+
 @auth_bp.route('/logout')
 def logout():
+    """
+    Logs out the current user by removing their user_id from the session
+    and redirecting to the index page.
+    """
     session.pop('user_id', None)
     flash('You have been logged out.', 'success')
     return redirect(url_for('main.index'))

@@ -1,9 +1,19 @@
+"""
+This module defines a Flask-SocketIO chat application with multiple chat rooms.
+It defines a ChatNamespace class that handles incoming chat messages,
+user joining and leaving the chat room.
+It also defines a save_message function that saves a message to the database.
+The module registers the namespaces and defines the handle_message, on_join,
+and on_leave functions that handle chat messages, user joining and leaving
+the chat room respectively.
+"""
 from datetime import datetime
 import re
 import bleach
 from flask import session, request
 from flask_socketio import Namespace, send, join_room, leave_room
 from markupsafe import escape
+from sqlalchemy.exc import SQLAlchemyError
 from extensions import db, socketio
 from models.user import Message
 
@@ -30,12 +40,29 @@ class ChatNamespace(Namespace):
     - on_leave: handles a user leaving the chat room
     """
     def on_message(self, data):
+        """
+        Handle incoming message data.
+
+        Args:
+            data: The message data to be handled.
+        """
         handle_message(data)
 
     def on_join(self, data):
+        """
+        This method is called when a user joins a chatroom.
+        It takes in the data of the user who joined and performs necessary
+        actions.
+        """
         on_join(data)
 
     def on_leave(self, data):
+        """
+        Method called when a user leaves the chatroom.
+
+        Args:
+            data: The data associated with the user leaving the chatroom.
+        """
         on_leave(data)
 
 
@@ -43,18 +70,28 @@ class ChatNamespace(Namespace):
 for chatroom in CHATROOMS:
     socketio.on_namespace(ChatNamespace('/' + chatroom))
 
-
 MAX_MESSAGE_LENGTH = 515
 
 
 def save_message(username, msg, room):
+    """
+    Saves a message to the database.
+
+    Args:
+        username (str): The username of the message sender.
+        msg (str): The message content.
+        room (str): The name of the chat room.
+
+    Returns:
+        bool: True if the message was successfully saved, False otherwise.
+    """
     message_instance = Message(username=username, message=msg,
                                timestamp=datetime.now(), room=room)
 
     try:
         db.session.add(message_instance)
         db.session.commit()
-    except Exception as e:
+    except SQLAlchemyError as e:
         print(f"An error occurred while saving the message: {e}")
         db.session.rollback()
         return False
@@ -63,6 +100,15 @@ def save_message(username, msg, room):
 
 @socketio.on('message')
 def handle_message(data):
+    """
+    Handles a chat message sent by a user.
+
+    Args:
+        data (dict): A dictionary containing the message and room data.
+
+    Returns:
+        None
+    """
     room_namespace = request.namespace
 
     msg = data['msg']
@@ -92,6 +138,15 @@ def handle_message(data):
 
 @socketio.on('join')
 def on_join(data):
+    """
+    Called when a user joins a chatroom.
+
+    Args:
+        data (dict): A dictionary containing the username and room information.
+
+    Returns:
+        None
+    """
     username = data['username']
     room = data['room']
     room_namespace = request.namespace
@@ -106,6 +161,16 @@ def on_join(data):
 
 @socketio.on('leave')
 def on_leave(data):
+    """
+    Called when a user leaves a chatroom.
+
+    Args:
+        data (dict): A dictionary containing the username and room of the user
+        leaving.
+
+    Returns:
+        None
+    """
     username = data['username']
     room = data['room']
     room_namespace = request.namespace

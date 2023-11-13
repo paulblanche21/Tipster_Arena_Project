@@ -1,10 +1,11 @@
+"""
+    This class contains the configuration settings for the Flask application.
+"""
 import os
 import secrets
 import sys
 import logging
 from dotenv import load_dotenv
-
-
 
 # Print Python version for debugging
 print(sys.version)
@@ -59,6 +60,10 @@ class DevelopmentConfig(Config):
     """
     Configuration class for development environment.
     """
+
+    # SSL context setup
+    SSL_CERT_PATH = os.getenv('SSL_CERT_PATH')
+    SSL_KEY_PATH = os.getenv('SSL_KEY_PATH')
     DEBUG = True
     LOG_LEVEL = logging.DEBUG
 
@@ -69,7 +74,12 @@ class ProductionConfig(Config):
 
     Attributes:
         DEBUG (bool): Set to False to disable debugging.
-        LOG_LEVEL (int): Set the logging level to WARNING to only show warnings and errors.
+        LOG_LEVEL (int): Set the logging level to WARNING
+        to only show warnings and errors.
     """
+
+    # SSL context setup
+    SSL_CERT_PATH = os.getenv('SSL_CERT_PATH')
+    SSL_KEY_PATH = os.getenv('SSL_KEY_PATH')
     DEBUG = False
     LOG_LEVEL = logging.WARNING  # Only warnings and errors in production
