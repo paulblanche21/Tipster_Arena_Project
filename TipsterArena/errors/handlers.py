@@ -68,3 +68,18 @@ def handle_csrf_error(e):
     """
     current_app.logger.error('CSRF error occurred: %s', e.description)
     return render_template('csrf_error.html', reason=e.description), 400
+
+
+@handler.app_errorhandler(401)
+def unauthorized_error(e):
+    """
+    Handle 401 unauthorized errors.
+
+    Args:
+        e: The error that occurred.
+
+    Returns:
+        A tuple containing the rendered template and the HTTP status code 401.
+    """
+    current_app.logger.warning('Unauthorized access attempt: %s', e)
+    return render_template('401.html'), 401

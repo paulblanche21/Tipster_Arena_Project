@@ -153,3 +153,7 @@ if __name__ == '__main__':
     else:
         print("Running in production mode")
         socketio.run(app, host='0.0.0.0', port=5000)
+
+# Outside of the if __name__ == '__main__' block
+app = create_app()
+

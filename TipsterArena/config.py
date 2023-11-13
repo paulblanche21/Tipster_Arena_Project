@@ -65,7 +65,8 @@ class DevelopmentConfig(Config):
     SSL_CERT_PATH = os.getenv('SSL_CERT_PATH')
     SSL_KEY_PATH = os.getenv('SSL_KEY_PATH')
     DEBUG = True
-    LOG_LEVEL = logging.DEBUG
+    LOG_LEVEL = logging.DEBUG  # Debugging in development
+    SESSION_COOKIE_SECURE = False 
 
 
 class ProductionConfig(Config):
@@ -83,3 +84,4 @@ class ProductionConfig(Config):
     SSL_KEY_PATH = os.getenv('SSL_KEY_PATH')
     DEBUG = False
     LOG_LEVEL = logging.WARNING  # Only warnings and errors in production
+    SESSION_COOKIE_SECURE = True
