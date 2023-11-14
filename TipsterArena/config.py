@@ -2,7 +2,6 @@
     This class contains the configuration settings for the Flask application.
 """
 import os
-import secrets
 import sys
 import logging
 from dotenv import load_dotenv
@@ -19,7 +18,7 @@ class Config:
     This class contains the configuration settings for the Flask application.
     """
     # Other configurations
-    SECRET_KEY = os.getenv('SECRET_KEY', secrets.token_hex(16))
+    SECRET_KEY = os.getenv('SECRET_KEY')
     FLASK_ENV = os.getenv('FLASK_ENV', 'production')
     LOG_LEVEL = logging.ERROR  # Default log level
 

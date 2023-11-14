@@ -9,6 +9,7 @@ the chat room respectively.
 """
 from datetime import datetime
 import re
+import logging
 import bleach
 from flask import session, request
 from flask_socketio import Namespace, send, join_room, leave_room
@@ -17,16 +18,17 @@ from sqlalchemy.exc import SQLAlchemyError
 from extensions import db, socketio
 from models.user import Message
 
-
 # CHATROOMS definition
 
 
 CHATROOMS = [
-    'football-chat',
-    'golf-chat',
-    'tennis-chat',
-    'horse-racing-chat'
+    '/football-chat',
+    '/golf-chat',
+    '/tennis-chat',
+    '/horse-racing-chat'
 ]
+
+logger = logging.getLogger(__name__)
 
 
 # ChatNamespace class definition
@@ -46,7 +48,17 @@ class ChatNamespace(Namespace):
         Args:
             data: The message data to be handled.
         """
-        handle_message(data)
+        room_namespace = request.namespace
+        if room_namespace not in CHATROOMS:
+            logger.error("Invalid namespace: %s", room_namespace)
+            return
+  
+        try:
+            handle_message(data)
+        except Exception as e:
+            logger.error("Error in on_message: %s", e)
+            # You might want to send an error message back to the client
+            send({'error': 'An unexpected error occurred'})
 
     def on_join(self, data):
         """
@@ -54,7 +66,16 @@ class ChatNamespace(Namespace):
         It takes in the data of the user who joined and performs necessary
         actions.
         """
-        on_join(data)
+        room_namespace = request.namespace
+        if room_namespace not in CHATROOMS:
+            logger.error("Invalid namespace: %s", room_namespace)
+            return
+    
+        try:
+            on_join(data)
+        except Exception as e:
+            logger.error(f"Error in on_join: {e}")
+            # Handling for sending error to client, if necessary
 
     def on_leave(self, data):
         """
@@ -63,7 +84,16 @@ class ChatNamespace(Namespace):
         Args:
             data: The data associated with the user leaving the chatroom.
         """
-        on_leave(data)
+        room_namespace = request.namespace
+        if room_namespace not in CHATROOMS:
+            logger.error("Invalid namespace: %s", room_namespace)
+            return
+        
+        try:
+            on_leave(data)
+        except Exception as e:
+            logger.error(f"Error in on_leave: {e}")
+            # Handling for sending error to client, if necessary
 
 
 # Registering the namespaces
@@ -92,7 +122,8 @@ def save_message(username, msg, room):
         db.session.add(message_instance)
         db.session.commit()
     except SQLAlchemyError as e:
-        print(f"An error occurred while saving the message: {e}")
+        # Log the detailed error
+        logger.error("Error saving message: %s, Data: {'username': %s, 'message': %s, 'room': %s}", e, username, msg, room)
         db.session.rollback()
         return False
     return True

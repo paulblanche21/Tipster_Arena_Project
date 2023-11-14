@@ -14,8 +14,21 @@ function createChatSocket(namespace) {
         console.error('Connection Error:', error);
     });
 
+    socket.on('join_error', function(error) {
+        console.error('Error joining room:', error);
+        errorMessageElement.textContent = 'Error joining room: ' + error;
+    });
+
+    socket.on('error', function(error) {
+        console.error('Socket error:', error);
+        errorMessageElement.textContent = 'An error occurred: ' + error;
+    });
+
     socket.on('disconnect', function(reason) {
-        console.log('Disconnected:', reason);
+        if (reason === 'io server disconnect') {
+            // The server forced a disconnect
+            errorMessageElement.textContent = 'Disconnected by the server';
+        }
     });
 
     socket.on('message', function(data) {
@@ -41,8 +54,14 @@ function createChatSocket(namespace) {
             }
 
             errorMessageElement.textContent = '';  
-            socket.emit('message', {msg: message, room: namespace}, function(confirmation) {
-                console.log('Message sent:', message, '| Confirmation:', confirmation);
+            socket.emit('message', {msg: message, room: namespace}, function(response) {
+                if (response.error) {
+                    errorMessageElement.textContent = response.error;
+                    console.error('Error sending message:', response.error);
+                } else {
+                    console.log('Message sent:', message);
+                }
+            
             });
         }   
     };
@@ -51,10 +70,10 @@ function createChatSocket(namespace) {
 
 
 // Create chat sockets for each namespace
-var footballChat = createChatSocket('football-chat');
-var golfChat = createChatSocket('golf-chat');
-var tennisChat = createChatSocket('tennis-chat');
-var horseRacingChat = createChatSocket('horse-racing-chat');
+createChatSocket('football-chat');
+createChatSocket('golf-chat');
+createChatSocket('tennis-chat');
+createChatSocket('horse-racing-chat');
 
 
 // Add the emoji picker code
