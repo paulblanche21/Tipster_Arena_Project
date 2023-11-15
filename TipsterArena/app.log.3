@@ -1,421 +1,111 @@
-2023-11-01 22:15:03,255 [ERROR]: An error occurred: Could not build url for endpoint 'sports.in-play'. Did you mean 'sports.in_play' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
+2023-11-10 23:27:35,438 [ERROR]: An error occurred: (sqlite3.OperationalError) no such column: users.subscription_type
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.email AS users_email, users.password AS users_password, users.subscription_status AS users_subscription_status, users.subscription_type AS users_subscription_type, users.subscription_end_date AS users_subscription_end_date, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('liamblanche21@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:53]
 Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 117, in top-level template code
-    <a href="{{ url_for('sports.in-play') }}">
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'sports.in-play'. Did you mean 'sports.in_play' instead?
-2023-11-01 22:16:39,299 [ERROR]: An error occurred: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 166, in top-level template code
-    <li><a href="{{ url_for('main.terms-of-service') }}">Terms of Service</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead?
-2023-11-01 22:16:49,565 [ERROR]: An error occurred: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 166, in top-level template code
-    <li><a href="{{ url_for('main.terms-of-service') }}">Terms of Service</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead?
-2023-11-01 22:17:10,683 [ERROR]: An error occurred: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 166, in top-level template code
-    <li><a href="{{ url_for('main.terms-of-service') }}">Terms of Service</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.terms-of-service'. Did you mean 'main.terms_of_service' instead?
-2023-11-01 22:34:00,680 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 167, in top-level template code
-    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
-2023-11-01 22:36:10,423 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:12]
-2023-11-01 22:43:18,435 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:12]
-2023-11-02 01:00:32,094 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:12]
-2023-11-02 01:25:46,083 [ERROR]: An error occurred: 400 Bad Request: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 261, in protect
-    validate_csrf(self._get_csrf_token())
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 103, in validate_csrf
-    raise ValidationError("The CSRF session token is missing.")
-wtforms.validators.ValidationError: The CSRF session token is missing.
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: users.subscription_type
 
-During handling of the above exception, another exception occurred:
+The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 865, in full_dispatch_request
-    rv = self.preprocess_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1239, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 229, in csrf_protect
-    self.protect()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 264, in protect
-    self._error_response(e.args[0])
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_wtf/csrf.py", line 307, in _error_response
-    raise CSRFError(reason)
-flask_wtf.csrf.CSRFError: 400 Bad Request: The CSRF session token is missing.
-2023-11-02 20:13:20,962 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:12]
-2023-11-02 21:41:28,561 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
-Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/auth.py", line 68, in register
-    flash('Account created successfully! Please log in.', 'success')
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/register.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
-    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
-2023-11-02 21:41:35,468 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:24]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/sports.py", line 18, in horse_racing
-    return render_template('horse_racing.html', sport='horseracing')
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/horse_racing.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
-    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
-2023-11-02 21:43:20,327 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
-    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
-2023-11-02 21:43:21,052 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
-    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
-2023-11-02 21:43:25,641 [ERROR]: An error occurred: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 168, in top-level template code
-    <li><a href="{{ url_for('main.privacy-policy') }}">Privacy Policy</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.privacy-policy'. Did you mean 'main.privacy_policy' instead?
-2023-11-02 22:22:35,304 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-03 23:06:49,724 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-03 23:07:05,394 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-04 01:51:11,031 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-04 02:01:21,239 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-04 02:03:59,653 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-04 02:04:45,636 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-04 16:57:00,797 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-04 17:01:16,443 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-04 21:02:00,801 [ERROR]: An error occurred: 'current_user' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, show_logo=False)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 30, in top-level template code
-    {% if current_user.is_authenticated %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/auth.py", line 94, in register
+    user = User.query.filter_by(email=form.email.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
            ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'current_user' is undefined
-2023-11-04 21:15:39,423 [ERROR]: An error occurred: 'current_user' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.subscription_type
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.email AS users_email, users.password AS users_password, users.subscription_status AS users_subscription_status, users.subscription_type AS users_subscription_type, users.subscription_end_date AS users_subscription_end_date, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('liamblanche21@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2023-11-10 23:27:35,447 [DEBUG]: After request, CSP updated with nonce: uVDW4N2koUMoQliV/vZNuA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-10 23:27:35,511 [DEBUG]: Before request, nonce generated: G84giJPn0ZKvyzzs4V+AbQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-10 23:27:35,514 [DEBUG]: Before request, nonce generated: 9loiKDtL2Y5ZmgLIIzAfUA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-10 23:27:35,517 [DEBUG]: After request, CSP updated with nonce: G84giJPn0ZKvyzzs4V+AbQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-10 23:27:35,519 [DEBUG]: After request, CSP updated with nonce: 9loiKDtL2Y5ZmgLIIzAfUA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-10 23:27:44,460 [DEBUG]: Before request, nonce generated: tR/mVA3Pr+aNoX067vleCg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-10 23:27:44,472 [DEBUG]: After request, CSP updated with nonce: tR/mVA3Pr+aNoX067vleCg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-10 23:27:44,522 [DEBUG]: Before request, nonce generated: t4dc3cxFHD9nW9ZTwa2SQw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-10 23:27:44,524 [DEBUG]: After request, CSP updated with nonce: t4dc3cxFHD9nW9ZTwa2SQw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-10 23:27:53,206 [DEBUG]: Before request, nonce generated: VoEE9xW5YMrCcB4xch8Gnw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-10 23:27:53,211 [DEBUG]: After request, CSP updated with nonce: VoEE9xW5YMrCcB4xch8Gnw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-10 23:27:53,269 [DEBUG]: Before request, nonce generated: wmSy1ZA1eC9iYyMtZWynbw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-10 23:27:53,270 [DEBUG]: After request, CSP updated with nonce: wmSy1ZA1eC9iYyMtZWynbw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-10 23:27:53,274 [DEBUG]: Before request, nonce generated: 7fEnwms0OEjKujkE6cUekA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-10 23:27:53,275 [DEBUG]: After request, CSP updated with nonce: 7fEnwms0OEjKujkE6cUekA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:26:12,067 [DEBUG]: Before request, nonce generated: fEBb7RsIVV6Av7PqIkUR7w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:26:12,163 [DEBUG]: After request, CSP updated with nonce: fEBb7RsIVV6Av7PqIkUR7w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:26:12,330 [DEBUG]: Before request, nonce generated: WbrQX3eCU0ZH2Hv/hhRtrw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:26:12,339 [DEBUG]: After request, CSP updated with nonce: WbrQX3eCU0ZH2Hv/hhRtrw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:26:12,353 [DEBUG]: Before request, nonce generated: qHJ5VtNUK66bO5obb4it8g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:26:12,354 [DEBUG]: After request, CSP updated with nonce: qHJ5VtNUK66bO5obb4it8g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:26:12,595 [DEBUG]: Before request, nonce generated: 3/Lq1nnJB51hMDjIGohu9w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:26:12,596 [DEBUG]: After request, CSP updated with nonce: 3/Lq1nnJB51hMDjIGohu9w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:26:53,144 [DEBUG]: Before request, nonce generated: AFjr3pq0WAMl3X14b9zKOw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:26:53,182 [ERROR]: An error occurred: (sqlite3.OperationalError) no such column: users.subscription_end_date
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.email AS users_email, users.password AS users_password, users.subscription_status AS users_subscription_status, users.subscription_type AS users_subscription_type, users.subscription_end_date AS users_subscription_end_date, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('liamblanche21@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:53]
+Traceback (most recent call last):
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: users.subscription_end_date
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
     rv = self.dispatch_request()
@@ -423,29 +113,86 @@ Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, show_logo=False)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 30, in top-level template code
-    {% if current_user.is_authenticated %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/auth.py", line 94, in register
+    user = User.query.filter_by(email=form.email.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
            ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'current_user' is undefined
-2023-11-05 00:19:20,260 [ERROR]: An error occurred: Could not build url for endpoint 'subscriptions.subscription_plans'. Did you mean 'subscriptions.view_subscription_plans' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.subscription_end_date
+[SQL: SELECT users.user_id AS users_user_id, users.username AS users_username, users.email AS users_email, users.password AS users_password, users.subscription_status AS users_subscription_status, users.subscription_type AS users_subscription_type, users.subscription_end_date AS users_subscription_end_date, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('liamblanche21@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2023-11-11 00:26:53,210 [DEBUG]: After request, CSP updated with nonce: AFjr3pq0WAMl3X14b9zKOw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:26:53,284 [DEBUG]: Before request, nonce generated: 0gp0Mo+JY9esF+ch2gQ7oA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:26:53,286 [DEBUG]: After request, CSP updated with nonce: 0gp0Mo+JY9esF+ch2gQ7oA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:26:53,296 [DEBUG]: Before request, nonce generated: 0LfjpOWcRBFHFrVmx3Lumg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:26:53,297 [DEBUG]: After request, CSP updated with nonce: 0LfjpOWcRBFHFrVmx3Lumg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:26:53,343 [DEBUG]: Before request, nonce generated: 2rOw2ijOmK3BtjrwKxUy9g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:26:53,344 [DEBUG]: After request, CSP updated with nonce: 2rOw2ijOmK3BtjrwKxUy9g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,001 [DEBUG]: Before request, nonce generated: Tf0uTz4F7Qpm596n5PAd3A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,125 [DEBUG]: After request, CSP updated with nonce: Tf0uTz4F7Qpm596n5PAd3A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,182 [DEBUG]: Before request, nonce generated: JCECCXbfwHukByNXIVvJWg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,191 [DEBUG]: After request, CSP updated with nonce: JCECCXbfwHukByNXIVvJWg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,411 [DEBUG]: Before request, nonce generated: yulk9ZaKHfGFKlNn3iCImA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,412 [DEBUG]: After request, CSP updated with nonce: yulk9ZaKHfGFKlNn3iCImA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,703 [DEBUG]: Before request, nonce generated: N7dgZslcTzat5XB8B1SEdA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,705 [DEBUG]: Before request, nonce generated: FCM3T3UAOqlLnA48sCoZxg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,708 [DEBUG]: Before request, nonce generated: Z6FTptftV4D/li++zBMJKw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,709 [DEBUG]: After request, CSP updated with nonce: N7dgZslcTzat5XB8B1SEdA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,710 [DEBUG]: After request, CSP updated with nonce: FCM3T3UAOqlLnA48sCoZxg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,713 [DEBUG]: After request, CSP updated with nonce: Z6FTptftV4D/li++zBMJKw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,740 [DEBUG]: Before request, nonce generated: M91xcNTLTApsP/Bw4q0c0A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,742 [DEBUG]: After request, CSP updated with nonce: M91xcNTLTApsP/Bw4q0c0A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,750 [DEBUG]: Before request, nonce generated: YZ+48KPTeJ3Fyk1aXZxaZQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,752 [DEBUG]: After request, CSP updated with nonce: YZ+48KPTeJ3Fyk1aXZxaZQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 00:55:14,766 [DEBUG]: Before request, nonce generated: gFqA/ky9bhtQWHd42jLPGw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 00:55:14,767 [DEBUG]: After request, CSP updated with nonce: gFqA/ky9bhtQWHd42jLPGw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:11:09,230 [DEBUG]: Before request, nonce generated: qUXaNuBHdnQWOdhcnc271A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:11:09,284 [DEBUG]: After request, CSP updated with nonce: qUXaNuBHdnQWOdhcnc271A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:11:09,344 [DEBUG]: Before request, nonce generated: DpefxHBMXstoM3RbJ7XwlA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:11:09,349 [DEBUG]: Before request, nonce generated: fupsYn3JDCiokQoBsbl/Lw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:11:09,354 [DEBUG]: After request, CSP updated with nonce: DpefxHBMXstoM3RbJ7XwlA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:11:09,361 [DEBUG]: After request, CSP updated with nonce: fupsYn3JDCiokQoBsbl/Lw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:11:09,466 [DEBUG]: Before request, nonce generated: A5o+FHvpiTmQY/hedjrZLg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:11:09,467 [DEBUG]: After request, CSP updated with nonce: A5o+FHvpiTmQY/hedjrZLg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:12:39,932 [DEBUG]: Before request, nonce generated: eVMXeKvSj81UB9hl+WoodA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:12:40,298 [ERROR]: An error occurred: 'monthly' is not a valid SubscriptionType [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:53]
 Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
     rv = self.dispatch_request()
@@ -453,374 +200,247 @@ Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 132, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscription_plans') }}">Subscription Plans</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'subscriptions.subscription_plans'. Did you mean 'subscriptions.view_subscription_plans' instead?
-2023-11-05 00:26:11,721 [ERROR]: An error occurred: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe') }}">Subscribe</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']?
-2023-11-05 00:34:38,642 [ERROR]: An error occurred: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe') }}">Subscribe</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']?
-2023-11-05 00:43:19,946 [ERROR]: An error occurred: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe') }}">Subscribe</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'subscriptions.subscribe'. Did you forget to specify values ['plan_id']?
-2023-11-05 01:27:07,643 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/auth.py", line 106, in register
+    new_user.subscription_type = SubscriptionType(chosen_plan)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 712, in __call__
+    return cls.__new__(cls, value)
            ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'plan' is undefined
-2023-11-05 01:40:37,893 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'plan' is undefined
-2023-11-05 21:04:15,440 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'plan' is undefined
-2023-11-05 21:04:18,106 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 133, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'plan' is undefined
-2023-11-05 21:23:17,027 [ERROR]: An error occurred: 'plan' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 138, in top-level template code
-    <a class="dropdown-item" href="{{ url_for('subscriptions.subscribe',plan_id=plan.plan_id) }}">Subscribe</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'plan' is undefined
-2023-11-05 21:29:17,346 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 21:29:17,772 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-05 21:29:29,878 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 21:39:56,015 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 21:39:58,755 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 21:40:03,259 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 21:46:16,864 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 21:53:32,081 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 21:53:34,068 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+  File "/usr/local/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/enum.py", line 1128, in __new__
+    raise ve_exc
+ValueError: 'monthly' is not a valid SubscriptionType
+2023-11-11 01:12:40,309 [DEBUG]: After request, CSP updated with nonce: eVMXeKvSj81UB9hl+WoodA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:12:40,366 [DEBUG]: Before request, nonce generated: EkBD4CqCSPciSfjL/rj4YA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:12:40,368 [DEBUG]: After request, CSP updated with nonce: EkBD4CqCSPciSfjL/rj4YA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:12:40,372 [DEBUG]: Before request, nonce generated: xVK5p6Kw38GHORGSGGlAPA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:12:40,373 [DEBUG]: After request, CSP updated with nonce: xVK5p6Kw38GHORGSGGlAPA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:30:40,958 [DEBUG]: Before request, nonce generated: 3ojq3cCQUQ2/EOgHSOCU+g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:30:41,006 [DEBUG]: After request, CSP updated with nonce: 3ojq3cCQUQ2/EOgHSOCU+g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:30:41,071 [DEBUG]: Before request, nonce generated: MnVekmL+BRgn1vK3/d6x6g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:30:41,087 [DEBUG]: After request, CSP updated with nonce: MnVekmL+BRgn1vK3/d6x6g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:30:41,090 [DEBUG]: Before request, nonce generated: E7dqAyyzHGaYzXccHtRxwQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:30:41,091 [DEBUG]: After request, CSP updated with nonce: E7dqAyyzHGaYzXccHtRxwQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:30:41,206 [DEBUG]: Before request, nonce generated: VamHxFKe2cHFAGAn7kF8dw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:30:41,207 [DEBUG]: After request, CSP updated with nonce: VamHxFKe2cHFAGAn7kF8dw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:07,815 [DEBUG]: Before request, nonce generated: rcmOhwUuv6fjPhO2bDjJfg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:08,147 [DEBUG]: After request, CSP updated with nonce: rcmOhwUuv6fjPhO2bDjJfg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:08,155 [DEBUG]: Before request, nonce generated: Y6xcV2dYA6T6h+X1hG7qVw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:08,164 [DEBUG]: After request, CSP updated with nonce: Y6xcV2dYA6T6h+X1hG7qVw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:08,230 [DEBUG]: Before request, nonce generated: Yss/vSdRS+eZXCwoJCPV/A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:08,231 [DEBUG]: After request, CSP updated with nonce: Yss/vSdRS+eZXCwoJCPV/A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:11,733 [DEBUG]: Before request, nonce generated: iJ4jJzINbGY1Wnvy54IxLw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:12,115 [DEBUG]: After request, CSP updated with nonce: iJ4jJzINbGY1Wnvy54IxLw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:12,124 [DEBUG]: Before request, nonce generated: XWjwcl0WdIPrf8C3waoPtA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:12,134 [DEBUG]: After request, CSP updated with nonce: XWjwcl0WdIPrf8C3waoPtA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:12,187 [DEBUG]: Before request, nonce generated: tBONB04BnTu0JLEr8TndZQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:12,187 [DEBUG]: After request, CSP updated with nonce: tBONB04BnTu0JLEr8TndZQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:12,195 [DEBUG]: Before request, nonce generated: re2frAA+weichMWv3Lhhhw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:12,196 [DEBUG]: After request, CSP updated with nonce: re2frAA+weichMWv3Lhhhw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:12,234 [DEBUG]: Before request, nonce generated: SuW7zL+VBz5DUmsIK+hjjw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:12,235 [DEBUG]: After request, CSP updated with nonce: SuW7zL+VBz5DUmsIK+hjjw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:12,238 [DEBUG]: Before request, nonce generated: pYkN/gLzFDnkJVkLvOBFqw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:12,240 [DEBUG]: After request, CSP updated with nonce: pYkN/gLzFDnkJVkLvOBFqw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:12,244 [DEBUG]: Before request, nonce generated: m92SWZa9eP/2BfopIwyvTA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:12,251 [DEBUG]: Before request, nonce generated: 9k+47BOW789Twwn7cgPvtA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-11 01:31:12,253 [DEBUG]: After request, CSP updated with nonce: 9k+47BOW789Twwn7cgPvtA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-11 01:31:12,255 [DEBUG]: After request, CSP updated with nonce: m92SWZa9eP/2BfopIwyvTA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:27,746 [DEBUG]: Before request, nonce generated: APSU8sKXsEOP4D1bk1l7SA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:28,120 [DEBUG]: After request, CSP updated with nonce: APSU8sKXsEOP4D1bk1l7SA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:28,506 [DEBUG]: Before request, nonce generated: eOBKbmr1pM+F5fGZl1t3Qg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:28,549 [DEBUG]: After request, CSP updated with nonce: eOBKbmr1pM+F5fGZl1t3Qg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:29,127 [DEBUG]: Before request, nonce generated: xhNHrfGqtXKzePWAUL2v8g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:29,131 [DEBUG]: After request, CSP updated with nonce: xhNHrfGqtXKzePWAUL2v8g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:29,516 [DEBUG]: Before request, nonce generated: FtiUUOUBi/Cm8SX8p3AiQQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:29,522 [DEBUG]: Before request, nonce generated: xGKgtDrGpJ/gghJwgjK6vg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:29,529 [DEBUG]: Before request, nonce generated: jK4HWkq1PL2jJ3aR/pN66g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:29,535 [DEBUG]: After request, CSP updated with nonce: xGKgtDrGpJ/gghJwgjK6vg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:29,540 [DEBUG]: After request, CSP updated with nonce: FtiUUOUBi/Cm8SX8p3AiQQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:29,547 [DEBUG]: After request, CSP updated with nonce: jK4HWkq1PL2jJ3aR/pN66g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:29,739 [DEBUG]: Before request, nonce generated: qM3y4Wfgu+thrOx/qf8J7w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:29,745 [DEBUG]: After request, CSP updated with nonce: qM3y4Wfgu+thrOx/qf8J7w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:29,804 [DEBUG]: Before request, nonce generated: S88beoIOYsHd9pRST8ltGQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:29,807 [DEBUG]: After request, CSP updated with nonce: S88beoIOYsHd9pRST8ltGQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:29,880 [DEBUG]: Before request, nonce generated: uqTawDOt/42YEDO9L5qY5w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:29,883 [DEBUG]: After request, CSP updated with nonce: uqTawDOt/42YEDO9L5qY5w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:32,420 [DEBUG]: Before request, nonce generated: bQGiNKjQf+kVnyxDsHT9Bg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:32,427 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:22]
+2023-11-12 19:55:32,464 [DEBUG]: After request, CSP updated with nonce: bQGiNKjQf+kVnyxDsHT9Bg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:46,472 [DEBUG]: Before request, nonce generated: ERCga1HfM7aHynLU4J6pQw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:46,754 [DEBUG]: After request, CSP updated with nonce: ERCga1HfM7aHynLU4J6pQw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:46,998 [DEBUG]: Before request, nonce generated: 74k8z5W14y3f10vHlY5iKA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:47,004 [DEBUG]: After request, CSP updated with nonce: 74k8z5W14y3f10vHlY5iKA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:55:47,078 [DEBUG]: Before request, nonce generated: hr/fcTd4JV+4O6luYsujhw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:55:47,085 [DEBUG]: After request, CSP updated with nonce: hr/fcTd4JV+4O6luYsujhw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:53,287 [DEBUG]: Before request, nonce generated: VyI9uIS08sWGEBCnoA8lsA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:53,712 [DEBUG]: After request, CSP updated with nonce: VyI9uIS08sWGEBCnoA8lsA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:53,721 [DEBUG]: Before request, nonce generated: bT0+LDRdFIh5aK41ImP9Pw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:53,733 [DEBUG]: After request, CSP updated with nonce: bT0+LDRdFIh5aK41ImP9Pw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:53,795 [DEBUG]: Before request, nonce generated: +aHe+6Rw90RDqNVM5ZGjJg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:53,797 [DEBUG]: After request, CSP updated with nonce: +aHe+6Rw90RDqNVM5ZGjJg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:57,043 [DEBUG]: Before request, nonce generated: ds6R6SIDLqc5PHvprMOy/A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:57,401 [DEBUG]: After request, CSP updated with nonce: ds6R6SIDLqc5PHvprMOy/A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:57,421 [DEBUG]: Before request, nonce generated: A4CeacTAOA4/yDxYlJWwow== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:57,432 [DEBUG]: After request, CSP updated with nonce: A4CeacTAOA4/yDxYlJWwow== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:57,491 [DEBUG]: Before request, nonce generated: b1Q5tECryeK7Xaf/dv7enA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:57,492 [DEBUG]: After request, CSP updated with nonce: b1Q5tECryeK7Xaf/dv7enA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:57,495 [DEBUG]: Before request, nonce generated: RMKNjjmmzIdILpeHM3CsDQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:57,497 [DEBUG]: After request, CSP updated with nonce: RMKNjjmmzIdILpeHM3CsDQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:57,526 [DEBUG]: Before request, nonce generated: wzs5UoOCLE6z6jAZAyZ1rA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:57,533 [DEBUG]: After request, CSP updated with nonce: wzs5UoOCLE6z6jAZAyZ1rA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:57,528 [DEBUG]: Before request, nonce generated: r+nBEnTeFsmQ6duEq6Tahw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:57,532 [DEBUG]: Before request, nonce generated: l+hAPLaTvwu/8hVbkiifxQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:57,537 [DEBUG]: Before request, nonce generated: dhOnaYo6W5E1Cgy3aSOdFg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:56:57,539 [DEBUG]: After request, CSP updated with nonce: r+nBEnTeFsmQ6duEq6Tahw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:57,540 [DEBUG]: After request, CSP updated with nonce: l+hAPLaTvwu/8hVbkiifxQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:56:57,542 [DEBUG]: After request, CSP updated with nonce: dhOnaYo6W5E1Cgy3aSOdFg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:03,216 [DEBUG]: Before request, nonce generated: lo3dITmEZTLltyWApuc/Og== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:03,225 [DEBUG]: After request, CSP updated with nonce: lo3dITmEZTLltyWApuc/Og== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:03,273 [DEBUG]: Before request, nonce generated: q2pe13FvLkahtXPrErJ4ww== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:03,275 [DEBUG]: After request, CSP updated with nonce: q2pe13FvLkahtXPrErJ4ww== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:03,286 [DEBUG]: Before request, nonce generated: EqyQgIpWR8NjlDE0UHXk5A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:03,288 [DEBUG]: After request, CSP updated with nonce: EqyQgIpWR8NjlDE0UHXk5A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:03,388 [DEBUG]: Before request, nonce generated: ErjLcTyC4dqgbWzUa+CDew== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:03,389 [DEBUG]: After request, CSP updated with nonce: ErjLcTyC4dqgbWzUa+CDew== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:03,394 [DEBUG]: Before request, nonce generated: dd085mnGyMtKqU0LiduFew== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:03,398 [DEBUG]: After request, CSP updated with nonce: dd085mnGyMtKqU0LiduFew== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:03,506 [DEBUG]: Before request, nonce generated: RxAog/YmozXpWmmdgp4FJw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:03,508 [DEBUG]: After request, CSP updated with nonce: RxAog/YmozXpWmmdgp4FJw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:03,539 [DEBUG]: Before request, nonce generated: 4xG8btGwwqIJMvrsb6OZKw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:03,542 [DEBUG]: After request, CSP updated with nonce: 4xG8btGwwqIJMvrsb6OZKw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:04,756 [DEBUG]: Before request, nonce generated: k9h1o6oUjHekt6Y/CcAWrA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:04,765 [DEBUG]: After request, CSP updated with nonce: k9h1o6oUjHekt6Y/CcAWrA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:04,816 [DEBUG]: Before request, nonce generated: 9qc0DLpSSep0EMbgJBIspA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:04,818 [DEBUG]: After request, CSP updated with nonce: 9qc0DLpSSep0EMbgJBIspA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:04,824 [DEBUG]: Before request, nonce generated: 6tASF8UmBAMN9c22kd0Oww== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:04,828 [DEBUG]: After request, CSP updated with nonce: 6tASF8UmBAMN9c22kd0Oww== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:04,944 [DEBUG]: Before request, nonce generated: o+IayoedfPDRey7sHF15fg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:04,945 [DEBUG]: After request, CSP updated with nonce: o+IayoedfPDRey7sHF15fg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:04,952 [DEBUG]: Before request, nonce generated: vuEGISq8Zh/w1XKGgaD4Vg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:04,955 [DEBUG]: After request, CSP updated with nonce: vuEGISq8Zh/w1XKGgaD4Vg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:04,965 [DEBUG]: Before request, nonce generated: PdtHiizV5RVEkXpPa1ZNIg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:04,972 [DEBUG]: After request, CSP updated with nonce: PdtHiizV5RVEkXpPa1ZNIg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:04,969 [DEBUG]: Before request, nonce generated: ndG/XsGrOt9NUelDjhTOnQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:04,977 [DEBUG]: After request, CSP updated with nonce: ndG/XsGrOt9NUelDjhTOnQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:06,343 [DEBUG]: Before request, nonce generated: EoHiTlD5cQtmpiNpbySlOw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:06,356 [DEBUG]: After request, CSP updated with nonce: EoHiTlD5cQtmpiNpbySlOw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:06,410 [DEBUG]: Before request, nonce generated: TxSLA8uSQ3FBvaMDFa13uw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:06,412 [DEBUG]: Before request, nonce generated: 941neDiqbq+IV5CM7i7o4Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:06,413 [DEBUG]: After request, CSP updated with nonce: TxSLA8uSQ3FBvaMDFa13uw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:06,415 [DEBUG]: After request, CSP updated with nonce: 941neDiqbq+IV5CM7i7o4Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:06,656 [DEBUG]: Before request, nonce generated: zGmDTDmsi10IYUanFoCWkQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:06,657 [DEBUG]: Before request, nonce generated: XS3aPnbOpSwLQv2t9z+J8A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:06,659 [DEBUG]: Before request, nonce generated: MGSvVjxZWNB0U0nxN8YJKQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:06,659 [DEBUG]: Before request, nonce generated: Fo+KKO7c+reHRYejm/cjGQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:06,661 [DEBUG]: After request, CSP updated with nonce: zGmDTDmsi10IYUanFoCWkQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:06,663 [DEBUG]: After request, CSP updated with nonce: MGSvVjxZWNB0U0nxN8YJKQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:06,664 [DEBUG]: After request, CSP updated with nonce: XS3aPnbOpSwLQv2t9z+J8A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:06,665 [DEBUG]: After request, CSP updated with nonce: Fo+KKO7c+reHRYejm/cjGQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:08,264 [DEBUG]: Before request, nonce generated: kMMTb30hRCXCCdFPdvzSwA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:08,278 [DEBUG]: After request, CSP updated with nonce: kMMTb30hRCXCCdFPdvzSwA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:08,328 [DEBUG]: Before request, nonce generated: NQ90YoBOgitaFz/D1r549w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:08,331 [DEBUG]: After request, CSP updated with nonce: NQ90YoBOgitaFz/D1r549w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:08,342 [DEBUG]: Before request, nonce generated: vUMWsWCqAwnJl2hyDa5zsA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:08,343 [DEBUG]: After request, CSP updated with nonce: vUMWsWCqAwnJl2hyDa5zsA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:08,460 [DEBUG]: Before request, nonce generated: zudjkTO5qVwP8qC3T0wldA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:08,462 [DEBUG]: After request, CSP updated with nonce: zudjkTO5qVwP8qC3T0wldA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:08,470 [DEBUG]: Before request, nonce generated: z6uOyXzGQ0lNgWWEy2MVog== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:08,472 [DEBUG]: After request, CSP updated with nonce: z6uOyXzGQ0lNgWWEy2MVog== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:08,491 [DEBUG]: Before request, nonce generated: edL8pG7s7NqDgihPuAZ+IQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:08,493 [DEBUG]: After request, CSP updated with nonce: edL8pG7s7NqDgihPuAZ+IQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:08,501 [DEBUG]: Before request, nonce generated: 5EqjvQpJTphQihP5AE5hlg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:08,512 [DEBUG]: After request, CSP updated with nonce: 5EqjvQpJTphQihP5AE5hlg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:10,296 [DEBUG]: Before request, nonce generated: tGYbioigFORxHcRcWqmB5A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:10,344 [DEBUG]: After request, CSP updated with nonce: tGYbioigFORxHcRcWqmB5A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:10,409 [DEBUG]: Before request, nonce generated: XoNMqt8lVoWYqArUShB8tg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:10,411 [DEBUG]: Before request, nonce generated: oyGH1B9fsKz5QpV+EfrjKg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:10,413 [DEBUG]: After request, CSP updated with nonce: XoNMqt8lVoWYqArUShB8tg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:10,414 [DEBUG]: After request, CSP updated with nonce: oyGH1B9fsKz5QpV+EfrjKg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:11,853 [DEBUG]: Before request, nonce generated: Ro58QOM/SClhaU2WE0IWNw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:11,862 [DEBUG]: After request, CSP updated with nonce: Ro58QOM/SClhaU2WE0IWNw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:11,923 [DEBUG]: Before request, nonce generated: KE2jUAEpxgrhWN4hlCwDiA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:11,928 [DEBUG]: Before request, nonce generated: Iv0pXxySxoKnM+UxuDr5Wg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:11,931 [DEBUG]: After request, CSP updated with nonce: Iv0pXxySxoKnM+UxuDr5Wg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:11,934 [DEBUG]: After request, CSP updated with nonce: KE2jUAEpxgrhWN4hlCwDiA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:15,029 [DEBUG]: Before request, nonce generated: YcpFBW6Pm7juOVJGu5XOQg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:15,044 [DEBUG]: After request, CSP updated with nonce: YcpFBW6Pm7juOVJGu5XOQg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:15,121 [DEBUG]: Before request, nonce generated: Iw/ikNYOs2B0haGFYbryEw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:15,124 [DEBUG]: After request, CSP updated with nonce: Iw/ikNYOs2B0haGFYbryEw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:15,137 [DEBUG]: Before request, nonce generated: UKRRu7Xuv/bKpntOhPgP9Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:15,139 [DEBUG]: After request, CSP updated with nonce: UKRRu7Xuv/bKpntOhPgP9Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 19:57:15,151 [DEBUG]: Before request, nonce generated: dLDojBufMH9uV5xgt9FyXQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:72]
+2023-11-12 19:57:15,153 [DEBUG]: After request, CSP updated with nonce: dLDojBufMH9uV5xgt9FyXQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:84]
+2023-11-12 22:33:23,547 [DEBUG]: After request, no nonce generated. [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:100]
+2023-11-13 22:25:24,459 [DEBUG]: Before request, nonce generated: yLOyKGp5m9a/3RHOyjv2ng== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:24,549 [DEBUG]: After request, CSP updated with nonce: yLOyKGp5m9a/3RHOyjv2ng== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,038 [DEBUG]: Before request, nonce generated: UhSIMMG4QgpxiDZP4Uf6EA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,058 [DEBUG]: After request, CSP updated with nonce: UhSIMMG4QgpxiDZP4Uf6EA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,154 [DEBUG]: Before request, nonce generated: WdOCVFN3jHUa3snSIXlDnw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,158 [DEBUG]: After request, CSP updated with nonce: WdOCVFN3jHUa3snSIXlDnw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,284 [DEBUG]: Before request, nonce generated: PY7o+mglCxYNdq6vtkOfhw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,286 [DEBUG]: Before request, nonce generated: 5IAScmfMCr6FNEba02oAOA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,289 [DEBUG]: After request, CSP updated with nonce: 5IAScmfMCr6FNEba02oAOA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,291 [DEBUG]: After request, CSP updated with nonce: PY7o+mglCxYNdq6vtkOfhw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,303 [DEBUG]: Before request, nonce generated: pumTIcRr0d0+HVg7tmd4zw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,307 [DEBUG]: After request, CSP updated with nonce: pumTIcRr0d0+HVg7tmd4zw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,342 [DEBUG]: Before request, nonce generated: 78uxC556H/O30JUFgDREAw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,345 [DEBUG]: After request, CSP updated with nonce: 78uxC556H/O30JUFgDREAw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,368 [DEBUG]: Before request, nonce generated: mDRaUloTqegg/CKpL0UiUA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,372 [DEBUG]: After request, CSP updated with nonce: mDRaUloTqegg/CKpL0UiUA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,387 [DEBUG]: Before request, nonce generated: jJoLzK5HlUoWLXtOaMLJsQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,389 [DEBUG]: After request, CSP updated with nonce: jJoLzK5HlUoWLXtOaMLJsQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:25,934 [DEBUG]: Before request, nonce generated: EezOcaDDbx/HRI179yAGJA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:25,937 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:22]
+2023-11-13 22:25:25,959 [DEBUG]: After request, CSP updated with nonce: EezOcaDDbx/HRI179yAGJA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:34,766 [DEBUG]: Before request, nonce generated: g18OT38BosCqcd2ArOy7kA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:34,823 [DEBUG]: After request, CSP updated with nonce: g18OT38BosCqcd2ArOy7kA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:34,887 [DEBUG]: Before request, nonce generated: wziaXfcUmU5natMe7TfYZw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:34,890 [DEBUG]: Before request, nonce generated: vjcvEvz3lsjZHMCQPlpt8A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:34,891 [DEBUG]: After request, CSP updated with nonce: wziaXfcUmU5natMe7TfYZw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:34,901 [DEBUG]: After request, CSP updated with nonce: vjcvEvz3lsjZHMCQPlpt8A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:38,375 [DEBUG]: Before request, nonce generated: P8Zhsh7bk8C4svHVjDVqSA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:38,417 [DEBUG]: After request, CSP updated with nonce: P8Zhsh7bk8C4svHVjDVqSA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:38,478 [DEBUG]: Before request, nonce generated: WUxz6RzO63bUaQQud8Y1lQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:38,485 [DEBUG]: After request, CSP updated with nonce: WUxz6RzO63bUaQQud8Y1lQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:39,828 [ERROR]: CSRF error occurred: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:69]
+2023-11-13 22:25:39,834 [DEBUG]: After request, no nonce generated. [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:107]
+2023-11-13 22:25:39,889 [DEBUG]: Before request, nonce generated: bLjDCrKj8zSvdagz0ywb9Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:39,899 [DEBUG]: After request, CSP updated with nonce: bLjDCrKj8zSvdagz0ywb9Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:25:39,907 [DEBUG]: Before request, nonce generated: PTDI+ApX3VoqcDEsuEgSsA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:25:39,911 [DEBUG]: After request, CSP updated with nonce: PTDI+ApX3VoqcDEsuEgSsA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:19,944 [DEBUG]: Before request, nonce generated: TeFqhmXEZ5YMnRo+mwo9Cw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:19,949 [DEBUG]: After request, CSP updated with nonce: TeFqhmXEZ5YMnRo+mwo9Cw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:20,006 [DEBUG]: Before request, nonce generated: sbsB9e+70IGBEEZkQ0y4YA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:20,009 [DEBUG]: Before request, nonce generated: m4U2XZ9Il2SvJ51VckoD0Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:20,010 [DEBUG]: After request, CSP updated with nonce: sbsB9e+70IGBEEZkQ0y4YA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:20,017 [DEBUG]: After request, CSP updated with nonce: m4U2XZ9Il2SvJ51VckoD0Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:25,002 [DEBUG]: Before request, nonce generated: iycKDi5a0WZ2QiIjZh5F1g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:25,028 [DEBUG]: After request, CSP updated with nonce: iycKDi5a0WZ2QiIjZh5F1g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:25,082 [DEBUG]: Before request, nonce generated: YiP8vnAsLkueetnBnu5SCg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:25,084 [DEBUG]: After request, CSP updated with nonce: YiP8vnAsLkueetnBnu5SCg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:25,087 [DEBUG]: Before request, nonce generated: vKgd/wLCv+DXAa3S9rPYuw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:25,091 [DEBUG]: After request, CSP updated with nonce: vKgd/wLCv+DXAa3S9rPYuw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:54,504 [DEBUG]: Before request, nonce generated: f/rvBM5xihEdgDWlvbB2Gg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:54,946 [DEBUG]: After request, CSP updated with nonce: f/rvBM5xihEdgDWlvbB2Gg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:54,960 [DEBUG]: Before request, nonce generated: ESk9ppRH3xDrxEZWLOsgQQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:54,969 [DEBUG]: After request, CSP updated with nonce: ESk9ppRH3xDrxEZWLOsgQQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:55,021 [DEBUG]: Before request, nonce generated: 9FyKzK/yPUibu4VbgXxC5A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:55,035 [DEBUG]: After request, CSP updated with nonce: 9FyKzK/yPUibu4VbgXxC5A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:58,021 [ERROR]: CSRF error occurred: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:69]
+2023-11-13 22:26:58,024 [DEBUG]: After request, no nonce generated. [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:107]
+2023-11-13 22:26:58,079 [DEBUG]: Before request, nonce generated: s7QwzIQKIUzdCp006GeMjA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:58,087 [DEBUG]: Before request, nonce generated: q3HOe1Py0iBmwKPHLW+kUw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:26:58,088 [DEBUG]: After request, CSP updated with nonce: s7QwzIQKIUzdCp006GeMjA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:26:58,100 [DEBUG]: After request, CSP updated with nonce: q3HOe1Py0iBmwKPHLW+kUw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:27:07,577 [DEBUG]: Before request, nonce generated: OaXZ6i/B7znYodjCQGGUYQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:27:07,581 [DEBUG]: After request, CSP updated with nonce: OaXZ6i/B7znYodjCQGGUYQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:27:14,225 [DEBUG]: Before request, nonce generated: heNlHJQULOlw1xmYah9v0Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:27:14,239 [DEBUG]: After request, CSP updated with nonce: heNlHJQULOlw1xmYah9v0Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:27:14,312 [DEBUG]: Before request, nonce generated: AooOEeDGWFcCponYFlD4mw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:27:14,314 [DEBUG]: After request, CSP updated with nonce: AooOEeDGWFcCponYFlD4mw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:27:19,652 [DEBUG]: Before request, nonce generated: BbnL6DvQdkOmFM78msWolA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:27:20,072 [DEBUG]: After request, CSP updated with nonce: BbnL6DvQdkOmFM78msWolA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:27:20,084 [DEBUG]: Before request, nonce generated: AJwwSMK1gRT2fggRLlNgyw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:27:20,085 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:53]
 Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
     rv = self.dispatch_request()
@@ -838,8 +458,243 @@ Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
     raise self.mapping[code](*args, **kwargs)
 werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-2023-11-05 21:53:39,882 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-05 22:02:33,816 [ERROR]: An error occurred: 'form' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
+2023-11-13 22:27:20,101 [DEBUG]: After request, CSP updated with nonce: AJwwSMK1gRT2fggRLlNgyw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:27:20,169 [DEBUG]: Before request, nonce generated: PRP5xSTzPk7usLmi5EBf+Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:27:20,174 [DEBUG]: After request, CSP updated with nonce: PRP5xSTzPk7usLmi5EBf+Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:27:20,182 [DEBUG]: Before request, nonce generated: LuVwsyPqK3YAjFiTfcybxA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:27:20,186 [DEBUG]: After request, CSP updated with nonce: LuVwsyPqK3YAjFiTfcybxA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:43:17,722 [DEBUG]: Before request, nonce generated: xQRV+KMIu4LpzPsHnk2i0A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:43:17,755 [DEBUG]: After request, CSP updated with nonce: xQRV+KMIu4LpzPsHnk2i0A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:43:17,900 [DEBUG]: Before request, nonce generated: QJS7ko6eO+6km+Jf7klIYQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:43:17,920 [DEBUG]: After request, CSP updated with nonce: QJS7ko6eO+6km+Jf7klIYQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:43:18,142 [DEBUG]: Before request, nonce generated: 6HucE+3+/2tbaUaL9Vrb3w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:43:18,147 [DEBUG]: After request, CSP updated with nonce: 6HucE+3+/2tbaUaL9Vrb3w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:43:21,673 [ERROR]: CSRF error occurred: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:69]
+2023-11-13 22:43:21,681 [DEBUG]: After request, no nonce generated. [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:107]
+2023-11-13 22:43:21,762 [DEBUG]: Before request, nonce generated: EF2CDhnZGvkW2VNFtu5rTw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:43:21,763 [DEBUG]: After request, CSP updated with nonce: EF2CDhnZGvkW2VNFtu5rTw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:43:21,776 [DEBUG]: Before request, nonce generated: EebHwvX1vO57OewSpk9pcw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:43:21,794 [DEBUG]: After request, CSP updated with nonce: EebHwvX1vO57OewSpk9pcw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 22:43:21,989 [DEBUG]: Before request, nonce generated: AsNRCEGNSzzydX4iCoiCog== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 22:43:21,991 [DEBUG]: After request, CSP updated with nonce: AsNRCEGNSzzydX4iCoiCog== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:18,407 [DEBUG]: Before request, nonce generated: FW3uI4PrFXkJumgKnV5fMw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:18,437 [DEBUG]: After request, CSP updated with nonce: FW3uI4PrFXkJumgKnV5fMw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:18,573 [DEBUG]: Before request, nonce generated: w8/gGd8EB9PJNFB5xBgALA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:18,581 [DEBUG]: After request, CSP updated with nonce: w8/gGd8EB9PJNFB5xBgALA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:18,613 [DEBUG]: Before request, nonce generated: x6JneQebVOkgNAvm4fNncA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:18,619 [DEBUG]: After request, CSP updated with nonce: x6JneQebVOkgNAvm4fNncA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:18,911 [DEBUG]: Before request, nonce generated: sZNJzWAXpppC5OsfoyX2KA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:18,941 [DEBUG]: Before request, nonce generated: attMGCxIZkxpkJytU14fZg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:18,944 [DEBUG]: After request, CSP updated with nonce: sZNJzWAXpppC5OsfoyX2KA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:18,947 [DEBUG]: After request, CSP updated with nonce: attMGCxIZkxpkJytU14fZg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:19,090 [DEBUG]: Before request, nonce generated: 4eeOQtQD1lgrnvnwb8So4w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:19,093 [DEBUG]: After request, CSP updated with nonce: 4eeOQtQD1lgrnvnwb8So4w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:19,100 [DEBUG]: Before request, nonce generated: dZHpK8erWUk2FkSGv4ycrg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:19,107 [DEBUG]: After request, CSP updated with nonce: dZHpK8erWUk2FkSGv4ycrg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:19,181 [DEBUG]: Before request, nonce generated: 23zkrHlwIUddbmOpaEVTkA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:19,183 [DEBUG]: After request, CSP updated with nonce: 23zkrHlwIUddbmOpaEVTkA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:30,682 [DEBUG]: Before request, nonce generated: MUZduFi3HDlWIRG8Nlz4eQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:30,694 [DEBUG]: After request, CSP updated with nonce: MUZduFi3HDlWIRG8Nlz4eQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:30,803 [DEBUG]: Before request, nonce generated: dNCMJSnubeSd7leMs6DBrg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:30,803 [DEBUG]: Before request, nonce generated: mTw9Bg3Bsy/C3i7rrJSbLQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:30,805 [DEBUG]: After request, CSP updated with nonce: dNCMJSnubeSd7leMs6DBrg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:30,805 [DEBUG]: After request, CSP updated with nonce: mTw9Bg3Bsy/C3i7rrJSbLQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:03:30,812 [DEBUG]: Before request, nonce generated: i9TD/JG65pVTh6pHh0h/1w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:03:30,815 [DEBUG]: After request, CSP updated with nonce: i9TD/JG65pVTh6pHh0h/1w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:04:49,408 [DEBUG]: Before request, nonce generated: tTdDvMcMWDlGYICeTUqSYg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:04:49,462 [DEBUG]: After request, CSP updated with nonce: tTdDvMcMWDlGYICeTUqSYg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:04:49,515 [DEBUG]: Before request, nonce generated: EiKRNzJGUJHmRfLd9KgbqQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:04:49,522 [DEBUG]: After request, CSP updated with nonce: EiKRNzJGUJHmRfLd9KgbqQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:04:55,883 [ERROR]: CSRF error occurred: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:69]
+2023-11-13 23:04:55,919 [DEBUG]: After request, no nonce generated. [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:107]
+2023-11-13 23:04:55,985 [DEBUG]: Before request, nonce generated: 3/JuvYqZ22BkGwAOuutFmQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:04:55,998 [DEBUG]: After request, CSP updated with nonce: 3/JuvYqZ22BkGwAOuutFmQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:04:56,003 [DEBUG]: Before request, nonce generated: v8phUQ/VMfEmZwI4+pm54A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:04:56,005 [DEBUG]: After request, CSP updated with nonce: v8phUQ/VMfEmZwI4+pm54A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,228 [DEBUG]: Before request, nonce generated: 8rt4Dmh0+lHcHz9T6y389w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,264 [DEBUG]: After request, CSP updated with nonce: 8rt4Dmh0+lHcHz9T6y389w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,319 [DEBUG]: Before request, nonce generated: BW49k15mntMAuJtk0TmtPw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,333 [DEBUG]: After request, CSP updated with nonce: BW49k15mntMAuJtk0TmtPw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,341 [DEBUG]: Before request, nonce generated: WaLxAEVZe2OpOBwiM7a7ug== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,343 [DEBUG]: After request, CSP updated with nonce: WaLxAEVZe2OpOBwiM7a7ug== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,537 [DEBUG]: Before request, nonce generated: lJnEDz0MgdPDFWybXFrCSA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,549 [DEBUG]: Before request, nonce generated: ZD4V5CT7tg1I856B554AZA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,553 [DEBUG]: After request, CSP updated with nonce: ZD4V5CT7tg1I856B554AZA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,568 [DEBUG]: After request, CSP updated with nonce: lJnEDz0MgdPDFWybXFrCSA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,569 [DEBUG]: Before request, nonce generated: m9Q5T4q/NksVpMAr8GfxWA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,573 [DEBUG]: After request, CSP updated with nonce: m9Q5T4q/NksVpMAr8GfxWA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,583 [DEBUG]: Before request, nonce generated: SeLcHdw2UbeNCWbC/wV/vg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,585 [DEBUG]: Before request, nonce generated: YoPzoEDWslec7TYhalQbmA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,586 [DEBUG]: After request, CSP updated with nonce: SeLcHdw2UbeNCWbC/wV/vg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,594 [DEBUG]: After request, CSP updated with nonce: YoPzoEDWslec7TYhalQbmA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:31:11,606 [DEBUG]: Before request, nonce generated: SiY3DeY0ImtDHR6LnS8djA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:91]
+2023-11-13 23:31:11,609 [DEBUG]: After request, CSP updated with nonce: SiY3DeY0ImtDHR6LnS8djA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:103]
+2023-11-13 23:54:25,045 [DEBUG]: Before request, nonce generated: 1AOjRMI2oNK2+f+H9A2Y/Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,131 [DEBUG]: After request, CSP updated with nonce: 1AOjRMI2oNK2+f+H9A2Y/Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:25,214 [DEBUG]: Before request, nonce generated: 05U1pW5TRWJ+sibYry1CZg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,226 [DEBUG]: After request, CSP updated with nonce: 05U1pW5TRWJ+sibYry1CZg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:25,239 [DEBUG]: Before request, nonce generated: s4Uo5DvtUw0li9Wmkfpaaw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,251 [DEBUG]: After request, CSP updated with nonce: s4Uo5DvtUw0li9Wmkfpaaw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:25,519 [DEBUG]: Before request, nonce generated: XrkHd4viteQK4FwLnz7QWg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,524 [DEBUG]: After request, CSP updated with nonce: XrkHd4viteQK4FwLnz7QWg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:25,530 [DEBUG]: Before request, nonce generated: 3PUmheHTu6zL/B4emAY9MA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,534 [DEBUG]: Before request, nonce generated: KgxMS7oczzdKHJlQYWI4DQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,538 [DEBUG]: After request, CSP updated with nonce: KgxMS7oczzdKHJlQYWI4DQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:25,540 [DEBUG]: After request, CSP updated with nonce: 3PUmheHTu6zL/B4emAY9MA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:25,564 [DEBUG]: Before request, nonce generated: p/LAKQOUVQhKMuQ5o8qVqA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,564 [DEBUG]: Before request, nonce generated: +dTB6UoBj8qPMOnLsgir5Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,568 [DEBUG]: After request, CSP updated with nonce: p/LAKQOUVQhKMuQ5o8qVqA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:25,569 [DEBUG]: After request, CSP updated with nonce: +dTB6UoBj8qPMOnLsgir5Q== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:25,706 [DEBUG]: Before request, nonce generated: DY77K3QE+UOV1BGeV/91ug== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:25,717 [DEBUG]: After request, CSP updated with nonce: DY77K3QE+UOV1BGeV/91ug== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:54:29,115 [DEBUG]: Before request, nonce generated: brmdv4aHRUsxZoH+in8Pfw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:54:29,118 [DEBUG]: After request, CSP updated with nonce: brmdv4aHRUsxZoH+in8Pfw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:55:01,535 [DEBUG]: Before request, nonce generated: 6cEd8VVjBSM7bfuiKnA9Yg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:55:01,538 [DEBUG]: After request, CSP updated with nonce: 6cEd8VVjBSM7bfuiKnA9Yg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:55:28,894 [DEBUG]: Before request, nonce generated: AzxdBHfsLn25DLXf4JcPwQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:55:28,897 [DEBUG]: After request, CSP updated with nonce: AzxdBHfsLn25DLXf4JcPwQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-13 23:55:43,031 [DEBUG]: Before request, nonce generated: vCIcyRaL1M9QKS+OyqxAVA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-13 23:55:43,036 [DEBUG]: After request, CSP updated with nonce: vCIcyRaL1M9QKS+OyqxAVA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:50,980 [DEBUG]: Before request, nonce generated: +3hy6AqCdkmmmsnaUFJRjA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,033 [DEBUG]: After request, CSP updated with nonce: +3hy6AqCdkmmmsnaUFJRjA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:51,087 [DEBUG]: Before request, nonce generated: 2BPWJbqle5UwtZV82jn4BA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,106 [DEBUG]: After request, CSP updated with nonce: 2BPWJbqle5UwtZV82jn4BA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:51,197 [DEBUG]: Before request, nonce generated: 4i/OwgjOIKsVDppiplxxuw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,204 [DEBUG]: After request, CSP updated with nonce: 4i/OwgjOIKsVDppiplxxuw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:51,282 [DEBUG]: Before request, nonce generated: ZS7zybFMYQp2yjc2jGRepg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,283 [DEBUG]: Before request, nonce generated: x8Il/lHUcP4z4gepT6OwJA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,284 [DEBUG]: After request, CSP updated with nonce: ZS7zybFMYQp2yjc2jGRepg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:51,282 [DEBUG]: Before request, nonce generated: mkBxMjji7Gs6szHI8bm1Ow== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,289 [DEBUG]: After request, CSP updated with nonce: x8Il/lHUcP4z4gepT6OwJA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:51,298 [DEBUG]: After request, CSP updated with nonce: mkBxMjji7Gs6szHI8bm1Ow== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:51,320 [DEBUG]: Before request, nonce generated: XtRkW+/x7RsmH0yVm5jtRA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,322 [DEBUG]: After request, CSP updated with nonce: XtRkW+/x7RsmH0yVm5jtRA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:51,323 [DEBUG]: Before request, nonce generated: GakKVZM9i1zXVt9sHXs/NA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,324 [DEBUG]: Before request, nonce generated: /zUzvO9EVixOC+bG2gk3Lg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:51,326 [DEBUG]: After request, CSP updated with nonce: GakKVZM9i1zXVt9sHXs/NA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:51,326 [DEBUG]: After request, CSP updated with nonce: /zUzvO9EVixOC+bG2gk3Lg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:54,149 [DEBUG]: Before request, nonce generated: 6td3X7fsRzD+ha7RQsqVYw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:54,196 [DEBUG]: After request, CSP updated with nonce: 6td3X7fsRzD+ha7RQsqVYw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:54,264 [DEBUG]: Before request, nonce generated: Z9CiCgkLhpDDl5iTfVd83A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:54,264 [DEBUG]: Before request, nonce generated: UR6cX0Xueca+IdNO/3TS6w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:18:54,270 [DEBUG]: After request, CSP updated with nonce: UR6cX0Xueca+IdNO/3TS6w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:18:54,269 [DEBUG]: After request, CSP updated with nonce: Z9CiCgkLhpDDl5iTfVd83A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:23,792 [DEBUG]: Before request, nonce generated: /ygWapfvx/fM0j6bDB7mHg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:23,902 [DEBUG]: After request, CSP updated with nonce: /ygWapfvx/fM0j6bDB7mHg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:23,951 [DEBUG]: Before request, nonce generated: XRFT7W09n2Y31HTvaj+o+w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:23,957 [DEBUG]: Before request, nonce generated: sEhvTpYxqXUcGaAE79W+2g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:23,957 [DEBUG]: After request, CSP updated with nonce: XRFT7W09n2Y31HTvaj+o+w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:23,966 [DEBUG]: After request, CSP updated with nonce: sEhvTpYxqXUcGaAE79W+2g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:37,540 [DEBUG]: Before request, nonce generated: c3NpFXI7LbQlArHRb+u34g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:37,644 [DEBUG]: After request, CSP updated with nonce: c3NpFXI7LbQlArHRb+u34g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:37,696 [DEBUG]: Before request, nonce generated: XFEIwthgYi7L4aTpOQQdfA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:37,700 [DEBUG]: After request, CSP updated with nonce: XFEIwthgYi7L4aTpOQQdfA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:37,697 [DEBUG]: Before request, nonce generated: SqXuaY47AC5SiyiR8PQ1xQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:37,704 [DEBUG]: After request, CSP updated with nonce: SqXuaY47AC5SiyiR8PQ1xQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:49,788 [DEBUG]: Before request, nonce generated: akTT3pH42yNUqb/s7IIjbA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:50,137 [DEBUG]: After request, CSP updated with nonce: akTT3pH42yNUqb/s7IIjbA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:50,147 [DEBUG]: Before request, nonce generated: h8Sc1jldNt8GSW+F+9JlqA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:50,159 [DEBUG]: After request, CSP updated with nonce: h8Sc1jldNt8GSW+F+9JlqA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:50,213 [DEBUG]: Before request, nonce generated: EM1TIKtbuaZx4Vf7VuHVIA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:50,219 [DEBUG]: After request, CSP updated with nonce: EM1TIKtbuaZx4Vf7VuHVIA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:53,995 [DEBUG]: Before request, nonce generated: SoDphiG4AaE/HGstBeHErw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:54,330 [DEBUG]: After request, CSP updated with nonce: SoDphiG4AaE/HGstBeHErw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:54,338 [DEBUG]: Before request, nonce generated: xjGQ9znYgyPT1s0asbxqVA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:54,383 [DEBUG]: After request, CSP updated with nonce: xjGQ9znYgyPT1s0asbxqVA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:54,447 [DEBUG]: Before request, nonce generated: ViNY1uocR5cWnhbf+aTknA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:54,447 [DEBUG]: Before request, nonce generated: Y2zJJ1WG75lvZBezxxocyA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:54,452 [DEBUG]: After request, CSP updated with nonce: ViNY1uocR5cWnhbf+aTknA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:54,452 [DEBUG]: After request, CSP updated with nonce: Y2zJJ1WG75lvZBezxxocyA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:54,495 [DEBUG]: Before request, nonce generated: C8obyL0fL0ueWR401OzLoA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:54,498 [DEBUG]: Before request, nonce generated: /yvNYAElw5A1GV9YS/ssIw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:54,500 [DEBUG]: Before request, nonce generated: LlUtJb08r1Z6jWEDy4VRvw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:54,501 [DEBUG]: After request, CSP updated with nonce: /yvNYAElw5A1GV9YS/ssIw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:54,501 [DEBUG]: After request, CSP updated with nonce: C8obyL0fL0ueWR401OzLoA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:54,502 [DEBUG]: After request, CSP updated with nonce: LlUtJb08r1Z6jWEDy4VRvw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:19:54,516 [DEBUG]: Before request, nonce generated: nRnMqzIJnRn0aRhvUkeMNA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:19:54,518 [DEBUG]: After request, CSP updated with nonce: nRnMqzIJnRn0aRhvUkeMNA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:20:01,286 [DEBUG]: Before request, nonce generated: /VgLKyUNxDNlQngWKlflNg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:20:01,307 [DEBUG]: After request, CSP updated with nonce: /VgLKyUNxDNlQngWKlflNg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:20:01,419 [DEBUG]: Before request, nonce generated: qamq2Fsiaw6uDyHL+9MKXQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:20:01,427 [DEBUG]: Before request, nonce generated: M9Rp5xGiS/SnGCycy5oTsw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:20:01,429 [DEBUG]: After request, CSP updated with nonce: M9Rp5xGiS/SnGCycy5oTsw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:20:01,423 [DEBUG]: Before request, nonce generated: 6lXOOb9JAvKjadL4eYbOQw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:20:01,436 [DEBUG]: After request, CSP updated with nonce: 6lXOOb9JAvKjadL4eYbOQw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:20:01,420 [DEBUG]: After request, CSP updated with nonce: qamq2Fsiaw6uDyHL+9MKXQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:21:57,530 [DEBUG]: Before request, nonce generated: 1L5vAymwD0b5J8c6HISVsw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:21:57,593 [DEBUG]: After request, CSP updated with nonce: 1L5vAymwD0b5J8c6HISVsw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:21:57,668 [DEBUG]: Before request, nonce generated: RFI4vAjR2pdQ74rdukSdHw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:21:57,688 [DEBUG]: After request, CSP updated with nonce: RFI4vAjR2pdQ74rdukSdHw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:21:57,712 [DEBUG]: Before request, nonce generated: bzN/5JRgqgGuOeinOXmgmg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:21:57,716 [DEBUG]: After request, CSP updated with nonce: bzN/5JRgqgGuOeinOXmgmg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:02,507 [DEBUG]: Before request, nonce generated: wc2EhJgm+HKbti0iEHo5OA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:02,518 [DEBUG]: After request, CSP updated with nonce: wc2EhJgm+HKbti0iEHo5OA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:02,555 [DEBUG]: Before request, nonce generated: +O/XU4XLlqUOHKDfXVLvcw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:02,559 [DEBUG]: After request, CSP updated with nonce: +O/XU4XLlqUOHKDfXVLvcw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:02,567 [DEBUG]: Before request, nonce generated: p+VoVVqMH5Xp7t09yAh7tQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:02,570 [DEBUG]: After request, CSP updated with nonce: p+VoVVqMH5Xp7t09yAh7tQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:02,628 [DEBUG]: Before request, nonce generated: a4NlcyEwajCCq5sLCicXew== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:02,634 [DEBUG]: After request, CSP updated with nonce: a4NlcyEwajCCq5sLCicXew== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:02,645 [DEBUG]: Before request, nonce generated: 9szuIaxb0e6ZhVquaANqzQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:02,648 [DEBUG]: After request, CSP updated with nonce: 9szuIaxb0e6ZhVquaANqzQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:02,661 [DEBUG]: Before request, nonce generated: o8WRKl4Lw8mq+I2YoHh+RQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:02,668 [DEBUG]: After request, CSP updated with nonce: o8WRKl4Lw8mq+I2YoHh+RQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:02,679 [DEBUG]: Before request, nonce generated: MviMs0SrbuINf7kzuu9iNQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:02,684 [DEBUG]: After request, CSP updated with nonce: MviMs0SrbuINf7kzuu9iNQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:05,144 [DEBUG]: Before request, nonce generated: zDoj/Q7qc99giiXkJM2zhw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:05,150 [DEBUG]: After request, CSP updated with nonce: zDoj/Q7qc99giiXkJM2zhw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:05,211 [DEBUG]: Before request, nonce generated: kwjNXiW6bUtXWD/GhHJneA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:05,215 [DEBUG]: After request, CSP updated with nonce: kwjNXiW6bUtXWD/GhHJneA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:05,225 [DEBUG]: Before request, nonce generated: ZETdeVyxZMFFO1NDiuWXWQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:05,228 [DEBUG]: After request, CSP updated with nonce: ZETdeVyxZMFFO1NDiuWXWQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:06,982 [DEBUG]: Before request, nonce generated: jbqk0uuGITjQNcepyguNlA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:06,993 [DEBUG]: After request, CSP updated with nonce: jbqk0uuGITjQNcepyguNlA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:07,034 [DEBUG]: Before request, nonce generated: RIL3WxJmWmgjvkqTMt3zpw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:07,036 [DEBUG]: After request, CSP updated with nonce: RIL3WxJmWmgjvkqTMt3zpw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:07,040 [DEBUG]: Before request, nonce generated: syRH5BasrzC+G7b0C+0xBQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:07,044 [DEBUG]: After request, CSP updated with nonce: syRH5BasrzC+G7b0C+0xBQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:07,196 [DEBUG]: Before request, nonce generated: M2hIS/oXDBo1JPZAOHZlEQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:07,201 [DEBUG]: After request, CSP updated with nonce: M2hIS/oXDBo1JPZAOHZlEQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:07,215 [DEBUG]: Before request, nonce generated: 9jFZbAc89Msd49aRS5gF7w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:07,220 [DEBUG]: After request, CSP updated with nonce: 9jFZbAc89Msd49aRS5gF7w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:07,240 [DEBUG]: Before request, nonce generated: g8oDYoxBBepmF3wJMRfmwA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:07,245 [DEBUG]: After request, CSP updated with nonce: g8oDYoxBBepmF3wJMRfmwA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:07,272 [DEBUG]: Before request, nonce generated: kBtBr3vbN2vPQisVvR40tQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:07,283 [DEBUG]: After request, CSP updated with nonce: kBtBr3vbN2vPQisVvR40tQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:10,901 [DEBUG]: Before request, nonce generated: CQHpT4DOkBEmrQS6LlzY3g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:10,907 [DEBUG]: After request, CSP updated with nonce: CQHpT4DOkBEmrQS6LlzY3g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:10,976 [DEBUG]: Before request, nonce generated: y7di0xSoB08jRt7YUX7j6A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:10,980 [DEBUG]: After request, CSP updated with nonce: y7di0xSoB08jRt7YUX7j6A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:10,995 [DEBUG]: Before request, nonce generated: kwCHnOZGeoAqBZ0a+iHBpQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:11,003 [DEBUG]: After request, CSP updated with nonce: kwCHnOZGeoAqBZ0a+iHBpQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:12,779 [DEBUG]: Before request, nonce generated: 3b5+WWC+8Ax8LQLTYtzFdw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:12,786 [DEBUG]: After request, CSP updated with nonce: 3b5+WWC+8Ax8LQLTYtzFdw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:12,818 [DEBUG]: Before request, nonce generated: 98R6iBPJsE1cq9TTosp1vw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:12,822 [DEBUG]: After request, CSP updated with nonce: 98R6iBPJsE1cq9TTosp1vw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:12,828 [DEBUG]: Before request, nonce generated: TBsKDRvOTLK9sV7rv8QXXg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:12,833 [DEBUG]: After request, CSP updated with nonce: TBsKDRvOTLK9sV7rv8QXXg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:13,040 [DEBUG]: Before request, nonce generated: lssxnKUlXgcptAIHVetSPw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:13,045 [DEBUG]: After request, CSP updated with nonce: lssxnKUlXgcptAIHVetSPw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:13,063 [DEBUG]: Before request, nonce generated: K5AX64zg8Kog6eLM8MxjBQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:13,065 [DEBUG]: After request, CSP updated with nonce: K5AX64zg8Kog6eLM8MxjBQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:13,079 [DEBUG]: Before request, nonce generated: z50p50rIAQCOvAsTuyoDng== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:13,083 [DEBUG]: After request, CSP updated with nonce: z50p50rIAQCOvAsTuyoDng== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 01:22:13,093 [DEBUG]: Before request, nonce generated: eivkrVGTkx/Wh+SyXlpO1g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 01:22:13,106 [DEBUG]: After request, CSP updated with nonce: eivkrVGTkx/Wh+SyXlpO1g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:22:23,047 [DEBUG]: Before request, nonce generated: 0J4yFAe4U/jUP2fbZeHMTQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:22:23,052 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:22]
+2023-11-14 22:22:23,164 [DEBUG]: After request, CSP updated with nonce: 0J4yFAe4U/jUP2fbZeHMTQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:22:23,269 [DEBUG]: Before request, nonce generated: XhxImHXmpV5YnKn6dxnlIQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:22:23,289 [DEBUG]: After request, CSP updated with nonce: XhxImHXmpV5YnKn6dxnlIQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:22:23,360 [DEBUG]: Before request, nonce generated: 7fvfsAWYs7Xlg8Tx5Sfrqg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:22:23,370 [DEBUG]: After request, CSP updated with nonce: 7fvfsAWYs7Xlg8Tx5Sfrqg== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:22:23,417 [DEBUG]: Before request, nonce generated: VWgUZLfatL/YgLOBs3AS4g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:22:23,430 [DEBUG]: After request, CSP updated with nonce: VWgUZLfatL/YgLOBs3AS4g== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:22:23,646 [DEBUG]: Before request, nonce generated: FFq9KD5KCyRjg6DwlUWT+A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:22:23,648 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:22]
+2023-11-14 22:22:23,650 [DEBUG]: After request, CSP updated with nonce: FFq9KD5KCyRjg6DwlUWT+A== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:39:18,224 [DEBUG]: Before request, nonce generated: 0awD5vBOuMqSR1Y/qJk3Kw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:39:18,231 [ERROR]: An error occurred: Could not build url for endpoint 'home'. Did you mean 'main.home' instead? [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:53]
 Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
     rv = self.dispatch_request()
@@ -847,327 +702,30 @@ Traceback (most recent call last):
   File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/subscriptions.py", line 16, in view_subscription_plans
-    return render_template('subscription_plans.html', plans=plans)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 161, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 11, in block 'content'
-    {{ form.csrf_token }}
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-11-05 22:02:40,646 [ERROR]: An error occurred: 'form' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/subscriptions.py", line 16, in view_subscription_plans
-    return render_template('subscription_plans.html', plans=plans)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 161, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 11, in block 'content'
-    {{ form.csrf_token }}
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-11-05 22:02:42,198 [ERROR]: An error occurred: 'form' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/subscriptions.py", line 16, in view_subscription_plans
-    return render_template('subscription_plans.html', plans=plans)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 161, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 11, in block 'content'
-    {{ form.csrf_token }}
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-11-05 22:06:40,369 [ERROR]: An error occurred: 'form' is undefined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/subscriptions.py", line 16, in view_subscription_plans
-    return render_template('subscription_plans.html', plans=plans)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/base.html", line 161, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/templates/subscription_plans.html", line 11, in block 'content'
-    {{ form.csrf_token() }}
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-11-05 22:20:36,310 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 22:22:07,052 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 22:26:23,277 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today, plan=plan)
-                                                           ^^^^
-NameError: name 'plan' is not defined
-2023-11-05 22:35:59,751 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-                                                      
-NameError: name 'plan' is not defined
-2023-11-05 22:36:20,340 [ERROR]: An error occurred: name 'plan' is not defined [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 23, in index
-    return render_template('index.html', today=today)
-                                                      
-NameError: name 'plan' is not defined
-2023-11-07 20:01:46,082 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:13]
-2023-11-07 22:28:06,880 [DEBUG]: CSRF Token submitted: IjljMGQxNWI2ZGVmMzQ2Y2I5NTg1ODE4NzYzMGM5NzBiNzBhNDIzZWYi.ZUq5uw.Rfz6ctIaMGNEaQhZTar_uDFD1fw [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:66]
-2023-11-07 22:28:23,439 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
-2023-11-07 22:40:22,281 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
-2023-11-07 22:40:34,072 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
-2023-11-07 22:46:13,898 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
-2023-11-07 22:46:25,741 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
-2023-11-07 22:46:46,732 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
-2023-11-07 22:47:33,546 [ERROR]: An error occurred during login: 'User' object has no attribute 'id' [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:101]
-2023-11-07 23:00:23,195 [ERROR]: CSRF error occurred: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:31]
-2023-11-07 23:00:43,673 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
-    abort(401)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
-    current_app.aborter(code, *args, **kwargs)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
-    raise self.mapping[code](*args, **kwargs)
-werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-2023-11-07 23:00:55,052 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
-    abort(401)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
-    current_app.aborter(code, *args, **kwargs)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
-    raise self.mapping[code](*args, **kwargs)
-werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-2023-11-07 23:36:47,369 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
-    abort(401)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
-    current_app.aborter(code, *args, **kwargs)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
-    raise self.mapping[code](*args, **kwargs)
-werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-2023-11-08 00:00:27,284 [ERROR]: CSRF error occurred: The CSRF session token is missing. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:31]
-2023-11-08 00:02:00,264 [DEBUG]: CSRF Token submitted: ImU5NWI2ODM2YjA5YTE4OTFlNmM3NmMwNmQ3NjBkMDA2MDAwMTdiZDYi.ZUrP5A.gquN6ytpX_gDLOHTSDeTHW_ssQo [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:66]
-2023-11-08 00:02:00,273 [INFO]: New user committed to the database. [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:73]
-2023-11-08 00:05:25,965 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
-    abort(401)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
-    current_app.aborter(code, *args, **kwargs)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
-    raise self.mapping[code](*args, **kwargs)
-werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-2023-11-08 00:12:11,195 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
-    abort(401)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
-    current_app.aborter(code, *args, **kwargs)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
-    raise self.mapping[code](*args, **kwargs)
-werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-2023-11-08 00:13:19,424 [DEBUG]: CSRF Token submitted: ImU5NWI2ODM2YjA5YTE4OTFlNmM3NmMwNmQ3NjBkMDA2MDAwMTdiZDYi.ZUrSjw.U9FwmP85zcTYRJK1Vg34VOqwn04 [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:66]
-2023-11-08 00:13:19,439 [INFO]: New user committed to the database. [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:73]
-2023-11-08 00:13:31,009 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
-    abort(401)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
-    current_app.aborter(code, *args, **kwargs)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
-    raise self.mapping[code](*args, **kwargs)
-werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-2023-11-08 00:28:48,523 [DEBUG]: CSRF Token submitted: ImViMWE3M2U3ZTYwODgzMDkyMzhlMGZjMGRjZDQxNmY0ZGY2YmU1ZDYi.ZUrWHw.5F_6qVJpNHp6PWeMMqyRPlqiICc [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:66]
-2023-11-08 00:28:48,525 [DEBUG]: Attempting to add user: jimmyfivebellys [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:70]
-2023-11-08 00:28:48,541 [INFO]: New user committed to the database. [in /Users/paul/Tipster_Arena_Project/TipsterArena/auth.py:77]
-2023-11-08 00:28:56,758 [ERROR]: An error occurred: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:25]
-Traceback (most recent call last):
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/utils.py", line 286, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask_login/login_manager.py", line 178, in unauthorized
-    abort(401)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 274, in abort
-    current_app.aborter(code, *args, **kwargs)
-  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/exceptions.py", line 861, in __call__
-    raise self.mapping[code](*args, **kwargs)
-werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+  File "/Users/paul/Tipster_Arena_Project/TipsterArena/main.py", line 16, in index
+    return redirect(url_for('home'))
+                    ^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/helpers.py", line 222, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/flask/app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/paul/Tipster_Arena_Project/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'home'. Did you mean 'main.home' instead?
+2023-11-14 22:39:18,245 [DEBUG]: After request, CSP updated with nonce: 0awD5vBOuMqSR1Y/qJk3Kw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:39:18,385 [DEBUG]: Before request, nonce generated: e0h9CBxRPyZ4FtGwdWBBvQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:39:18,385 [DEBUG]: Before request, nonce generated: QFX2YqEStbfk1ho0EnOz1w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:39:18,388 [DEBUG]: After request, CSP updated with nonce: QFX2YqEStbfk1ho0EnOz1w== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:39:18,394 [DEBUG]: After request, CSP updated with nonce: e0h9CBxRPyZ4FtGwdWBBvQ== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:39:18,594 [DEBUG]: Before request, nonce generated: EacIkfU1ovddv5najJH2tw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:39:18,597 [DEBUG]: After request, CSP updated with nonce: EacIkfU1ovddv5najJH2tw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-14 22:39:18,950 [DEBUG]: Before request, nonce generated: 48B2X1m9CJAF445f2K8czw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-14 22:39:18,952 [WARNING]: Page not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in /Users/paul/Tipster_Arena_Project/TipsterArena/errors/handlers.py:22]
+2023-11-14 22:39:19,026 [DEBUG]: After request, CSP updated with nonce: 48B2X1m9CJAF445f2K8czw== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]
+2023-11-15 17:00:28,398 [DEBUG]: Before request, nonce generated: r6+gTON/xYMn9ADVStK8lA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:90]
+2023-11-15 17:00:28,437 [DEBUG]: After request, CSP updated with nonce: r6+gTON/xYMn9ADVStK8lA== [in /Users/paul/Tipster_Arena_Project/TipsterArena/app.py:102]

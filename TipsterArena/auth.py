@@ -1,6 +1,3 @@
-
-
-
 from datetime import datetime, timedelta
 from flask import Blueprint, render_template, redirect, url_for, flash, session
 from flask import current_app as app
@@ -152,6 +149,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user)
+            session['username'] = user.username
             flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:
@@ -167,5 +165,6 @@ def logout():
     and redirecting to the index page.
     """
     session.pop('user_id', None)
+    session.pop('username', None) 
     flash('You have been logged out.', 'success')
     return redirect(url_for('main.index'))
