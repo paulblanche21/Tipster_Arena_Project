@@ -52,7 +52,7 @@ class ChatNamespace(Namespace):
         if room_namespace not in CHATROOMS:
             logger.error("Invalid namespace: %s", room_namespace)
             return
-  
+
         try:
             handle_message(data)
         except Exception as e:
@@ -74,7 +74,7 @@ class ChatNamespace(Namespace):
         try:
             on_join(data)
         except Exception as e:
-            logger.error(f"Error in on_join: {e}")
+            logger.error("Error in on_join: %s", e)
             # Handling for sending error to client, if necessary
 
     def on_leave(self, data):
@@ -92,7 +92,7 @@ class ChatNamespace(Namespace):
         try:
             on_leave(data)
         except Exception as e:
-            logger.error(f"Error in on_leave: {e}")
+            logger.error("Error in on_leave: %s", e)
             # Handling for sending error to client, if necessary
 
 

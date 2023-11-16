@@ -13,7 +13,7 @@ def index():
     """Display the main homepage."""
     today = datetime.now().date()
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('main.home'))
 
     return render_template('index.html', today=today, logo=False)
 

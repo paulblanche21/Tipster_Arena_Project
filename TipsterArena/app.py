@@ -155,4 +155,3 @@ if __name__ == '__main__':
 
 # Outside of the if __name__ == '__main__' block
 app = create_app()
-

@@ -165,6 +165,6 @@ def logout():
     and redirecting to the index page.
     """
     session.pop('user_id', None)
-    session.pop('username', None) 
+    session.pop('username', None)
     flash('You have been logged out.', 'success')
     return redirect(url_for('main.index'))
