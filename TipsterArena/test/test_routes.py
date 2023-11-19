@@ -58,3 +58,12 @@ class RoutesTestCase(unittest.TestCase):
     def test_terms_and_conditions_route(self):
         response = self.client.get('/terms-and-conditions')
         self.assertEqual(response.status_code, 200)
+    
+    def test_reset_password_route(self):
+        response = self.client.get('/reset-password')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_reset_password_request_route(self):
+        response = self.client.get('/reset-password-request')
+        self.assertEqual(response.status_code, 200)
+    

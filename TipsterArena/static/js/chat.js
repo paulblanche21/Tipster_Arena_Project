@@ -1,12 +1,13 @@
 // Import the emoji picker (this will only work if chat.js is a module)
 import 'https://unpkg.com/emoji-picker-element';
 
-function createChatSocket(namespace) {
-    console.log(`Attempting to connect to ${namespace}`);
-    var socket = io.connect('http://127.0.0.1:5000/' + namespace);
+function createChatSocket() {
+    console.log(`Attempting to connect to chat`);
+    var socket = io.connect('http://127.0.0.1:5000/chat');
+    var errorMessageElement = document.getElementById('error-message');
 
     socket.on('connect', function() {
-        console.log(`Connected to ${namespace}`);
+        console.log(`Connected to chat`);
         socket.emit('join');
     });
 
@@ -15,8 +16,8 @@ function createChatSocket(namespace) {
     });
 
     socket.on('join_error', function(error) {
-        console.error('Error joining room:', error);
-        errorMessageElement.textContent = 'Error joining room: ' + error;
+        console.error('Error joining chatroom:', error);
+        errorMessageElement.textContent = 'Error joining chat: ' + error;
     });
 
     socket.on('error', function(error) {
@@ -46,7 +47,7 @@ function createChatSocket(namespace) {
         sendMessage: function() {
             var messageInput = document.getElementById('message');
             var message = messageInput.value.trim();  
-            var errorMessageElement = document.getElementById('error-message');
+            
 
             if (message === '') {
                 errorMessageElement.textContent = 'Message cannot be empty';  
@@ -54,7 +55,7 @@ function createChatSocket(namespace) {
             }
 
             errorMessageElement.textContent = '';  
-            socket.emit('message', {msg: message, room: namespace}, function(response) {
+            socket.emit('message', {msg: message}, function(response) {
                 if (response.error) {
                     errorMessageElement.textContent = response.error;
                     console.error('Error sending message:', response.error);
@@ -69,12 +70,8 @@ function createChatSocket(namespace) {
 
 
 
-// Create chat sockets for each namespace
-createChatSocket('football-chat');
-createChatSocket('golf-chat');
-createChatSocket('tennis-chat');
-createChatSocket('horse-racing-chat');
-
+// Create chat sockets
+createChatSocket();
 
 // Add the emoji picker code
 const picker = document.querySelector('emoji-picker');

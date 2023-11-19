@@ -6,7 +6,7 @@ The module defines the following classes:
         types available for users.
     - User: Represents a user in the system.
     - Message: Represents a message sent in a chat room.
-    - Room: Represents a chat room in the Tipster Arena application.
+    
 """
 import enum
 from datetime import datetime
@@ -106,41 +106,9 @@ class Message(db.Model):
         username (str): The username of the user who sent the message.
         message (str): The content of the message.
         timestamp (datetime): The date and time the message was sent.
-        room_name (str): The name of the chat room the message was sent in.
-        room_id (int): The unique identifier for the chat room.
-        room (Room): The chat room the message was sent in.
     """
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, nullable=False)
     message = db.Column(db.String, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    room_name = db.Column(db.String, nullable=False)
-    room_id = db.Column(db.Integer, db.ForeignKey('rooms.room_id'),
-                        nullable=False)
-    room = db.relationship("Room", back_populates="messages")
-
-
-class Room(db.Model):
-    """
-    Represents a chat room in the Tipster Arena application.
-
-    Attributes:
-        room_id (int): The unique identifier for the room.
-        name (str): The name of the room.
-        description (str): A brief description of the room.
-        created_at (datetime): The date and time the room was created.
-        updated_at (datetime): The date and time the room was last updated.
-        messages (list[Message]): A list of messages posted in the room.
-    """
-    __tablename__ = 'rooms'
-
-    room_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String, nullable=False, unique=True)
-    description = db.Column(db.String, nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime,
-                           default=datetime.utcnow,
-                           onupdate=datetime.utcnow)
-
-    messages = db.relationship("Message", back_populates="room")

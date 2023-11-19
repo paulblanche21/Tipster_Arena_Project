@@ -11,27 +11,20 @@ from datetime import datetime
 import re
 import logging
 import bleach
-from flask import session, request
+from flask import session
 from flask_socketio import Namespace, send, join_room, leave_room
 from markupsafe import escape
 from sqlalchemy.exc import SQLAlchemyError
 from extensions import db, socketio
 from models.user import Message
 
-# CHATROOMS definition
-
-
-CHATROOMS = [
-    '/football-chat',
-    '/golf-chat',
-    '/tennis-chat',
-    '/horse-racing-chat'
-]
 
 logger = logging.getLogger(__name__)
 
-
 # ChatNamespace class definition
+CHATROOM_NAMESPACE = '/chat'
+
+
 class ChatNamespace(Namespace):
     """
     A namespace for handling chat-related events.
@@ -48,16 +41,16 @@ class ChatNamespace(Namespace):
         Args:
             data: The message data to be handled.
         """
-        room_namespace = request.namespace
-        if room_namespace not in CHATROOMS:
-            logger.error("Invalid namespace: %s", room_namespace)
-            return
-
         try:
             handle_message(data)
-        except Exception as e:
-            logger.error("Error in on_message: %s", e)
-            # You might want to send an error message back to the client
+        except KeyError as e:
+            logger.error("KeyError in on_message: %s", e)
+            send({'error': 'Message format error'})
+        except ValueError as e:
+            logger.error("ValueError in on_message: %s", e)
+            send({'error': 'Invalid value error'})
+        except Exception as e:  # Fallback for unexpected exceptions
+            logger.error("Unexpected error in on_message: %s", e)
             send({'error': 'An unexpected error occurred'})
 
     def on_join(self, data):
@@ -66,11 +59,6 @@ class ChatNamespace(Namespace):
         It takes in the data of the user who joined and performs necessary
         actions.
         """
-        room_namespace = request.namespace
-        if room_namespace not in CHATROOMS:
-            logger.error("Invalid namespace: %s", room_namespace)
-            return
-    
         try:
             on_join(data)
         except Exception as e:
@@ -84,11 +72,7 @@ class ChatNamespace(Namespace):
         Args:
             data: The data associated with the user leaving the chatroom.
         """
-        room_namespace = request.namespace
-        if room_namespace not in CHATROOMS:
-            logger.error("Invalid namespace: %s", room_namespace)
-            return
-        
+
         try:
             on_leave(data)
         except Exception as e:
@@ -97,13 +81,12 @@ class ChatNamespace(Namespace):
 
 
 # Registering the namespaces
-for chatroom in CHATROOMS:
-    socketio.on_namespace(ChatNamespace('/' + chatroom))
+socketio.on_namespace(ChatNamespace(CHATROOM_NAMESPACE))
 
 MAX_MESSAGE_LENGTH = 515
 
 
-def save_message(username, msg, room):
+def save_message(username, msg):
     """
     Saves a message to the database.
 
@@ -116,14 +99,15 @@ def save_message(username, msg, room):
         bool: True if the message was successfully saved, False otherwise.
     """
     message_instance = Message(username=username, message=msg,
-                               timestamp=datetime.now(), room=room)
+                               timestamp=datetime.now(), 
+                               room=CHATROOM_NAMESPACE)
 
     try:
         db.session.add(message_instance)
         db.session.commit()
     except SQLAlchemyError as e:
         # Log the detailed error
-        logger.error("Error saving message: %s, Data: {'username': %s, 'message': %s, 'room': %s}", e, username, msg, room)
+        logger.error("Error saving message: %s, Data: {'username': %s, 'message': %s, 'room': %s}", e, username, msg, CHATROOM_NAMESPACE)
         db.session.rollback()
         return False
     return True
@@ -140,17 +124,10 @@ def handle_message(data):
     Returns:
         None
     """
-    room_namespace = request.namespace
 
     msg = data['msg']
-    room = data['room']
-
-    if not msg or not room or room_namespace not in CHATROOMS:
-        print("Message, room data, or namespace is invalid")
-        return
-
     if len(msg) > MAX_MESSAGE_LENGTH:
-        send('Message is too long!', room=room)
+        send('Message is too long!', room=CHATROOM_NAMESPACE)
         return
 
     msg = escape(msg)
@@ -159,12 +136,13 @@ def handle_message(data):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     mentions = re.findall(r'@\w+', msg)
 
-    if not save_message(username, msg, room):
+    if not save_message(username, msg):  # Removed the third argument
         send("An error occurred while sending your message. Please try again.",
-             room=room)
+             room=CHATROOM_NAMESPACE)
         return
 
-    send({'msg': msg, 'timestamp': timestamp, 'mentions': mentions}, room=room)
+    send({'msg': msg, 'timestamp': timestamp, 'mentions': mentions},
+         room=CHATROOM_NAMESPACE)
 
 
 @socketio.on('join')
@@ -179,15 +157,9 @@ def on_join(data):
         None
     """
     username = data['username']
-    room = data['room']
-    room_namespace = request.namespace
-
-    if room_namespace not in CHATROOMS:
-        print("Invalid namespace")
-        return
-
-    join_room(room)
-    send({"msg": username + " has joined the " + room + " room."}, room=room)
+    join_room(CHATROOM_NAMESPACE)
+    send({"msg": username + " has joined the chatroom."},
+         room=CHATROOM_NAMESPACE)
 
 
 @socketio.on('leave')
@@ -203,12 +175,6 @@ def on_leave(data):
         None
     """
     username = data['username']
-    room = data['room']
-    room_namespace = request.namespace
-
-    if room_namespace not in CHATROOMS:
-        print("Invalid namespace")
-        return
-
-    leave_room(room)
-    send({"msg": username + " has left the " + room + " room."}, room=room)
+    leave_room(CHATROOM_NAMESPACE)
+    send({"msg": username + " has left the chatroom."},
+         room=CHATROOM_NAMESPACE)

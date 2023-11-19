@@ -1,9 +1,13 @@
+"""
+errors package.
+"""
 from flask import Blueprint, current_app, render_template
 from flask_wtf.csrf import CSRFError
 
 
 # Create a Blueprint instance
-handler = Blueprint('handler', __name__)
+handler = Blueprint("handler", __name__)
+
 
 # Now you can use the handler Blueprint to define error handlers
 
@@ -20,7 +24,7 @@ def page_not_found(e):
         A tuple containing the rendered template and the HTTP status code 404.
     """
     current_app.logger.warning(f"Page not found: {e}")
-    return render_template('404.html'), 404
+    return render_template("404.html"), 404
 
 
 @handler.app_errorhandler(500)
@@ -35,7 +39,7 @@ def internal_server_error(e):
         A rendered template for the 500 error page with a 500 status code.
     """
     current_app.logger.exception("An error occurred: %s", e)
-    return render_template('500.html'), 500
+    return render_template("500.html"), 500
 
 
 @handler.app_errorhandler(Exception)
@@ -66,8 +70,8 @@ def handle_csrf_error(e):
     Returns:
         A rendered template with the error description and a 400 status code.
     """
-    current_app.logger.error('CSRF error occurred: %s', e.description)
-    return render_template('csrf_error.html', reason=e.description), 400
+    current_app.logger.error("CSRF error occurred: %s", e.description)
+    return render_template("csrf_error.html", reason=e.description), 400
 
 
 @handler.app_errorhandler(401)
@@ -81,5 +85,5 @@ def unauthorized_error(e):
     Returns:
         A tuple containing the rendered template and the HTTP status code 401.
     """
-    current_app.logger.warning('Unauthorized access attempt: %s', e)
-    return render_template('401.html'), 401
+    current_app.logger.warning("Unauthorized access attempt: %s", e)
+    return render_template("401.html"), 401

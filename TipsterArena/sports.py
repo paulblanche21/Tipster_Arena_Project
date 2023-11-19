@@ -28,8 +28,9 @@ def golf():
 @sports_bp.route('/horse_racing')
 def horse_racing():
     """
-    Renders the horse racing template with the sport parameter set to 'horseracing'.
-    
+    Renders the horse racing template with the sport
+    parameter set to 'horseracing'.
+
     Returns:
     The rendered horse racing template.
     """
@@ -47,7 +48,8 @@ def tennis():
 @sports_bp.route('/latest-tips')
 def latest_tips():
     """
-    Returns the latest tips as an HTML page using the 'latest-tips.html' template.
+    Returns the latest tips as an HTML page using the
+    'latest-tips.html' template.
     """
     return render_template('latest-tips.html')
 
