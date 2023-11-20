@@ -99,7 +99,7 @@ def save_message(username, msg):
         bool: True if the message was successfully saved, False otherwise.
     """
     message_instance = Message(username=username, message=msg,
-                               timestamp=datetime.now(), 
+                               timestamp=datetime.now(),
                                room=CHATROOM_NAMESPACE)
 
     try:

@@ -138,7 +138,7 @@
 {% if show_logo is not sameas False %}
 <div class="logo-container">
     {% if is_chatroom %}
-        <img src="{{ url_for('static', filename='images/chat-arena.png') }}" alt="Chatroom Logo" class="logo-image" nonce="{{ g.nonce }}">
+        <img src="{{ url_for('static', filename='images/chat1.png') }}" alt="Chatroom Logo" class="chat-logo-image" nonce="{{ g.nonce }}">
     {% elif sport == 'football' %}
         <img src="{{ url_for('static', filename='images/footballarena.png') }}" alt="Football Logo" class="logo-image" nonce="{{ g.nonce }}">
     {% elif sport == 'horseracing' %}
