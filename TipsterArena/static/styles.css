@@ -965,3 +965,29 @@ emoji-picker {
     display: block; /* This ensures the image takes the full line */
     margin: 0 auto; /* Centers the image if it's not as wide as the container */
 }
+
+.football-logo-image{
+    width: 100%;
+    height: auto;
+    display: block; /* This ensures the image takes the full line */
+    margin: 0 auto; /* Centers the image if it's not as wide as the container */
+}
+
+
+.golf-logo-image{
+    width: 100%;
+    height: auto;
+    display: block; /* This ensures the image takes the full line */
+    margin: 0 auto; /* Centers the image if it's not as wide as the container */
+
+
+}
+
+.tennis-logo-image{
+    width: 100%;
+    height: auto;
+    display: block; /* This ensures the image takes the full line */
+    margin: 0 auto; /* Centers the image if it's not as wide as the container */
+
+
+}

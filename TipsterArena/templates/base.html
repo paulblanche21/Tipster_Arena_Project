@@ -140,13 +140,13 @@
     {% if is_chatroom %}
         <img src="{{ url_for('static', filename='images/chat1.png') }}" alt="Chatroom Logo" class="chat-logo-image" nonce="{{ g.nonce }}">
     {% elif sport == 'football' %}
-        <img src="{{ url_for('static', filename='images/footballarena.png') }}" alt="Football Logo" class="logo-image" nonce="{{ g.nonce }}">
+        <img src="{{ url_for('static', filename='images/football4.png') }}" alt="Football Logo" class="football-logo-image" nonce="{{ g.nonce }}">
     {% elif sport == 'horseracing' %}
         <img src="{{ url_for('static', filename='images/horseracingarena.png') }}" alt="Horse Racing Logo" class="logo-image" nonce="{{ g.nonce }}">
     {% elif sport == 'tennis' %}
-        <img src="{{ url_for('static', filename='images/tennisarena.png') }}" alt="Tennis Logo" class="logo-image" nonce="{{ g.nonce }}">
+        <img src="{{ url_for('static', filename='images/tennis1.png') }}" alt="Tennis Logo" class="tennis-logo-image" nonce="{{ g.nonce }}">
     {% elif sport == 'golf' %}
-        <img src="{{ url_for('static', filename='images/golfarena.png') }}" alt="Golf Logo" class="logo-image" nonce="{{ g.nonce }}">
+        <img src="{{ url_for('static', filename='images/golf1.png') }}" alt="Golf Logo" class="golf-logo-image" nonce="{{ g.nonce }}">
     {% else %}
         <a href="{{ url_for('main.index') }}">
             <img src="{{ url_for('static', filename='images/ailogo.svg') }}" alt="Default Logo" class="logo-image" nonce="{{ g.nonce }}">
