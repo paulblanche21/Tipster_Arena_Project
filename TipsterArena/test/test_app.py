@@ -1,66 +1,46 @@
-import pytest
-from TipsterArena.app import app, db
-from TipsterArena.models.user import User
+import unittest
+from flask import Flask
+from app import create_app
 
+class AppTestCase(unittest.TestCase):
+    def setUp(self):
+        self.app = create_app(config_name='testing')
+        self.client = self.app.test_client()
 
-@pytest.fixture
-def client():
-    app.config['TESTING'] = True
-    with app.test_client() as client:
-        with app.app_context():
-            # Create tables in the test database
-            db.create_all()
-        yield client
-        # Cleanup after test
-        with app.app_context():
-            db.drop_all()
+    def tearDown(self):
+        pass
 
+    def test_config(self):
+        self.assertEqual(self.app.config['TESTING'], True)
+        self.assertEqual(self.app.config['DEBUG'], False)
 
-def test_index(client):
-    response = client.get('/')
-    assert response.status_code == 200
-    # replace 'Today is:' with some known text from your 'index.html'
-    assert b"Today is:" in response.data
+    def test_routes(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, b'Hello, World!')
 
+        response = self.client.get('/test-logging')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, b'Logging test')
 
-def test_about(client):
-    response = client.get('/about')
-    assert response.status_code == 200
-    # replace 'About TipsterArena' with some known text from your 'about.html'
-    assert b"About TipsterArena" in response.data
+    def test_extensions_initialized(self):
+        with self.app.app_context():
+            self.assertIsNotNone(self.app.extensions['db'])
+            self.assertIsNotNone(self.app.extensions['bcrypt'])
+            self.assertIsNotNone(self.app.extensions['cors'])
+            self.assertIsNotNone(self.app.extensions['csrf'])
+            self.assertIsNotNone(self.app.extensions['migrate'])
+            self.assertIsNotNone(self.app.extensions['socketio'])
+            self.assertIsNotNone(self.app.extensions['login_manager'])
 
+    def test_database_tables_created(self):
+        with self.app.app_context():
+            db = self.app.extensions['db']
+            with self.app.test_request_context():
+                db.create_all()
+                self.assertTrue(db.engine.dialect.has_table(db.engine, 'table1'))
+                self.assertTrue(db.engine.dialect.has_table(db.engine, 'table2'))
+                # Add more assertions for other tables
 
-def test_register(client):
-    response = client.get('/register')
-    assert response.status_code == 200
-    assert b"Register" in response.data
-
-    # Test registration
-    response = client.post('/register', data={
-        'username': 'testuser',
-        'email': 'test@example.com',
-        'password': 'testpassword',
-        'confirm_password': 'testpassword',
-        'agree_to_terms': True
-    })
-    assert response.status_code == 302  # Expecting a redirect after successful registration
-    assert b"Location: /login" in response.headers  # Expecting a redirect to login page
-
-    # Confirm user is added to database
-    user = User.query.filter_by(email='test@example.com').first()
-    assert user is not None
-
-
-def test_login(client):
-    # Add a user first to test login
-    user = User(username='testuser', email='test@example.com')
-    user.set_password('testpassword')
-    db.session.add(user)
-    db.session.commit()
-
-    # Test login
-    response = client.post('/login', data={'email': 'test@example.com', 'password': 'testpassword'})
-    assert response.status_code == 302  # Expecting a redirect after successful login
-    assert b"Location: /index" in response.headers  # Expecting a redirect to index page
-
-# You can continue writing similar tests for other routes
+if __name__ == '__main__':
+    unittest.main()
