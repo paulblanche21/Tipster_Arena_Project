@@ -1,9 +1,10 @@
 // Import the emoji picker (this will only work if chat.js is a module)
 import 'https://unpkg.com/emoji-picker-element';
 
+
 function createChatSocket() {
     console.log(`Attempting to connect to chat`);
-    var socket = io.connect('http://127.0.0.1:5000/chat');
+    var socket = io.connect('http://127.0.0.1:8000/general-chat');
     var errorMessageElement = document.getElementById('error-message');
 
     socket.on('connect', function() {

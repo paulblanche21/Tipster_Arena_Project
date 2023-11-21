@@ -48,7 +48,9 @@ class Config:
         ],
         'connect-src': [
             "'self'",
-            'cdn.jsdelivr.net'  # Add the required domain here
+            'cdn.jsdelivr.net',
+            'http://127.0.0.1:5000', 
+            'http://127.0.0.1:8000'  # Add the required domain here
         ],
         'font-src': "'self' use.fontawesome.com fonts.gstatic.com",
          }
@@ -65,7 +67,7 @@ class DevelopmentConfig(Config):
     SSL_KEY_PATH = os.getenv('SSL_KEY_PATH')
     DEBUG = True
     LOG_LEVEL = logging.DEBUG  # Debugging in development
-    SESSION_COOKIE_SECURE = False 
+    SESSION_COOKIE_SECURE = False
 
 
 class ProductionConfig(Config):

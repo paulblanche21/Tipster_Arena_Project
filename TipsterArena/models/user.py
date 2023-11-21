@@ -6,7 +6,7 @@ The module defines the following classes:
         types available for users.
     - User: Represents a user in the system.
     - Message: Represents a message sent in a chat room.
-    
+
 """
 import enum
 from datetime import datetime

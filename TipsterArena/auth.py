@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from flask import Blueprint, render_template, redirect, url_for, flash, session
 from flask import current_app as app
 from flask_wtf import FlaskForm
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from sqlalchemy.exc import SQLAlchemyError
 from wtforms import StringField, PasswordField, BooleanField, RadioField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
@@ -164,7 +164,6 @@ def logout():
     Logs out the current user by removing their user_id from the session
     and redirecting to the index page.
     """
-    session.pop('user_id', None)
-    session.pop('username', None)
+    logout_user()
     flash('You have been logged out.', 'success')
     return redirect(url_for('main.index'))

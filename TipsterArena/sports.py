@@ -41,6 +41,9 @@ def horse_racing():
 def tennis():
     """
     Renders the tennis.html template with the sport parameter set to 'tennis'.
+
+    Returns:
+    The rendered HTML template.
     """
     return render_template('tennis.html', sport='tennis')
 
@@ -48,8 +51,10 @@ def tennis():
 @sports_bp.route('/latest-tips')
 def latest_tips():
     """
-    Returns the latest tips as an HTML page using the
-    'latest-tips.html' template.
+    Returns the latest tips as an HTML page using the 'latest-tips.html' template.
+
+    Returns:
+    The rendered HTML template for the latest tips page.
     """
     return render_template('latest-tips.html')
 
@@ -60,18 +65,28 @@ def tipster_league_table():
     Renders the tipster league table HTML template.
 
     Returns:
-        The rendered HTML template for the tipster league table.
+    The rendered HTML template for the tipster league table.
     """
     return render_template('tipster-league-table.html')
 
 
 @sports_bp.route('/fixtures-results')
 def fixtures_results():
-    """Display the fixtures and results page."""
+    """
+    Display the fixtures and results page.
+
+    Returns:
+    The rendered HTML template for the fixtures and results page.
+    """
     return render_template('fixtures_results.html')
 
 
 @sports_bp.route('/in-play')
 def in_play():
-    """Display the in-play events page."""
+    """
+    Display the in-play events page.
+
+    Returns:
+    The rendered HTML template for the in-play events page.
+    """
     return render_template('inplay.html')
