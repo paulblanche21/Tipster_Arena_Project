@@ -1,5 +1,5 @@
 """
-This module defines a Flask-SocketIO chat application with multiple chat rooms.
+This module defines a Flask-SocketIO chat application with single chat rooms.
 It defines a ChatNamespace class that handles incoming chat messages,
 user joining and leaving the chat room.
 It also defines a save_message function that saves a message to the database.
@@ -59,6 +59,7 @@ class ChatNamespace(Namespace):
         It takes in the data of the user who joined and performs necessary
         actions.
         """
+        username = session.get('username', 'Anonymous')
         try:
             on_join(data)
         except Exception as e:
@@ -151,15 +152,16 @@ def on_join(data):
     Called when a user joins a chatroom.
 
     Args:
-        data (dict): A dictionary containing the username and room information.
-
-    Returns:
-        None
+        data (dict): A dictionary containing additional data about the join event.
     """
-    username = data['username']
+    # Retrieve the username from the session, default to 'Anonymous' if not found
+    username = session.get('username', 'Anonymous')
+
+    # Join the user to the chatroom namespace
     join_room(CHATROOM_NAMESPACE)
-    send({"msg": username + " has joined the chatroom."},
-         room=CHATROOM_NAMESPACE)
+
+    # Send a message to the chatroom indicating that this user has joined
+    send({"msg": f"{username} has joined the chatroom."}, room=CHATROOM_NAMESPACE)
 
 
 @socketio.on('leave')
