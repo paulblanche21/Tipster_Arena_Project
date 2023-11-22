@@ -72,7 +72,9 @@ function createChatSocket() {
 
 
 // Create chat sockets
-createChatSocket();
+const chatSocket = createChatSocket();
+
+window.sendMessage = chatSocket.sendMessage;
 
 // Add the emoji picker code
 const picker = document.querySelector('emoji-picker');

@@ -61,7 +61,7 @@ def create_app(config_name=None):
     print("CSRF protection initialized.")
     migrate.init_app(app, db)
     print("Migrate initialized.")
-    socketio.init_app(app, logger=True, engineio_logger=True)
+    socketio.init_app(app, async_mode='gevent', logger=True, engineio_logger=True)
     print("SocketIO initialized.")
     login_manager.init_app(app)
     print("Login manager initialized.")
@@ -132,8 +132,9 @@ def create_app(config_name=None):
     return app
 
 
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
     print("Starting Flask server...")
     # Load SSL certificate and key
     ssl_context = SSLContext(PROTOCOL_TLS_SERVER)
@@ -142,16 +143,6 @@ if __name__ == '__main__':
         app.config['SSL_KEY_PATH']
     )
 
-    # Check the environment and run the app accordingly
-    if app.config.get('FLASK_ENV') == "development":
-        socketio.run(app, host='0.0.0.0',
-                     port=5000,
-                     ssl_context=ssl_context,
-                     debug=True
-                     )
-    else:
-        print("Running in production mode")
-        socketio.run(app, host='0.0.0.0', port=5000)
+    # Run the app in development mode
+    app.run(host='0.0.0.0', port=8000, ssl_context=ssl_context, debug=True)
 
-# Outside of the if __name__ == '__main__' block
-app = create_app()
