@@ -22,7 +22,7 @@ from models.user import Message
 logger = logging.getLogger(__name__)
 
 # ChatNamespace class definition
-CHATROOM_NAMESPACE = '/chat'
+CHATROOM_NAMESPACE = '/general-chat'
 
 
 class ChatNamespace(Namespace):
@@ -156,9 +156,11 @@ def on_join(data):
     """
     # Retrieve the username from the session, default to 'Anonymous' if not found
     username = session.get('username', 'Anonymous')
-
+    logger.info(f"User joined: {username}")
     # Join the user to the chatroom namespace
     join_room(CHATROOM_NAMESPACE)
+    
+    print(f"User joined: {username}")
 
     # Send a message to the chatroom indicating that this user has joined
     send({"msg": f"{username} has joined the chatroom."}, room=CHATROOM_NAMESPACE)

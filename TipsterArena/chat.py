@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session
 
 chat_bp = Blueprint('chat', __name__)
 
@@ -12,6 +12,9 @@ def general_chat():
     Returns:
         The rendered general chat template.
     """
+    username = session.get('username', '')
     return render_template('general_chat.html',
                            hide_logo=True,
-                           is_chatroom=True)
+                           is_chatroom=True,
+                           username=username)
+    

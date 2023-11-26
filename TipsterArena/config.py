@@ -5,6 +5,7 @@ import os
 import sys
 import logging
 from dotenv import load_dotenv
+import redis
 
 # Print Python version for debugging
 print(sys.version)
@@ -55,6 +56,12 @@ class Config:
         'font-src': "'self' use.fontawesome.com fonts.gstatic.com",
          }
     # Flask-Mail SMTP server settings
+
+    # Redis session configuration
+    SESSION_TYPE = 'redis'
+    SESSION_PERMANENT = False
+    SESSION_USE_SIGNER = True
+    SESSION_REDIS = redis.StrictRedis(host='localhost', port=6379, db=0, decode_responses=True)
 
 
 class DevelopmentConfig(Config):

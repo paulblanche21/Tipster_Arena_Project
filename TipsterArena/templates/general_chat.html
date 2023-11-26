@@ -28,6 +28,11 @@
 <!-- Socket.IO JavaScript -->
 <script src="https://cdn.socket.io/4.0.0/socket.io.min.js" crossorigin="anonymous"></script>
 
+
+<script type="text/javascript">
+    var username = "{{ username }}";  // Pass the username from Flask to JavaScript
+</script>
+
 <!-- Your chat.js script -->
 <script type="module" src="{{ url_for('static', filename='js/chat.js') }}"></script>
 

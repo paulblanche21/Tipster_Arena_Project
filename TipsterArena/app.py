@@ -12,7 +12,7 @@ from ssl import SSLContext, PROTOCOL_TLS_SERVER
 from flask import Flask, g
 from flask_talisman import Talisman
 from dotenv import load_dotenv
-
+from flask_session import Session
 
 from errors.handlers import handler
 from config import DevelopmentConfig, ProductionConfig
@@ -59,12 +59,15 @@ def create_app(config_name=None):
     print("CORS initialized.")
     csrf.init_app(app)
     print("CSRF protection initialized.")
+    
     migrate.init_app(app, db)
     print("Migrate initialized.")
     socketio.init_app(app, async_mode='gevent', logger=True, engineio_logger=True)
     print("SocketIO initialized.")
     login_manager.init_app(app)
     print("Login manager initialized.")
+    Session(app)
+    print("Sessions initialized.")
     Talisman(app, content_security_policy=app.config['CSP'])
     print("Talisman initialized.")
     # Create database tables
