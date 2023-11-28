@@ -150,6 +150,9 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user)
             session['username'] = user.username
+            session['user_id'] = user.user_id   
+            # Debugging statements
+            print("Session content:", session)
             flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:

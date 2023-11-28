@@ -13,7 +13,6 @@ from flask import Flask, g
 from flask_talisman import Talisman
 from dotenv import load_dotenv
 from flask_session import Session
-
 from errors.handlers import handler
 from config import DevelopmentConfig, ProductionConfig
 from extensions import db, bcrypt, cors, csrf, migrate, socketio, login_manager
@@ -59,7 +58,6 @@ def create_app(config_name=None):
     print("CORS initialized.")
     csrf.init_app(app)
     print("CSRF protection initialized.")
-    
     migrate.init_app(app, db)
     print("Migrate initialized.")
     socketio.init_app(app, async_mode='gevent', logger=True, engineio_logger=True)
@@ -148,4 +146,4 @@ if __name__ == '__main__':
 
     # Run the app in development mode
     app.run(host='0.0.0.0', port=8000, ssl_context=ssl_context, debug=True)
-
+    print("Flask server started.")

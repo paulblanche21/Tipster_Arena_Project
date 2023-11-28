@@ -55,8 +55,6 @@ class Config:
         ],
         'font-src': "'self' use.fontawesome.com fonts.gstatic.com",
          }
-    # Flask-Mail SMTP server settings
-
     # Redis session configuration
     SESSION_TYPE = 'redis'
     SESSION_PERMANENT = False
